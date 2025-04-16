@@ -1,28 +1,23 @@
 const express = require("express");
 const router = express.Router();
 const { check } = require("express-validator");
-const QuestionController = require("../controllers/examController");
-const auth = require("../middlewares/auth");
+const {
+  createQuestion,
+  getAllQuestions,
+  getQuestionById,
+  updateQuestion,
+  deleteQuestion,
+} = require("../controllers/questionController");
+const { auth, isAdmin, isStudent } = require("../middlewares/auth");
+const logger = require("../utils/loggerUtils"); // Added logger import
 
-// Middleware to check if user is admin
-const isAdmin = (req, res, next) => {
-  if (req.user.role !== "admin") {
-    return res.status(403).json({
-      status: "failed",
-      error: "Access denied. Admin only.",
-    });
-  }
-  next();
-};
-
-// @route   POST api/questions
+// @route   POST api/question/
 // @desc    Create a question
 // @access  Private (Admin only)
 router.post(
   "/",
   [
-    auth,
-    isAdmin,
+    [auth, isAdmin],
     [
       check("text", "Question text is required").notEmpty(),
       check("type", "Question type is required").isIn([
@@ -39,18 +34,18 @@ router.post(
       ]),
     ],
   ],
-  QuestionController.createQuestion
+  createQuestion
 );
 
 // @route   GET api/questions
 // @desc    Get all questions
 // @access  Public
-router.get("/", QuestionController.getAllQuestions);
+router.get("/", [auth, isAdmin], getAllQuestions);
 
 // @route   GET api/questions/:id
 // @desc    Get question by ID
 // @access  Public
-router.get("/:id", QuestionController.getQuestionById);
+router.get("/:id", [auth], getQuestionById);
 
 // @route   PUT api/questions/:id
 // @desc    Update a question
@@ -58,7 +53,7 @@ router.get("/:id", QuestionController.getQuestionById);
 router.put(
   "/:id",
   [
-    auth,
+    [auth, isAdmin],
     [
       check("text", "Question text is required").optional().notEmpty(),
       check("type", "Question type is required")
@@ -74,24 +69,27 @@ router.put(
         .isIn(["easy", "medium", "hard"]),
     ],
   ],
-  QuestionController.updateQuestion
+  updateQuestion
 );
 
 // @route   DELETE api/questions/:id
 // @desc    Delete a question
 // @access  Private
-router.delete("/:id", auth, questionController.deleteQuestion);
+router.delete("/:id", [auth, isAdmin], deleteQuestion);
 
-/*
+// Implement the routes that needed help
 // @route GET api/questions/difficulty/:level
 // @desc Get questions by difficulty level
 // @access Private
-router.get('/difficulty/:level', auth, questionController.getQuestionsByDifficulty);
+// router.get(
+//   "/difficulty/:level",
+//   auth,
+//   QuestionController.getQuestionsByDifficulty
+// );
 
 // @route GET api/questions/type/:type
 // @desc Get questions by type
 // @access Private
-router.get('/type/:type', auth, questionController.getQuestionsByType);
+// router.get("/type/:type", auth, QuestionController.getQuestionsByType);
 
-*/
 module.exports = router;

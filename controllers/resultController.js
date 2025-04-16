@@ -1,43 +1,47 @@
+// src/controllers/resultController.js
 const Result = require("../models/result");
 const Exam = require("../models/exam");
 const User = require("../models/user");
 const Question = require("../models/question");
-const result = require("../models/result");
+const { validationResult } = require("express-validator");
+const logger = require("../utils/loggerUtils");
 
-// create new Results
+// Creates a new Result instance with exam details and student performance
 /**
  * Creates a new Result instance with exam details and student performance
+ * @route POST /api/results
+ * @access Private (Students only)
  * @param {Object} req - Express request object
  * @param {Object} req.body - Request body
  * @param {string} req.body.examId - The ID of the exam taken
  * @param {Array} req.body.answers - Array of student answers
  * @param {string} req.body.startTime - The time when the exam started
- * @param {Array} req.body.proctorFlags - Array of proctor flags
+ * @param {Array} req.body.proctorFlags - Array of proctor events (e.g., { eventType, timestamp, message })
  * @param {Object} res - Express response object
  * @returns {Object} Response containing result details
  */
 exports.createResult = async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    return res.status(400).json({ errors: errors.array() });
+    return res.status(400).json({ status: "error", errors: errors.array() });
   }
 
   try {
-    const { examId, answers, startTime, proctorFlags } = req.body;
+    const { examId, answers, startTime, proctorFlags = [] } = req.body;
+
+    if (!Array.isArray(answers) || answers.length === 0) {
+      return res.status(400).json({
+        status: "error",
+        message: "Answers must be a non-empty array",
+      });
+    }
 
     // Get the exam to calculate score
     const examData = await Exam.findById(examId).populate("questions");
     if (!examData) {
+      logger.error(`Exam not found for ID: ${examId}`);
       return res.status(404).json({
-        status: failure,
-        message: "Exam not found",
-      });
-    }
-
-    // Check if the exam exists
-    if (!examData) {
-      return res.status(404).json({
-        status: "failed",
+        status: "error",
         message: "Exam not found",
       });
     }
@@ -45,23 +49,19 @@ exports.createResult = async (req, res) => {
     // Calculate Score
     let totalScore = 0;
     let totalMarks = 0;
-    let answerWithCorrectness = [];
+    const answerWithCorrectness = [];
 
-    // process each answer
     for (const answer of answers) {
-      const question = examData.questions.find((q) =>
-        q._id.toString().equals(answer.question.toString())
+      const question = examData.questions.find(
+        (q) => q._id.toString() === answer.question.toString()
       );
-
       if (question) {
         const isCorrect = question.correctAnswer === answer.selectedOption;
-
         answerWithCorrectness.push({
           question: answer.question,
           selectedOption: answer.selectedOption,
-          isCorrect: isCorrect,
+          isCorrect,
         });
-
         if (isCorrect) {
           totalScore += question.marks;
         }
@@ -69,30 +69,63 @@ exports.createResult = async (req, res) => {
       }
     }
 
-    const percentage = (totalScore / totalMarks) * 100;
-    const isPassed = percentage >= examData.passingPercentage;
+    if (totalMarks === 0) {
+      return res
+        .status(400)
+        .json({ status: "error", message: "No valid questions answered" });
+    }
 
-    // create a new result
+    const percentage = (totalScore / totalMarks) * 100 || 0;
+    const isPassed =
+      percentage >= (examData.passingMarks / examData.totalMarks) * 100;
+
+    // Map proctorFlags to schema format
+    const formattedProctorFlags = proctorFlags.map((flag) => ({
+      type: mapEventType(flag.eventType) || "other",
+      description: flag.message || "No description",
+      timestamp: new Date(flag.timestamp),
+    }));
+
+    // Create a new result
     const newResult = await Result.create({
       exam: examId,
       student: req.user.id,
-      answer: answerWithCorrectness,
+      answers: answerWithCorrectness,
       totalScore,
       percentage,
       isPassed,
       startTime: new Date(startTime),
-      submittedAt: newDate(),
-      proctorFlags: proctorFlags || [],
+      submittedAt: new Date(),
+      proctorFlags: formattedProctorFlags,
     });
 
-    // return a response
+    // Update user's completedExams field with both exam and result IDs
+    await User.findByIdAndUpdate(
+      req.user.id,
+      {
+        $push: {
+          completedExams: {
+            exam: examId,
+            result: newResult._id,
+          },
+        },
+      },
+      { new: true }
+    );
+
+    logger.info(
+      `Result created successfully for exam: ${examId}, student: ${req.user.id}, and completedExams updated`
+    );
+
     res.status(201).json({
       status: "success",
       message: "Exam submitted successfully",
       result: newResult,
     });
   } catch (error) {
-    console.error(error);
+    logger.error(`Error in createResult: ${error.message}`, {
+      stack: error.stack,
+    });
     res.status(500).json({
       status: "error",
       message: "Internal Server Error",
@@ -100,40 +133,74 @@ exports.createResult = async (req, res) => {
   }
 };
 
-// Get all results
+// Helper function to map frontend event types to schema enum
+// Added mapEventType in the controller to convert frontend event types (e.g., "tab_switch") to schema enum values (e.g., "tab-switch").
+const mapEventType = (eventType) => {
+  const typeMap = {
+    tab_switch: "tab-switch",
+    fullscreen_exit: "full-screen-exit",
+    tab_focus: "tab-switch", // Simplified mapping
+    window_blur: "other",
+    fullscreen_enter: "other", // Not an issue, just logged
+    fullscreen_request_failed: "other",
+  };
+  return typeMap[eventType] || "other";
+};
+
+// Retrieves all exam results
+/**
+ * Retrieves all exam results
+ * @route GET /api/results
+ * @access Private (Admin only)
+ * @param {Object} req - Express request object
+ * @param {Object} res - Express response object
+ * @returns {Object} Response containing all results with exam and student details
+ */
 exports.getAllResults = async (req, res) => {
+  console.log("Controller started....");
   try {
     const results = await Result.find()
       .populate("exam", ["title", "description", "duration"])
       .populate("student", ["name", "email"])
       .exec();
 
+    console.log("Retrieving result", results);
+
+    logger.info(`Retrieved all results: ${results.length} records found`);
+
     res.status(200).json({
       status: "success",
-      message: "All Results retrieved successfully",
-      results: results,
+      message:
+        results.length > 0
+          ? "All Results retrieved successfully"
+          : "No results found",
+      data: results,
     });
   } catch (err) {
-    console.error(err.message);
+    logger.error(`Error in getAllResults: ${err.message}`, {
+      stack: err.stack,
+    });
     res.status(500).json({
-      status: failed,
+      status: "error",
       message: "Internal Server Error",
     });
   }
 };
 
-// Get Result by ResultId (admin only)
+// Retrieves a specific result by its ID
 /**
- * Retrieves a result record by ID with populated exam and question details
- * @param {Object} result - The found result document
- * @param {Object} result.exam - The populated exam document containing title, totalMarks and passingMarks
- * @param {Object[]} result.answers - Array of answer objects
- * @param {Object} result.answers[].question - The populated question document containing text, options, type and marks
- * @returns {Object} Mongoose document containing the result with populated exam and question fields
+ * Retrieves a specific result by its ID
+ * @route GET /api/results/:id
+ * @access Private (Admin or the student who owns the result)
+ * @param {Object} req - Express request object
+ * @param {string} req.params.id - Result ID
+ * @param {Object} res - Express response object
+ * @returns {Object} Response containing detailed result information
  */
-exports.getResultById = async (req, res) => {
+exports.getResultByResultId = async (req, res) => {
   try {
-    const result = await Result.findById(req.params.id)
+    const resultId = req.params.id;
+    const result = await Result.findById(resultId)
       .populate("exam", "title totalMarks passingMarks")
       .populate("student", ["name", "email"])
       .populate({
@@ -141,209 +208,320 @@ exports.getResultById = async (req, res) => {
         select: "text options type marks difficulty",
       });
 
-    // Check if result exists
     if (!result) {
+      logger.warn(`Result not found for ID: ${resultId}`);
       return res.status(404).json({
         status: "error",
         message: "Result not found",
       });
     }
 
-    // Check if user is authorized to view this result
     if (
       req.user.role === "student" &&
       result.student.toString() !== req.user.id
     ) {
+      logger.warn(
+        `Unauthorized access attempt for result ${resultId} by user ${req.user.id}`
+      );
       return res.status(403).json({
-        status: "failed",
-        error: "You are not authorized to view this result",
+        status: "error",
+        message: "You are not authorized to view this result",
       });
     }
 
+    logger.info(
+      `Result ${resultId} retrieved successfully by user ${req.user.id}`
+    );
     res.status(200).json({
       status: "success",
       message: "Result fetched successfully",
-      result: result,
+      data: result,
     });
   } catch (err) {
-    console.error(err.message);
     if (err.kind === "ObjectId") {
-      return res.status(404).json({ msg: "Result not found" });
+      logger.warn(`Invalid result ID format: ${req.params.id}`);
+      return res
+        .status(404)
+        .json({ status: "error", message: "Result not found" });
     }
-    res.status(500).send("Server error");
+    logger.error(`Error in getResultById: ${err.message}`, {
+      stack: err.stack,
+    });
+    res.status(500).json({
+      status: "error",
+      message: "Server error",
+    });
   }
 };
 
-// get all result for an exam (admin only)
+// Retrieves all results for a specific exam
 /**
- * Retrieves exam results for a specific exam ID
- * @typedef {Object} ExamResult
- * @property {Object} student - Student details
- * @property {string} student.name - Student's name
- * @property {string} student.email - Student's email
- * @property {number} totalScore - Total score achieved
- * @property {number} percentage - Percentage scored
- * @property {boolean} isPassed - Whether student passed the exam
- * @property {Date} submittedAt - Timestamp when exam was submitted
- * @property {Array} proctorFlags - Array of proctor flags/violations
- * @returns {Promise<ExamResult[]>} Array of exam results
+ * Retrieves all results for a specific exam
+ * @route GET /api/results/exam/:examId
+ * @access Private (Admin only)
+ * @param {Object} req - Express request object
+ * @param {string} req.params.examId - Exam ID
+ * @param {Object} res - Express response object
+ * @returns {Object} Response containing results for the specified exam
  */
-exports.getExamResults = async (req, res) => {
+exports.getExamResultsByExamId = async (req, res) => {
   try {
-    const results = await Result.find({ exam: req.params.examId })
+    const examId = req.params.examId;
+    const results = await Result.find({ exam: examId })
       .populate("student", "name email")
       .select("totalScore percentage isPassed submittedAt proctorFlags");
 
+    logger.info(`Retrieved ${results.length} results for exam ${examId}`);
     res.status(200).json({
       status: "success",
       message: "Exam results fetched successfully",
-      results: results,
+      data: results,
     });
   } catch (err) {
-    console.error(err.message);
-    res.status(500).send("Server error");
+    logger.error(
+      `Error in getExamResults for exam ${req.params.examId}: ${err.message}`,
+      { stack: err.stack }
+    );
+    res.status(500).json({
+      status: "error",
+      message: "Server error",
+    });
   }
 };
 
-// get all results for a student
-exports.getStudentResults = async (req, res) => {
+//Retrieves all results for the currently logged-in student
+/**
+ * Retrieves all results for the currently logged-in student
+ * @route GET /api/results/me
+ * @access Private (Students only)
+ * @param {Object} req - Express request object
+ * @param {Object} req.user - Authenticated user information
+ * @param {Object} res - Express response object
+ * @returns {Object} Response containing all results for the authenticated student
+ */
+exports.getMyResults = async (req, res) => {
   try {
-    const results = await Result.find({
-      student: req.user.id,
-    })
-      .populate("exam", "title totalMarks")
-      .select("totalScore percentage isPassed submittedAt");
+    const studentId = req.user.id;
+    console.log("studentId", studentId);
+    const results = await Result.find({ student: studentId })
+      .populate("exam", ["title", "description", "duration"])
+      .exec();
+
+    logger.info(
+      `Retrieved ${results.length} personal results for student ${studentId}`
+    );
+    res.status(200).json({
+      status: "success",
+      message: "Results fetched successfully",
+      data: results,
+    });
+  } catch (err) {
+    logger.error(
+      `Error in getMyResults for user ${req.user.id}: ${err.message}`,
+      { stack: err.stack }
+    );
+    res.status(500).json({
+      status: "error",
+      message: "Server Error",
+    });
+  }
+};
+
+//Deletes a specific result by ID
+/**
+ * Deletes a specific result by ID
+ * @route DELETE /api/results/:id
+ * @access Private (Admin only)
+ * @param {Object} req - Express request object
+ * @param {string} req.params.id - Result ID to delete
+ * @param {Object} res - Express response object
+ * @returns {Object} Response indicating success or failure of deletion
+ */
+exports.deleteResult = async (req, res) => {
+  try {
+    const resultId = req.params.id;
+    const result = await Result.findById(resultId);
+
+    if (!result) {
+      logger.warn(`Attempt to delete non-existent result with ID: ${resultId}`);
+      return res.status(404).json({
+        status: "error",
+        message: "Result not found or already deleted",
+      });
+    }
+
+    await result.deleteOne();
+    logger.info(
+      `Result ${resultId} deleted successfully by user ${req.user.id}`
+    );
 
     res.status(200).json({
       status: "success",
-      message: "Student results fetched successfully",
-      results: results,
+      message: "Result deleted successfully",
+      DeletedData: result,
     });
   } catch (err) {
-    console.error("Error while fetching student result", err.message);
-    res.status(500).send("Server error");
+    logger.error(
+      `Error while deleting result ${req.params.id}: ${err.message}`,
+      { stack: err.stack }
+    );
+    res.status(500).json({
+      status: "error",
+      message: err.message,
+    });
   }
 };
 
+// Generates analytics for exams created by the instructor
 /**
- * Retrieves and calculates analytics for all exams created by the instructor
+ * Generates analytics for exams created by the instructor
+ * @route GET /api/results/analytics
+ * @access Private (Instructors only)
  * @param {Object} req - Express request object
+ * @param {Object} req.user - Authenticated user information
  * @param {Object} res - Express response object
- * @returns {Object} Analytics data including:
- * - examId: Exam identifier
- * - examTitle: Name of the exam
- * - totalStudents: Number of students who took the exam
- * - passedStudents: Number of students who passed
- * - passRate: Percentage of students who passed
- * - averageScore: Mean score of all students
- * - lowScores: Minimum score achieved
- * - highScores: Maximum score achieved
+ * @returns {Object} Response containing analytics data for instructor's exams
  */
-// get analytics for all exams
 exports.getExamAnalytics = async (req, res) => {
+  // Check if the user is an admin (optional, can be handled by middleware)
+  if (req.user.role !== "admin") {
+    logger.warn(
+      `Unauthorized attempt to access admin exam analytics by non-admin user ${req.user.id}`
+    );
+    return res.status(403).json({
+      status: "failed",
+      message: "Only admins can access exam analytics",
+    });
+  }
+
   try {
-    const exams = await Exam.find({ createdBy: req.user.id }).select("title");
+    const userId = req.user.id;
+    logger.debug(`Fetching analytics for all exams created by admin ${userId}`);
+
+    // Fetch all exams created by the admin
+    const exams = await Exam.find({ createdBy: userId })
+      .select("title _id duration startTime endTime totalMarks")
+      .populate("questions", "marks");
+
+    logger.info(
+      `Found ${exams.length} exams created by user ${userId} for analytics`
+    );
 
     const analytics = [];
 
     for (const exam of exams) {
-      const results = await Result.find({
-        exam: exam._id,
-      });
+      const results = await Result.find({ exam: exam._id })
+        .populate("student", "name email")
+        .lean();
 
       if (results.length === 0) {
+        analytics.push({
+          examId: exam._id,
+          examTitle: exam.title,
+          totalStudents: 0,
+          passedStudents: 0,
+          passRate: 0,
+          averageScore: 0,
+          lowScore: 0,
+          highScore: 0,
+          duration: exam.duration,
+          startTime: exam.startTime,
+          endTime: exam.endTime,
+          totalMarks: exam.totalMarks,
+        });
         continue;
       }
 
-      // Calculate statistics
-      const totalStudents = result.length;
+      const totalStudents = results.length;
       const passedStudents = results.filter((result) => result.isPassed).length;
-      const passRate = (passedStudents / totalStudents) * 100;
+      const passRate = (passedStudents / totalStudents) * 100 || 0;
 
-      // calculate average Score
-
-      const totalScore = result.reduce(
+      const totalScore = results.reduce(
         (acc, result) => acc + result.totalScore,
         0
       );
-      const averageScore = totalScore / totalStudents;
+      const averageScore = totalScore / totalStudents || 0;
 
-      //Get high and low Scores
-      const lowScores = Math.min(...result.map((result) => result.totalScore));
-      const highScores = Math.max(...result.map((result) => result.totalScore));
+      const scores = results.map((result) => result.totalScore);
+      const lowScore = Math.min(...scores) || 0;
+      const highScore = Math.max(...scores) || 0;
 
       analytics.push({
         examId: exam._id,
         examTitle: exam.title,
         totalStudents,
         passedStudents,
-        passRate,
-        averageScore,
-        lowScores,
-        highScores,
+        passRate: Number(passRate.toFixed(2)),
+        averageScore: Number(averageScore.toFixed(2)),
+        lowScore,
+        highScore,
+        duration: exam.duration,
+        startTime: exam.startTime,
+        endTime: exam.endTime,
+        totalMarks: exam.totalMarks,
+        detailedResults: results.map((result) => ({
+          studentName: result.student.name,
+          studentEmail: result.student.email,
+          score: result.totalScore,
+          percentage: result.percentage,
+          isPassed: result.isPassed,
+          submittedAt: result.submittedAt,
+        })),
       });
     }
+
+    logger.info(
+      `Analytics generated for ${analytics.length} exams by admin ${userId}`
+    );
+
     res.status(200).json({
-      status: success,
-      message: "Analytics created and fetched successfully",
+      status: "success",
+      message: "Exam analytics fetched successfully",
       data: analytics,
     });
   } catch (error) {
-    console.error("Error while fetching analytics", error);
+    logger.error(
+      `Error in getAdminExamAnalytics for admin ${req.user.id}: ${error.message}`,
+      { stack: error.stack }
+    );
     res.status(500).json({
-      status: failure,
-      message: error.message,
+      status: "error",
+      message: "Internal Server Error",
     });
   }
 };
+// Retrieves all results for the currently authenticated student
+/**
+ * Retrieves all results for the currently authenticated student
+ * @route GET /api/results/student
+ * @access Private (Students only)
+ * @param {Object} req - Express request object
+ * @param {Object} req.user - Authenticated user information
+ * @param {Object} res - Express response object
+ * @returns {Object} Response containing student's exam results
+ */
+// exports.getStudentResults = async (req, res) => {
+//   try {
+//     const studentId = req.user.id;
+//     const results = await Result.find({ student: studentId })
+//       .populate("exam", "title totalMarks")
+//       .select("totalScore percentage isPassed submittedAt");
 
-// Get my results (for authenticated student)
-exports.getMyResults = async (req, res) => {
-  try {
-    const results = await Result.find({ student: req.user.id })
-      .populate("exam", ["title", "description", "duration"])
-      .exec();
+//     logger.info(`Retrieved ${results.length} results for student ${studentId}`);
 
-    res.status(200).json({
-      status: success,
-      message: "Results fetched successfully",
-      data: results,
-    });
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).send("Server Error");
-  }
-};
-
-// Delete a result
-exports.deleteResult = async (req, res) => {
-  try {
-    // Get the result ID from the request params and delete
-    const result = await Result.findByIdAndDelete(req.params.id);
-
-    // Check if result exists
-    if (!result) {
-      return res.status(404).json({
-        status: failure,
-        message: "Result not found or already deleted",
-      });
-    }
-
-    // check if user has permission to delete result
-    // code pending
-
-    await result.deleteOne();
-
-    // Return success message
-    res.status(200).json({
-      status: success,
-      message: "Result deleted successfully",
-    });
-  } catch (err) {
-    console.error("Error while deleting result", err);
-    res.status(500).json({
-      status: failure,
-      message: err.message,
-    });
-  }
-};
+//     res.status(200).json({
+//       status: "success",
+//       message: "Student results fetched successfully",
+//       data: results,
+//     });
+//   } catch (err) {
+//     logger.error(
+//       `Error while fetching student results for ${req.user.id}: ${err.message}`,
+//       { stack: err.stack }
+//     );
+//     res.status(500).json({
+//       status: "error",
+//       message: "Server error",
+//     });
+//   }
+// };

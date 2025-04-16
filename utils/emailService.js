@@ -1,11 +1,13 @@
 const nodemailer = require("nodemailer");
-
+const dotenv = require("dotenv");
+dotenv.config();
 // Create transporter
 const transporter = nodemailer.createTransport({
+  host: process.env.MAIL_HOST,
   service: "gmail",
   auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
+    user: process.env.MAIL_USER,
+    pass: process.env.MAIL_PASS,
   },
 });
 
@@ -22,6 +24,81 @@ const formatDateTime = (date) => {
   });
 };
 
+// Send signup confirmation email
+const sendSignupConfirmationEmail = async (email, username) => {
+  const mailOptions = {
+    from: `EduAssess <no-reply@eduAssess.com>`,
+    to: email,
+    subject: "Welcome to Our Platform - Account Created Successfully",
+    html: `
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+        <h2>Congratulations, ${username}!</h2>
+        <p>Your account has been successfully created.</p>
+        <p>You can now log in to your account.</p>
+        
+        <div style="background-color: #f5f5f5; padding: 15px; border-radius: 5px; margin: 20px 0;">
+          <p>If you have any questions or need assistance, please contact our support team.</p>
+        </div>
+        
+        <p>Welcome aboard!</p>
+        
+        <div style="margin-top: 30px; padding-top: 15px; border-top: 1px solid #ddd;">
+          <p style="font-size: 12px; color: #777;">This is an automated message. Please do not reply to this email.</p>
+        </div>
+      </div>
+    `,
+  };
+
+  try {
+    await transporter.sendMail(mailOptions);
+    console.log(`Signup confirmation email sent to ${email}`);
+    return true;
+  } catch (error) {
+    console.error("Error sending signup confirmation email:", error);
+    return false;
+  }
+};
+
+// Send password reset email
+const sendPasswordResetEmail = async (email, resetLink) => {
+  const mailOptions = {
+    from: `EduAssess <no-reply@eduAssess.com>`,
+    to: email,
+    subject: "Password Reset Request",
+    html: `
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+        <h2>Password Reset Request</h2>
+        <p>We received a request to reset your password.</p>
+        
+        <div style="background-color: #f5f5f5; padding: 15px; border-radius: 5px; margin: 20px 0;">
+          <p>Click the button below to reset your password:</p>
+          <div style="text-align: center; margin: 20px 0;">
+            <a href="${resetLink}" style="background-color: #4CAF50; color: white; padding: 10px 20px; text-decoration: none; border-radius: 4px; display: inline-block;">Reset Password</a>
+          </div>
+          <p style="font-size: 13px;">If the button doesn't work, copy and paste this link into your browser:</p>
+          <p style="font-size: 13px; word-break: break-all;"><a href="${resetLink}">${resetLink}</a></p>
+        </div>
+        
+        <p><strong>This link will expire in 1 hour.</strong></p>
+        <p>If you didn't request a password reset, please ignore this email or contact support if you have concerns.</p>
+        
+        <div style="margin-top: 30px; padding-top: 15px; border-top: 1px solid #ddd;">
+          <p style="font-size: 12px; color: #777;">This is an automated message. Please do not reply to this email.</p>
+        </div>
+      </div>
+    `,
+  };
+
+  try {
+    await transporter.sendMail(mailOptions);
+    console.log(`Password reset email sent to ${email}`);
+    return true;
+  } catch (error) {
+    console.error("Error sending password reset email:", error);
+    return false;
+  }
+};
+
 // Send exam enrollment email
 const sendExamEnrollmentEmail = async (
   email,
@@ -32,7 +109,7 @@ const sendExamEnrollmentEmail = async (
   questionCount
 ) => {
   const mailOptions = {
-    from: process.env.EMAIL_USER,
+    from: `EduAssess <no-reply@eduAssess.com>`,
     to: email,
     subject: `Enrollment Confirmation: ${examTitle}`,
     html: `
@@ -72,7 +149,7 @@ const sendExamEnrollmentEmail = async (
 // Send exam reminder email
 const sendExamReminderEmail = async (email, name, examTitle, startTime) => {
   const mailOptions = {
-    from: process.env.EMAIL_USER,
+    from: `EduAssess <no-reply@eduAssess.com>`,
     to: email,
     subject: `Reminder: ${examTitle} starts soon`,
     html: `
@@ -105,6 +182,8 @@ const sendExamReminderEmail = async (email, name, examTitle, startTime) => {
 };
 
 module.exports = {
+  sendSignupConfirmationEmail,
+  sendPasswordResetEmail,
   sendExamEnrollmentEmail,
   sendExamReminderEmail,
 };

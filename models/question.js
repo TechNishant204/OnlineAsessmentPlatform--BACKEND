@@ -31,11 +31,16 @@ const QuestionSchema = new Schema(
     },
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "user",
+      ref: "User", // Standardized to "User"
       required: true,
+    },
+    exam: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Exam",
+      default: null,
     },
   },
   { timestamps: true }
 );
 
-module.exports = Question = mongoose.model("question", QuestionSchema);
+module.exports = mongoose.model("Question", QuestionSchema);

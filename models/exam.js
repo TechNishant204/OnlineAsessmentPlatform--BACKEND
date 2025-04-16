@@ -1,4 +1,4 @@
-const mongoose = require(mongoose);
+const mongoose = require("mongoose");
 
 const examSchema = new mongoose.Schema(
   {
@@ -12,7 +12,7 @@ const examSchema = new mongoose.Schema(
       required: true,
     },
     duration: {
-      type: Number, //in minutes
+      type: Number, // in minutes
       required: true,
     },
     startTime: {
@@ -50,20 +50,8 @@ const examSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-examSchema.pre("remove", async function (next) {
-  try {
-    // Remove exam from all users' exam lists
-    await this.model("User").updateMany(
-      { exams: this._id },
-      { $pull: { exams: this._id } }
-    );
+// // Indexes for performance
+// examSchema.index({ createdBy: 1 });
+// examSchema.index({ questions: 1 });
 
-    await this.model("Submission").deleteMany({ exam: this._id });
-    next();
-  } catch (err) {
-    next(err);
-  }
-});
-
-module.exports = mongoose.model("Exam", examSchema); // here we are creating a model called Exam and passing the schema to it
-// This model will be used to interact with the exams collection in the database
+module.exports = mongoose.model("Exam", examSchema);

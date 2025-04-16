@@ -5,19 +5,19 @@ const ResultSchema = new Schema(
   {
     exam: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "exam",
+      ref: "Exam",
       required: true,
     },
     student: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "user",
+      ref: "User",
       required: true,
     },
     answers: [
       {
         question: {
           type: mongoose.Schema.Types.ObjectId,
-          ref: "question",
+          ref: "Question",
         },
         selectedOption: {
           type: String,
@@ -46,6 +46,7 @@ const ResultSchema = new Schema(
     submittedAt: {
       type: Date,
       required: true,
+      default: Date.now,
     },
     proctorFlags: [
       {
@@ -61,4 +62,7 @@ const ResultSchema = new Schema(
   { timestamps: true }
 );
 
-module.exports = Result = mongoose.model("result", ResultSchema);
+// Index for frequent queries
+// ResultSchema.index({ exam: 1, student: 1 }); // explain
+
+module.exports = mongoose.model("Result", ResultSchema);

@@ -1,0 +1,1106 @@
+2025-04-13 10:59:09 [INFO]: Server is running on port 10000
+2025-04-13 10:59:31 [INFO]: Server is running on port 10000
+2025-04-13 10:59:38 [INFO]: Server is running on port 10000
+2025-04-13 11:21:26 [INFO]: Server is running on port 10000
+2025-04-13 11:22:10 [INFO]: Server is running on port 10000
+2025-04-13 11:30:17 [INFO]: Server is running on port 10000
+2025-04-13 12:48:18 [INFO]: Server is running on port 10000
+2025-04-13 12:48:44 [INFO]: Server is running on port 10000
+2025-04-13 12:50:18 [INFO]: Server is running on port 10000
+2025-04-13 12:55:11 [INFO]: Server is running on port 10000
+2025-04-13 12:58:12 [INFO]: Server is running on port 10000
+2025-04-13 12:58:36 [INFO]: Server is running on port 10000
+2025-04-13 13:08:31 [INFO]: Server is running on port 10000
+2025-04-13 13:09:41 [INFO]: Server is running on port 10000
+2025-04-13 13:18:02 [INFO]: Server is running on port 10000
+2025-04-13 13:18:42 [INFO]: Server is running on port 10000
+2025-04-13 13:27:49 [INFO]: Server is running on port 10000
+2025-04-13 13:58:14 [WARN]: 404 - Route not found: /api/question/create
+2025-04-13 13:58:15 [WARN]: GET /api/question/create 404 27ms
+2025-04-13 13:58:51 [WARN]: GET /api/questions/create 401 2ms
+2025-04-13 14:02:22 [INFO]: Server is running on port 10000
+2025-04-13 14:03:24 [INFO]: Server is running on port 10000
+2025-04-13 14:06:53 [ERROR]: Unhandled error: Expected double-quoted property name in JSON at position 141 (line 7 column 1)
+SyntaxError: Expected double-quoted property name in JSON at position 141 (line 7 column 1)
+    at JSON.parse (<anonymous>)
+    at parse (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\body-parser\lib\types\json.js:77:19)
+    at C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\body-parser\lib\read.js:123:18
+    at AsyncResource.runInAsyncScope (node:async_hooks:211:14)
+    at invokeCallback (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\raw-body\index.js:238:16)
+    at done (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\raw-body\index.js:227:7)
+    at IncomingMessage.onEnd (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\raw-body\index.js:287:7)
+    at IncomingMessage.emit (node:events:524:28)
+    at endReadableNT (node:internal/streams/readable:1698:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+2025-04-13 14:08:17 [INFO]: Server is running on port 10000
+2025-04-13 14:08:59 [ERROR]: Unhandled error: Unexpected token ''', ..."  "name": 'Nishant M"... is not valid JSON
+SyntaxError: Unexpected token ''', ..."  "name": 'Nishant M"... is not valid JSON
+    at JSON.parse (<anonymous>)
+    at parse (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\body-parser\lib\types\json.js:77:19)
+    at C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\body-parser\lib\read.js:123:18
+    at AsyncResource.runInAsyncScope (node:async_hooks:211:14)
+    at invokeCallback (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\raw-body\index.js:238:16)
+    at done (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\raw-body\index.js:227:7)
+    at IncomingMessage.onEnd (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\raw-body\index.js:287:7)
+    at IncomingMessage.emit (node:events:524:28)
+    at endReadableNT (node:internal/streams/readable:1698:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+2025-04-13 14:09:12 [ERROR]: Unhandled error: Expected double-quoted property name in JSON at position 146 (line 7 column 1)
+SyntaxError: Expected double-quoted property name in JSON at position 146 (line 7 column 1)
+    at JSON.parse (<anonymous>)
+    at parse (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\body-parser\lib\types\json.js:77:19)
+    at C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\body-parser\lib\read.js:123:18
+    at AsyncResource.runInAsyncScope (node:async_hooks:211:14)
+    at invokeCallback (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\raw-body\index.js:238:16)
+    at done (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\raw-body\index.js:227:7)
+    at IncomingMessage.onEnd (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\raw-body\index.js:287:7)
+    at IncomingMessage.emit (node:events:524:28)
+    at endReadableNT (node:internal/streams/readable:1698:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+2025-04-13 14:10:29 [WARN]: 404 - Route not found: /api/auth/register
+2025-04-13 14:10:29 [WARN]: GET /api/auth/register 404 2ms
+2025-04-13 14:11:02 [INFO]: Server is running on port 10000
+2025-04-13 14:11:12 [WARN]: 404 - Route not found: /api/auth/register
+2025-04-13 14:11:12 [WARN]: GET /api/auth/register 404 5ms
+2025-04-13 14:11:54 [INFO]: Server is running on port 10000
+2025-04-13 14:12:40 [INFO]: Server is running on port 10000
+2025-04-13 14:12:48 [WARN]: 404 - Route not found: /api/auth/register
+2025-04-13 14:12:48 [WARN]: GET /api/auth/register 404 7ms
+2025-04-13 14:12:58 [WARN]: 404 - Route not found: /api/auth/register
+2025-04-13 14:12:58 [WARN]: GET /api/auth/register 404 2ms
+2025-04-13 14:13:14 [WARN]: 404 - Route not found: /api/auth/register
+2025-04-13 14:13:14 [WARN]: GET /api/auth/register 404 2ms
+2025-04-13 14:13:53 [HTTP]: POST /api/auth/register 201 1088ms
+2025-04-13 14:18:41 [INFO]: Server is running on port 10000
+2025-04-13 14:19:10 [INFO]: Server is running on port 10000
+2025-04-13 14:20:17 [INFO]: Server is running on port 10000
+2025-04-13 14:21:27 [WARN]: POST /api/auth/register 409 80ms
+2025-04-13 14:21:51 [WARN]: POST /api/auth/register 409 60ms
+2025-04-13 14:22:20 [HTTP]: POST /api/auth/register 201 1094ms
+2025-04-13 14:24:18 [INFO]: Server is running on port 10000
+2025-04-13 14:24:46 [INFO]: Server is running on port 10000
+2025-04-13 14:25:29 [HTTP]: POST /api/auth/register 201 1091ms
+2025-04-13 14:37:37 [HTTP]: POST /api/auth/register 201 1028ms
+2025-04-13 14:39:22 [INFO]: Server is running on port 10000
+2025-04-13 14:39:31 [INFO]: Server is running on port 10000
+2025-04-13 14:39:37 [INFO]: Server is running on port 10000
+2025-04-13 14:39:44 [INFO]: Server is running on port 10000
+2025-04-13 14:39:50 [INFO]: Server is running on port 10000
+2025-04-13 14:39:56 [INFO]: Server is running on port 10000
+2025-04-13 14:40:22 [HTTP]: POST /api/auth/register 201 3066ms
+2025-04-13 14:42:58 [INFO]: Server is running on port 10000
+2025-04-13 14:43:01 [INFO]: Server is running on port 10000
+2025-04-13 14:45:12 [HTTP]: POST /api/auth/login 200 178ms
+2025-04-13 14:49:10 [INFO]: Server is running on port 10000
+2025-04-13 14:51:03 [INFO]: Server is running on port 10000
+2025-04-13 14:52:51 [ERROR]: Failed to send password reset email: sendEmail is not defined
+2025-04-13 14:52:51 [ERROR]: POST /api/auth/forgot-password 500 97ms
+2025-04-13 14:53:40 [INFO]: Server is running on port 10000
+2025-04-13 14:53:46 [ERROR]: Failed to send password reset email: PasswordResetEmail is not defined
+2025-04-13 14:53:46 [ERROR]: POST /api/auth/forgot-password 500 126ms
+2025-04-13 14:54:18 [INFO]: Server is running on port 10000
+2025-04-13 14:55:06 [INFO]: Server is running on port 10000
+2025-04-13 14:55:15 [HTTP]: POST /api/auth/forgot-password 200 2780ms
+2025-04-13 15:01:01 [WARN]: 404 - Route not found: /api/auth/verify-token/92325ff7d8ff87963e8d686acfba8251404628dee92e0d560aa33bdeb9256915
+2025-04-13 15:01:01 [WARN]: GET /api/auth/verify-token/92325ff7d8ff87963e8d686acfba8251404628dee92e0d560aa33bdeb9256915 404 1ms
+2025-04-13 15:03:37 [HTTP]: GET /api/auth/reset-password/92325ff7d8ff87963e8d686acfba8251404628dee92e0d560aa33bdeb9256915 200 40ms
+2025-04-13 15:08:07 [WARN]: 404 - Route not found: /api/auth/reset-password
+2025-04-13 15:08:07 [WARN]: GET /api/auth/reset-password 404 2ms
+2025-04-13 15:08:46 [HTTP]: POST /api/auth/reset-password 200 150ms
+2025-04-13 15:09:00 [WARN]: POST /api/auth/reset-password 400 38ms
+2025-04-13 15:09:10 [HTTP]: POST /api/auth/login 200 144ms
+2025-04-13 15:12:28 [INFO]: Server is running on port 10000
+2025-04-13 15:12:38 [INFO]: Server is running on port 10000
+2025-04-13 15:12:50 [INFO]: Server is running on port 10000
+2025-04-13 15:13:37 [INFO]: Server is running on port 10000
+2025-04-13 15:14:25 [HTTP]: POST /api/auth/register 201 3650ms
+2025-04-13 15:15:57 [INFO]: Server is running on port 10000
+2025-04-13 15:16:05 [INFO]: Server is running on port 10000
+2025-04-13 15:16:09 [INFO]: Server is running on port 10000
+2025-04-13 15:16:46 [INFO]: Server is running on port 10000
+2025-04-13 15:17:00 [INFO]: Server is running on port 10000
+2025-04-13 15:17:04 [INFO]: Server is running on port 10000
+2025-04-13 15:17:21 [INFO]: Server is running on port 10000
+2025-04-13 15:17:25 [INFO]: Server is running on port 10000
+2025-04-13 15:17:30 [INFO]: Server is running on port 10000
+2025-04-13 15:17:40 [INFO]: Server is running on port 10000
+2025-04-13 15:17:44 [INFO]: Server is running on port 10000
+2025-04-13 15:17:49 [INFO]: Server is running on port 10000
+2025-04-13 15:17:53 [INFO]: Server is running on port 10000
+2025-04-13 15:17:56 [INFO]: Server is running on port 10000
+2025-04-13 15:18:01 [INFO]: Server is running on port 10000
+2025-04-13 15:18:11 [INFO]: Server is running on port 10000
+2025-04-13 15:18:14 [INFO]: Server is running on port 10000
+2025-04-13 15:18:18 [INFO]: Server is running on port 10000
+2025-04-13 15:18:22 [INFO]: Server is running on port 10000
+2025-04-13 15:18:26 [INFO]: Server is running on port 10000
+2025-04-13 15:18:40 [INFO]: Server is running on port 10000
+2025-04-13 15:18:45 [INFO]: Server is running on port 10000
+2025-04-13 15:19:00 [HTTP]: POST /api/auth/login 200 158ms
+2025-04-13 15:19:10 [HTTP]: POST /api/auth/forgot-password 200 2668ms
+2025-04-13 15:20:07 [HTTP]: GET /api/auth/reset-password/7dc97d8a93bbc91f76c2767494e3b742bf944dc8e32d1213247900ad480a6f49 200 38ms
+2025-04-13 15:20:27 [HTTP]: POST /api/auth/reset-password 200 130ms
+2025-04-13 15:26:20 [ERROR]: Unhandled error: Expected double-quoted property name in JSON at position 324 (line 14 column 1)
+SyntaxError: Expected double-quoted property name in JSON at position 324 (line 14 column 1)
+    at JSON.parse (<anonymous>)
+    at parse (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\body-parser\lib\types\json.js:77:19)
+    at C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\body-parser\lib\read.js:123:18
+    at AsyncResource.runInAsyncScope (node:async_hooks:211:14)
+    at invokeCallback (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\raw-body\index.js:238:16)
+    at done (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\raw-body\index.js:227:7)
+    at IncomingMessage.onEnd (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\raw-body\index.js:287:7)
+    at IncomingMessage.emit (node:events:524:28)
+    at endReadableNT (node:internal/streams/readable:1698:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+2025-04-13 15:26:29 [WARN]: POST /api/exam/createExam 401 6ms
+2025-04-13 15:27:04 [WARN]: POST /api/exam/createExam 401 2ms
+2025-04-13 15:27:13 [WARN]: POST /api/exam/createExam 401 1ms
+2025-04-13 15:28:09 [WARN]: POST /api/auth/login 401 117ms
+2025-04-13 15:28:37 [HTTP]: POST /api/auth/login 200 171ms
+2025-04-13 15:28:57 [WARN]: POST /api/exam/createExam 401 1ms
+2025-04-13 15:32:51 [ERROR]: GET /api/exam/available 500 7ms
+2025-04-13 15:33:07 [WARN]: GET /api/exam/available 401 1ms
+2025-04-13 15:34:13 [INFO]: Server is running on port 10000
+2025-04-13 15:34:28 [WARN]: GET /api/exam/available 401 8ms
+2025-04-13 15:36:28 [HTTP]: POST /api/auth/register 201 2996ms
+2025-04-13 15:36:34 [WARN]: POST /api/auth/login 401 95ms
+2025-04-13 15:36:46 [HTTP]: POST /api/auth/login 200 136ms
+2025-04-13 15:38:30 [WARN]: GET /api/exam/available 401 1ms
+2025-04-13 15:38:46 [INFO]: Server is running on port 10000
+2025-04-13 15:39:52 [WARN]: GET /api/exam/available 401 5ms
+2025-04-13 15:40:39 [WARN]: GET /api/exam/available 401 1ms
+2025-04-13 15:42:06 [INFO]: Server is running on port 10000
+2025-04-13 15:42:59 [WARN]: GET /api/exam/available 401 7ms
+2025-04-13 15:43:51 [INFO]: Server is running on port 10000
+2025-04-13 15:43:57 [DEBUG]: Found 0 available exams
+2025-04-13 15:43:57 [INFO]: No available exams found for students
+2025-04-13 15:43:57 [WARN]: GET /api/exam/available 404 52ms
+2025-04-13 15:44:39 [INFO]: Server is running on port 10000
+2025-04-13 15:47:02 [DEBUG]: Found 0 available exams
+2025-04-13 15:47:02 [INFO]: No available exams found for students
+2025-04-13 15:47:02 [WARN]: GET /api/exam/available 404 55ms
+2025-04-13 15:49:40 [DEBUG]: Found 0 available exams
+2025-04-13 15:49:40 [INFO]: No available exams found for students
+2025-04-13 15:49:40 [WARN]: GET /api/exam/available 404 52ms
+2025-04-13 15:51:31 [DEBUG]: Found 0 available exams
+2025-04-13 15:51:31 [INFO]: No available exams found for students
+2025-04-13 15:51:31 [WARN]: GET /api/exam/available 404 45ms
+2025-04-13 15:57:36 [DEBUG]: Found 0 available exams
+2025-04-13 15:57:36 [INFO]: No available exams found for students
+2025-04-13 15:57:36 [WARN]: GET /api/exam/available 404 50ms
+2025-04-13 16:02:04 [INFO]: Server is running on port 10000
+2025-04-13 16:02:15 [DEBUG]: Found 0 available exams
+2025-04-13 16:02:15 [INFO]: No available exams found for students
+2025-04-13 16:02:16 [WARN]: GET /api/exam/available 404 57ms
+2025-04-13 16:02:24 [WARN]: 404 - Route not found: /api/exams/available
+2025-04-13 16:02:24 [WARN]: GET /api/exams/available 404 1ms
+2025-04-13 16:02:28 [DEBUG]: Found 0 available exams
+2025-04-13 16:02:28 [INFO]: No available exams found for students
+2025-04-13 16:02:28 [WARN]: GET /api/exam/available 404 47ms
+2025-04-13 16:03:34 [HTTP]: POST /api/auth/register 201 3039ms
+2025-04-13 16:04:38 [HTTP]: POST /api/auth/login 200 163ms
+2025-04-13 16:05:24 [HTTP]: POST /api/auth/login 200 150ms
+2025-04-13 16:06:38 [WARN]: POST /api/exam/createExam 401 3ms
+2025-04-13 16:07:56 [WARN]: POST /api/exam/createExam 401 1ms
+2025-04-13 16:08:37 [INFO]: Server is running on port 10000
+2025-04-13 16:08:43 [WARN]: Validation error in exam creation: [{"type":"field","msg":"Questions are required","path":"questions","location":"body"}]
+2025-04-13 16:08:43 [WARN]: POST /api/exam/createExam 400 11ms
+2025-04-13 16:09:30 [INFO]: Server is running on port 10000
+2025-04-13 16:09:37 [ERROR]: Error while creating exam: Cannot read properties of undefined (reading 'id')
+TypeError: Cannot read properties of undefined (reading 'id')
+    at exports.createExam (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\examController.js:65:27)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at middleware (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\express-validator\lib\middlewares\check.js:16:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-04-13 16:09:37 [ERROR]: POST /api/exam/createExam 500 16ms
+2025-04-13 16:13:57 [INFO]: Server is running on port 10000
+2025-04-13 16:14:11 [ERROR]: Error while creating exam: Cannot read properties of undefined (reading 'id')
+TypeError: Cannot read properties of undefined (reading 'id')
+    at exports.createExam (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\examController.js:65:27)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at middleware (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\express-validator\lib\middlewares\check.js:16:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-04-13 16:14:11 [ERROR]: POST /api/exam/createExam 500 10ms
+2025-04-13 16:14:25 [INFO]: Server is running on port 10000
+2025-04-13 16:14:57 [INFO]: Server is running on port 10000
+2025-04-13 16:27:46 [INFO]: Server is running on port 10000
+2025-04-13 16:27:55 [INFO]: Server is running on port 10000
+2025-04-13 16:35:18 [INFO]: Server is running on port 10000
+2025-04-13 16:35:27 [WARN]: POST /api/auth/register 409 68ms
+2025-04-13 16:36:06 [HTTP]: POST /api/auth/register 201 3059ms
+2025-04-13 16:36:51 [WARN]: Invalid user object for access token creation
+2025-04-13 16:36:51 [ERROR]: Login error: Invalid user object: _id is required and must be a string
+2025-04-13 16:36:51 [ERROR]: POST /api/auth/login 500 106ms
+2025-04-13 16:36:52 [WARN]: Invalid user object for access token creation
+2025-04-13 16:36:52 [ERROR]: Login error: Invalid user object: _id is required and must be a string
+2025-04-13 16:36:52 [ERROR]: POST /api/auth/login 500 104ms
+2025-04-13 16:42:17 [INFO]: Server is running on port 10000
+2025-04-13 16:43:10 [INFO]: Server is running on port 10000
+2025-04-13 16:43:19 [INFO]: User authenticated, preparing token
+2025-04-13 16:43:19 [INFO]: Creating access token for user
+2025-04-13 16:43:19 [INFO]: JWT token signed successfully
+2025-04-13 16:43:19 [INFO]: User logged in successfully
+2025-04-13 16:43:19 [HTTP]: POST /api/auth/login 200 183ms
+2025-04-13 16:44:00 [DEBUG]: Found 0 available exams
+2025-04-13 16:44:00 [INFO]: No available exams found for students
+2025-04-13 16:44:00 [WARN]: GET /api/exam/available 404 52ms
+2025-04-13 16:44:58 [INFO]: Server is running on port 10000
+2025-04-14 13:58:18 [INFO]: Server is running on port 10000
+2025-04-14 19:40:10 [INFO]: Server is running on port 10000
+2025-04-15 10:13:20 [INFO]: Server is running on port 10000
+2025-04-15 10:15:58 [INFO]: Server is running on port 10000
+2025-04-15 10:31:37 [INFO]: Server is running on port 10000
+2025-04-15 10:36:39 [INFO]: Server is running on port 10000
+2025-04-15 10:39:57 [INFO]: Server is running on port 10000
+2025-04-15 10:43:17 [INFO]: Server is running on port 10000
+2025-04-15 10:54:32 [INFO]: Server is running on port 10000
+2025-04-15 11:02:05 [INFO]: Server is running on port 10000
+2025-04-15 17:19:50 [WARN]: POST /api/auth/register 409 306ms
+2025-04-15 17:20:04 [WARN]: POST /api/auth/register 409 39ms
+2025-04-15 17:20:50 [INFO]: Server is running on port 10000
+2025-04-15 17:21:26 [HTTP]: POST /api/auth/register 201 4104ms
+2025-04-15 17:22:23 [INFO]: User authenticated, preparing token
+2025-04-15 17:22:23 [INFO]: Creating access token for user
+2025-04-15 17:22:23 [INFO]: JWT token signed successfully
+2025-04-15 17:22:23 [INFO]: User logged in successfully
+2025-04-15 17:22:23 [HTTP]: POST /api/auth/login 200 134ms
+2025-04-15 17:32:15 [WARN]: POST /api/auth/register 409 105ms
+2025-04-15 17:34:10 [INFO]: User authenticated, preparing token
+2025-04-15 17:34:10 [INFO]: Creating access token for user
+2025-04-15 17:34:10 [INFO]: JWT token signed successfully
+2025-04-15 17:34:10 [INFO]: User logged in successfully
+2025-04-15 17:34:10 [HTTP]: POST /api/auth/login 200 196ms
+2025-04-15 17:55:56 [WARN]: POST /api/auth/register 409 93ms
+2025-04-15 17:57:19 [INFO]: User authenticated, preparing token
+2025-04-15 17:57:19 [INFO]: Creating access token for user
+2025-04-15 17:57:19 [INFO]: JWT token signed successfully
+2025-04-15 17:57:19 [INFO]: User logged in successfully
+2025-04-15 17:57:19 [HTTP]: POST /api/auth/login 200 190ms
+2025-04-15 18:00:42 [HTTP]: POST /api/auth/forgot-password 200 2955ms
+2025-04-15 18:05:09 [HTTP]: GET /api/auth/reset-password/3255df8cee6603c9d12bad7a12083fbc69051f0d4bfb967b37e3990c2c5468e1 200 78ms
+2025-04-15 18:10:01 [WARN]: POST /api/auth/reset-password 403 4ms
+2025-04-15 18:11:02 [HTTP]: POST /api/auth/reset-password 200 214ms
+2025-04-15 18:24:25 [INFO]: Server is running on port 10000
+2025-04-15 19:22:00 [WARN]: 404 - Route not found: /api/questions
+2025-04-15 19:22:00 [WARN]: POST /api/questions 404 42ms
+2025-04-15 19:22:11 [WARN]: 404 - Route not found: /api/question/
+2025-04-15 19:22:11 [WARN]: POST /api/question/ 404 1ms
+2025-04-15 19:24:22 [WARN]: 404 - Route not found: /api/questions/
+2025-04-15 19:24:22 [WARN]: POST /api/questions/ 404 3ms
+2025-04-15 19:26:05 [INFO]: Server is running on port 10000
+2025-04-15 19:26:41 [INFO]: Server is running on port 10000
+2025-04-15 19:39:10 [WARN]: 404 - Route not found: /api/exam/
+2025-04-15 19:39:10 [WARN]: POST /api/exam/ 404 27ms
+2025-04-15 19:39:46 [ERROR]: Error while creating exam: Cannot read properties of undefined (reading 'id')
+TypeError: Cannot read properties of undefined (reading 'id')
+    at exports.createExam (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\examController.js:65:27)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at middleware (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\express-validator\lib\middlewares\check.js:16:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-04-15 19:39:46 [ERROR]: POST /api/exam/createExam 500 31ms
+2025-04-15 19:41:23 [ERROR]: Error while creating exam: Cannot read properties of undefined (reading 'id')
+TypeError: Cannot read properties of undefined (reading 'id')
+    at exports.createExam (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\examController.js:65:27)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at middleware (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\express-validator\lib\middlewares\check.js:16:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-04-15 19:41:23 [ERROR]: POST /api/exam/createExam 500 5ms
+2025-04-15 19:42:55 [ERROR]: Error while creating exam: Cannot read properties of undefined (reading 'id')
+TypeError: Cannot read properties of undefined (reading 'id')
+    at exports.createExam (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\examController.js:65:27)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at middleware (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\express-validator\lib\middlewares\check.js:16:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-04-15 19:42:55 [ERROR]: POST /api/exam/createExam 500 3ms
+2025-04-15 20:00:05 [INFO]: Server is running on port 10000
+2025-04-15 20:00:26 [INFO]: User authenticated, preparing token
+2025-04-15 20:00:26 [INFO]: Creating access token for user
+2025-04-15 20:00:26 [INFO]: JWT token signed successfully
+2025-04-15 20:00:26 [INFO]: User logged in successfully
+2025-04-15 20:00:26 [HTTP]: POST /api/auth/login 200 163ms
+2025-04-15 20:00:30 [INFO]: User authenticated, preparing token
+2025-04-15 20:00:30 [INFO]: Creating access token for user
+2025-04-15 20:00:30 [INFO]: JWT token signed successfully
+2025-04-15 20:00:30 [INFO]: User logged in successfully
+2025-04-15 20:00:30 [HTTP]: POST /api/auth/login 200 142ms
+2025-04-15 20:01:10 [ERROR]: Error while creating exam: Cannot read properties of undefined (reading 'id')
+TypeError: Cannot read properties of undefined (reading 'id')
+    at exports.createExam (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\examController.js:65:27)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at middleware (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\express-validator\lib\middlewares\check.js:16:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-04-15 20:01:10 [ERROR]: POST /api/exam/createExam 500 5ms
+2025-04-15 20:01:15 [ERROR]: Error while creating exam: Cannot read properties of undefined (reading 'id')
+TypeError: Cannot read properties of undefined (reading 'id')
+    at exports.createExam (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\examController.js:65:27)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at middleware (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\express-validator\lib\middlewares\check.js:16:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-04-15 20:01:15 [ERROR]: POST /api/exam/createExam 500 5ms
+2025-04-15 20:04:55 [ERROR]: Error while creating exam: Cannot read properties of undefined (reading 'id')
+TypeError: Cannot read properties of undefined (reading 'id')
+    at exports.createExam (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\examController.js:65:27)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at middleware (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\express-validator\lib\middlewares\check.js:16:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-04-15 20:04:55 [ERROR]: POST /api/exam/createExam 500 4ms
+2025-04-15 20:05:09 [ERROR]: Error while creating exam: Cannot read properties of undefined (reading 'id')
+TypeError: Cannot read properties of undefined (reading 'id')
+    at exports.createExam (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\examController.js:65:27)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at middleware (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\express-validator\lib\middlewares\check.js:16:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-04-15 20:05:09 [ERROR]: POST /api/exam/createExam 500 2ms
+2025-04-15 20:07:44 [INFO]: Server is running on port 10000
+2025-04-15 20:08:57 [INFO]: User authenticated, preparing token
+2025-04-15 20:08:57 [INFO]: Creating access token for user
+2025-04-15 20:08:57 [INFO]: JWT token signed successfully
+2025-04-15 20:08:58 [INFO]: User logged in successfully
+2025-04-15 20:08:58 [HTTP]: POST /api/auth/login 200 173ms
+2025-04-15 20:09:29 [ERROR]: Error while creating exam: Cannot read properties of undefined (reading 'id')
+TypeError: Cannot read properties of undefined (reading 'id')
+    at exports.createExam (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\examController.js:65:27)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at middleware (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\express-validator\lib\middlewares\check.js:16:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-04-15 20:09:29 [ERROR]: POST /api/exam/createExam 500 6ms
+2025-04-15 20:10:32 [INFO]: Server is running on port 10000
+2025-04-15 20:10:38 [INFO]: User authenticated, preparing token
+2025-04-15 20:10:38 [INFO]: Creating access token for user
+2025-04-15 20:10:38 [INFO]: JWT token signed successfully
+2025-04-15 20:10:38 [INFO]: User logged in successfully
+2025-04-15 20:10:38 [HTTP]: POST /api/auth/login 200 156ms
+2025-04-15 20:12:18 [ERROR]: Error while creating exam: Cannot read properties of undefined (reading 'id')
+TypeError: Cannot read properties of undefined (reading 'id')
+    at exports.createExam (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\examController.js:65:27)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at middleware (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\express-validator\lib\middlewares\check.js:16:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-04-15 20:12:18 [ERROR]: POST /api/exam/createExam 500 7ms
+2025-04-15 20:31:05 [INFO]: Server is running on port 10000
+2025-04-15 20:39:01 [INFO]: Server is running on port 10000
+2025-04-15 20:40:32 [INFO]: Server is running on port 10000
+2025-04-15 20:40:44 [INFO]: Server is running on port 10000
+2025-04-15 20:42:15 [INFO]: Server is running on port 10000
+2025-04-15 20:47:48 [INFO]: User authenticated, preparing token
+2025-04-15 20:47:48 [INFO]: Creating access token for user
+2025-04-15 20:47:48 [INFO]: User logged in successfully
+2025-04-15 20:47:48 [HTTP]: POST /api/auth/login 200 228ms
+2025-04-15 20:49:28 [ERROR]: Error while creating exam: Cannot read properties of undefined (reading 'id')
+TypeError: Cannot read properties of undefined (reading 'id')
+    at exports.createExam (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\examController.js:65:27)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at middleware (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\express-validator\lib\middlewares\check.js:16:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-04-15 20:49:28 [ERROR]: POST /api/exam/createExam 500 10ms
+2025-04-15 20:49:44 [INFO]: Server is running on port 10000
+2025-04-15 20:50:08 [INFO]: User authenticated, preparing token
+2025-04-15 20:50:08 [INFO]: Creating access token for user
+2025-04-15 20:50:08 [INFO]: User logged in successfully
+2025-04-15 20:50:08 [HTTP]: POST /api/auth/login 200 173ms
+2025-04-15 20:51:40 [HTTP]: POST /api/auth/register 201 4273ms
+2025-04-15 20:52:57 [INFO]: User authenticated, preparing token
+2025-04-15 20:52:57 [INFO]: Creating access token for user
+2025-04-15 20:52:57 [INFO]: User logged in successfully
+2025-04-15 20:52:57 [HTTP]: POST /api/auth/login 200 142ms
+2025-04-15 20:54:22 [ERROR]: Error while creating exam: Cannot read properties of undefined (reading 'id')
+TypeError: Cannot read properties of undefined (reading 'id')
+    at exports.createExam (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\examController.js:65:27)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at middleware (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\express-validator\lib\middlewares\check.js:16:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-04-15 20:54:22 [ERROR]: POST /api/exam/createExam 500 4ms
+2025-04-15 20:54:25 [ERROR]: Error while creating exam: Cannot read properties of undefined (reading 'id')
+TypeError: Cannot read properties of undefined (reading 'id')
+    at exports.createExam (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\examController.js:65:27)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at middleware (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\express-validator\lib\middlewares\check.js:16:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-04-15 20:54:25 [ERROR]: POST /api/exam/createExam 500 2ms
+2025-04-15 20:54:38 [INFO]: Server is running on port 10000
+2025-04-15 20:54:45 [INFO]: Server is running on port 10000
+2025-04-15 20:54:49 [INFO]: Server is running on port 10000
+2025-04-15 20:54:54 [INFO]: Server is running on port 10000
+2025-04-15 20:54:58 [INFO]: Server is running on port 10000
+2025-04-15 20:55:02 [INFO]: Server is running on port 10000
+2025-04-15 20:55:08 [INFO]: Server is running on port 10000
+2025-04-15 20:55:15 [INFO]: Server is running on port 10000
+2025-04-15 20:55:37 [WARN]: POST /api/exam/createExam 401 5ms
+2025-04-15 22:02:37 [INFO]: Server is running on port 10000
+2025-04-15 22:02:47 [ERROR]: Token verification failed
+2025-04-15 22:02:47 [WARN]: POST /api/exam/createExam 401 17ms
+2025-04-15 22:03:09 [INFO]: User authenticated, preparing token
+2025-04-15 22:03:09 [INFO]: Creating access token for user
+2025-04-15 22:03:09 [INFO]: User logged in successfully
+2025-04-15 22:03:09 [HTTP]: POST /api/auth/login 200 173ms
+2025-04-15 22:04:49 [INFO]: Token verified successfully
+2025-04-15 22:04:49 [INFO]: Exam created successfully: 67fe8aa980316bcd278074a1 by user 67fe7980adb46966fcd94f57
+2025-04-15 22:04:49 [HTTP]: POST /api/exam/createExam 201 67ms
+2025-04-15 22:11:03 [INFO]: Token verified successfully
+2025-04-15 22:11:03 [INFO]: Exam created successfully: 67fe8c1f80316bcd278074a3 by user 67fe7980adb46966fcd94f57
+2025-04-15 22:11:03 [HTTP]: POST /api/exam/createExam 201 95ms
+2025-04-15 22:11:41 [INFO]: Token verified successfully
+2025-04-15 22:11:41 [INFO]: Exam created successfully: 67fe8c4580316bcd278074a5 by user 67fe7980adb46966fcd94f57
+2025-04-15 22:11:41 [HTTP]: POST /api/exam/createExam 201 43ms
+2025-04-15 22:14:53 [INFO]: Server is running on port 10000
+2025-04-15 22:16:32 [WARN]: 404 - Route not found: /api/exam/all
+2025-04-15 22:16:32 [WARN]: POST /api/exam/all 404 8ms
+2025-04-15 22:16:37 [WARN]: GET /api/exam/all 401 2ms
+2025-04-15 22:17:36 [INFO]: Token verified successfully
+2025-04-15 22:17:36 [ERROR]: All Exam retrieval error: Schema hasn't been registered for model "Question".
+Use mongoose.model(name, schema)
+MissingSchemaError: Schema hasn't been registered for model "Question".
+Use mongoose.model(name, schema)
+    at NativeConnection.model (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\mongoose\lib\connection.js:1491:13)
+    at _getModelFromConn (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\mongoose\lib\helpers\populate\getModelsMapForPopulate.js:579:15)
+    at addModelNamesToMap (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\mongoose\lib\helpers\populate\getModelsMapForPopulate.js:507:17)
+    at getModelsMapForPopulate (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\mongoose\lib\helpers\populate\getModelsMapForPopulate.js:208:7)
+    at _populatePath (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\mongoose\lib\model.js:4446:21)
+    at Function.populate (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\mongoose\lib\model.js:4413:21)
+    at model.Query._find (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\mongoose\lib\query.js:2407:20)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async model.Query.exec (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\mongoose\lib\query.js:4456:63)
+    at async exports.getAllExams (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\examController.js:100:19)
+2025-04-15 22:17:36 [ERROR]: GET /api/exam/all 500 76ms
+2025-04-15 22:18:40 [INFO]: Server is running on port 10000
+2025-04-15 22:18:45 [INFO]: Token verified successfully
+2025-04-15 22:18:45 [INFO]: Retrieved 4 exams successfully
+2025-04-15 22:18:45 [HTTP]: GET /api/exam/all 200 102ms
+2025-04-15 22:20:32 [WARN]: GET /api/exam/available 401 2ms
+2025-04-15 22:20:41 [INFO]: Token verified successfully
+2025-04-15 22:20:41 [DEBUG]: Found 3 available exams
+2025-04-15 22:20:41 [INFO]: Retrieved 3 available exams successfully
+2025-04-15 22:20:41 [HTTP]: GET /api/exam/available 200 45ms
+2025-04-15 22:25:38 [WARN]: 404 - Route not found: /api/exams/67fe8aa980316bcd278074a1
+2025-04-15 22:25:38 [WARN]: GET /api/exams/67fe8aa980316bcd278074a1 404 2ms
+2025-04-15 22:26:34 [WARN]: GET /api/exam/67fe8aa980316bcd278074a1 401 3ms
+2025-04-15 22:26:43 [INFO]: Token verified successfully
+2025-04-15 22:26:43 [DEBUG]: Fetching exam with ID: 67fe8aa980316bcd278074a1
+2025-04-15 22:26:43 [INFO]: Successfully retrieved exam: 67fe8aa980316bcd278074a1 for user: 67fe7980adb46966fcd94f57
+2025-04-15 22:26:43 [HTTP]: GET /api/exam/67fe8aa980316bcd278074a1 200 84ms
+2025-04-15 22:28:58 [INFO]: Token verified successfully
+2025-04-15 22:28:58 [DEBUG]: Fetching exam with ID: 67fe8aa980316bcd278074a1
+2025-04-15 22:28:58 [INFO]: Successfully retrieved exam: 67fe8aa980316bcd278074a1 for user: 67fe7980adb46966fcd94f57
+2025-04-15 22:28:58 [HTTP]: GET /api/exam/67fe8aa980316bcd278074a1 200 81ms
+2025-04-15 22:30:54 [INFO]: Token verified successfully
+2025-04-15 22:30:54 [DEBUG]: Fetching exam with ID: 67fe8c4580316bcd278074a5
+2025-04-15 22:30:54 [INFO]: Successfully retrieved exam: 67fe8c4580316bcd278074a5 for user: 67fe7980adb46966fcd94f57
+2025-04-15 22:30:54 [HTTP]: GET /api/exam/67fe8c4580316bcd278074a5 200 82ms
+2025-04-15 22:31:25 [INFO]: Token verified successfully
+2025-04-15 22:31:25 [DEBUG]: Attempting to update exam ID: 67fe8c4580316bcd278074a5
+2025-04-15 22:31:25 [DEBUG]: Updating exam with fields: ["title","description","duration","startTime","endTime","questions","totalMarks","passingMarks"]
+2025-04-15 22:31:25 [INFO]: Exam updated successfully: 67fe8c4580316bcd278074a5 by user 67fe7980adb46966fcd94f57
+2025-04-15 22:31:25 [HTTP]: PUT /api/exam/67fe8c4580316bcd278074a5 200 107ms
+2025-04-15 22:33:55 [INFO]: Token verified successfully
+2025-04-15 22:33:55 [DEBUG]: Attempting to delete exam ID: 67fe8c4580316bcd278074a5
+2025-04-15 22:33:55 [INFO]: Exam deleted successfully: 67fe8c4580316bcd278074a5 by user 67fe7980adb46966fcd94f57
+2025-04-15 22:33:55 [HTTP]: DELETE /api/exam/67fe8c4580316bcd278074a5 200 87ms
+2025-04-15 22:35:34 [INFO]: Server is running on port 10000
+2025-04-15 22:36:28 [INFO]: Token verified successfully
+2025-04-15 22:36:28 [INFO]: Exam created successfully: 67fe92142ebd5db027f34d9b by user 67fe7980adb46966fcd94f57
+2025-04-15 22:36:28 [HTTP]: POST /api/exam/createExam 201 73ms
+2025-04-15 22:36:46 [INFO]: Token verified successfully
+2025-04-15 22:36:46 [INFO]: Retrieved 4 exams successfully
+2025-04-15 22:36:46 [HTTP]: GET /api/exam/all 200 97ms
+2025-04-15 22:37:01 [INFO]: Token verified successfully
+2025-04-15 22:37:01 [DEBUG]: Attempting to delete exam ID: 67fe92142ebd5db027f34d9b
+2025-04-15 22:37:01 [INFO]: Exam deleted successfully: 67fe92142ebd5db027f34d9b by user 67fe7980adb46966fcd94f57
+2025-04-15 22:37:01 [HTTP]: DELETE /api/exam/67fe92142ebd5db027f34d9b 200 145ms
+2025-04-15 22:37:56 [INFO]: Server is running on port 10000
+2025-04-15 22:47:22 [INFO]: Server is running on port 10000
+2025-04-15 22:47:43 [INFO]: Server is running on port 10000
+2025-04-15 22:49:10 [WARN]: 404 - Route not found: /api/exams/67fe8aa980316bcd278074a1/enroll
+2025-04-15 22:49:10 [WARN]: POST /api/exams/67fe8aa980316bcd278074a1/enroll 404 7ms
+2025-04-15 22:49:31 [INFO]: Token verified successfully
+2025-04-15 22:49:31 [DEBUG]: User 67fe7980adb46966fcd94f57 attempting to enroll in exam 67fe8aa980316bcd278074a1
+2025-04-15 22:49:31 [INFO]: User 67fe7980adb46966fcd94f57 successfully enrolled in exam 67fe8aa980316bcd278074a1
+2025-04-15 22:49:34 [INFO]: Enrollment confirmation email sent to softdevnishant24@gmail.com for exam 67fe8aa980316bcd278074a1
+2025-04-15 22:49:34 [HTTP]: POST /api/exam/67fe8aa980316bcd278074a1/enroll 200 3110ms
+2025-04-15 23:02:25 [INFO]: Server is running on port 10000
+2025-04-15 23:02:27 [INFO]: Token verified successfully
+2025-04-15 23:02:27 [DEBUG]: User 67fe7980adb46966fcd94f57 attempting to enroll in exam 67fe8aa980316bcd278074a1
+2025-04-15 23:02:27 [INFO]: Enrollment failed - User 67fe7980adb46966fcd94f57 with role admin not authorized to enroll
+2025-04-15 23:02:27 [WARN]: POST /api/exam/67fe8aa980316bcd278074a1/enroll 403 14ms
+2025-04-15 23:02:52 [INFO]: Server is running on port 10000
+2025-04-15 23:02:55 [INFO]: Token verified successfully
+2025-04-15 23:02:55 [DEBUG]: User 67fe7980adb46966fcd94f57 attempting to enroll in exam 67fe8aa980316bcd278074a1
+2025-04-15 23:02:55 [INFO]: User 67fe7980adb46966fcd94f57 is already enrolled in exam 67fe8aa980316bcd278074a1
+2025-04-15 23:02:55 [WARN]: POST /api/exam/67fe8aa980316bcd278074a1/enroll 400 97ms
+2025-04-15 23:04:00 [WARN]: Login attempt with incorrect password
+2025-04-15 23:04:00 [WARN]: POST /api/auth/login 401 111ms
+2025-04-15 23:04:21 [WARN]: Login attempt with incorrect password
+2025-04-15 23:04:21 [WARN]: POST /api/auth/login 401 107ms
+2025-04-15 23:04:44 [INFO]: User authenticated, preparing token
+2025-04-15 23:04:44 [INFO]: Creating access token for user
+2025-04-15 23:04:44 [INFO]: User logged in successfully
+2025-04-15 23:04:44 [HTTP]: POST /api/auth/login 200 154ms
+2025-04-15 23:08:33 [INFO]: Token verified successfully
+2025-04-15 23:08:33 [DEBUG]: User 67fe483aafb214ad85dc9415 attempting to enroll in exam 67fe8aa980316bcd278074a1
+2025-04-15 23:08:33 [INFO]: User 67fe483aafb214ad85dc9415 successfully enrolled in exam 67fe8aa980316bcd278074a1
+2025-04-15 23:08:36 [INFO]: Enrollment confirmation email sent to nishantmehto7588@gmail.com for exam 67fe8aa980316bcd278074a1
+2025-04-15 23:08:36 [HTTP]: POST /api/exam/67fe8aa980316bcd278074a1/enroll 200 3118ms
+2025-04-15 23:09:31 [INFO]: Server is running on port 10000
+2025-04-15 23:11:40 [WARN]: 404 - Route not found: /api/profile/me
+2025-04-15 23:11:40 [WARN]: POST /api/profile/me 404 8ms
+2025-04-15 23:14:47 [INFO]: Server is running on port 10000
+2025-04-15 23:14:51 [WARN]: 404 - Route not found: /api/profile/me
+2025-04-15 23:14:51 [WARN]: POST /api/profile/me 404 5ms
+2025-04-15 23:15:03 [INFO]: Token verified successfully
+2025-04-15 23:15:03 [DEBUG]: Fetching profile for user 67fe483aafb214ad85dc9415 with role student
+2025-04-15 23:15:03 [ERROR]: Error fetching user profile: Schema hasn't been registered for model "Results".
+Use mongoose.model(name, schema)
+MissingSchemaError: Schema hasn't been registered for model "Results".
+Use mongoose.model(name, schema)
+    at NativeConnection.model (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\mongoose\lib\connection.js:1491:13)
+    at _getModelFromConn (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\mongoose\lib\helpers\populate\getModelsMapForPopulate.js:579:15)
+    at addModelNamesToMap (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\mongoose\lib\helpers\populate\getModelsMapForPopulate.js:507:17)
+    at getModelsMapForPopulate (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\mongoose\lib\helpers\populate\getModelsMapForPopulate.js:208:7)
+    at _populatePath (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\mongoose\lib\model.js:4446:21)
+    at Function.populate (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\mongoose\lib\model.js:4413:21)
+    at model.Query._find (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\mongoose\lib\query.js:2407:20)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async model.Query.exec (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\mongoose\lib\query.js:4456:63)
+    at async Promise.all (index 0)
+2025-04-15 23:15:03 [ERROR]: GET /api/profile/me 500 115ms
+2025-04-15 23:15:36 [ERROR]: Token verification failed
+2025-04-15 23:15:36 [WARN]: GET /api/profile/me 401 3ms
+2025-04-15 23:16:17 [INFO]: User authenticated, preparing token
+2025-04-15 23:16:17 [INFO]: Creating access token for user
+2025-04-15 23:16:17 [INFO]: User logged in successfully
+2025-04-15 23:16:17 [HTTP]: POST /api/auth/login 200 148ms
+2025-04-15 23:18:55 [INFO]: Token verified successfully
+2025-04-15 23:18:55 [DEBUG]: Fetching profile for user 67fe483aafb214ad85dc9415 with role student
+2025-04-15 23:18:55 [ERROR]: Error fetching user profile: Schema hasn't been registered for model "Results".
+Use mongoose.model(name, schema)
+MissingSchemaError: Schema hasn't been registered for model "Results".
+Use mongoose.model(name, schema)
+    at NativeConnection.model (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\mongoose\lib\connection.js:1491:13)
+    at _getModelFromConn (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\mongoose\lib\helpers\populate\getModelsMapForPopulate.js:579:15)
+    at addModelNamesToMap (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\mongoose\lib\helpers\populate\getModelsMapForPopulate.js:507:17)
+    at getModelsMapForPopulate (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\mongoose\lib\helpers\populate\getModelsMapForPopulate.js:208:7)
+    at _populatePath (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\mongoose\lib\model.js:4446:21)
+    at Function.populate (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\mongoose\lib\model.js:4413:21)
+    at model.Query._find (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\mongoose\lib\query.js:2407:20)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async model.Query.exec (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\mongoose\lib\query.js:4456:63)
+    at async Promise.all (index 0)
+2025-04-15 23:18:55 [ERROR]: GET /api/profile/me 500 83ms
+2025-04-15 23:19:47 [INFO]: Server is running on port 10000
+2025-04-15 23:19:53 [INFO]: Token verified successfully
+2025-04-15 23:19:53 [DEBUG]: Fetching profile for user 67fe483aafb214ad85dc9415 with role student
+2025-04-15 23:19:53 [ERROR]: Error fetching user profile: Schema hasn't been registered for model "Results".
+Use mongoose.model(name, schema)
+MissingSchemaError: Schema hasn't been registered for model "Results".
+Use mongoose.model(name, schema)
+    at NativeConnection.model (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\mongoose\lib\connection.js:1491:13)
+    at _getModelFromConn (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\mongoose\lib\helpers\populate\getModelsMapForPopulate.js:579:15)
+    at addModelNamesToMap (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\mongoose\lib\helpers\populate\getModelsMapForPopulate.js:507:17)
+    at getModelsMapForPopulate (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\mongoose\lib\helpers\populate\getModelsMapForPopulate.js:208:7)
+    at _populatePath (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\mongoose\lib\model.js:4446:21)
+    at Function.populate (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\mongoose\lib\model.js:4413:21)
+    at model.Query._find (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\mongoose\lib\query.js:2407:20)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async model.Query.exec (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\mongoose\lib\query.js:4456:63)
+    at async Promise.all (index 0)
+2025-04-15 23:19:53 [ERROR]: GET /api/profile/me 500 104ms
+2025-04-15 23:20:12 [INFO]: Server is running on port 10000
+2025-04-15 23:21:50 [INFO]: Server is running on port 10000
+2025-04-15 23:21:54 [INFO]: Token verified successfully
+2025-04-15 23:21:54 [DEBUG]: Fetching profile for user 67fe483aafb214ad85dc9415 with role student
+2025-04-15 23:21:54 [ERROR]: Error fetching user profile: Schema hasn't been registered for model "Results".
+Use mongoose.model(name, schema)
+MissingSchemaError: Schema hasn't been registered for model "Results".
+Use mongoose.model(name, schema)
+    at NativeConnection.model (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\mongoose\lib\connection.js:1491:13)
+    at _getModelFromConn (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\mongoose\lib\helpers\populate\getModelsMapForPopulate.js:579:15)
+    at addModelNamesToMap (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\mongoose\lib\helpers\populate\getModelsMapForPopulate.js:507:17)
+    at getModelsMapForPopulate (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\mongoose\lib\helpers\populate\getModelsMapForPopulate.js:208:7)
+    at _populatePath (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\mongoose\lib\model.js:4446:21)
+    at Function.populate (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\mongoose\lib\model.js:4413:21)
+    at model.Query._find (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\mongoose\lib\query.js:2407:20)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async model.Query.exec (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\mongoose\lib\query.js:4456:63)
+    at async Promise.all (index 0)
+2025-04-15 23:21:54 [ERROR]: GET /api/profile/me 500 111ms
+2025-04-15 23:32:28 [INFO]: Server is running on port 10000
+2025-04-15 23:32:31 [INFO]: Token verified successfully
+2025-04-15 23:32:31 [DEBUG]: Fetching profile for user 67fe483aafb214ad85dc9415 with role student
+2025-04-15 23:32:32 [INFO]: Profile successfully retrieved for user 67fe483aafb214ad85dc9415
+2025-04-15 23:32:32 [HTTP]: GET /api/profile/me 200 144ms
+2025-04-15 23:42:21 [WARN]: 404 - Route not found: /api/profile/update
+2025-04-15 23:42:21 [WARN]: POST /api/profile/update 404 11ms
+2025-04-15 23:42:26 [INFO]: Token verified successfully
+2025-04-15 23:42:26 [DEBUG]: Attempting to update profile for user 67fe483aafb214ad85dc9415
+2025-04-15 23:42:27 [INFO]: Profile successfully updated for user 67fe483aafb214ad85dc9415
+2025-04-15 23:42:27 [HTTP]: PUT /api/profile/update 200 182ms
+2025-04-15 23:48:16 [INFO]: Token verified successfully
+2025-04-15 23:48:16 [ERROR]: GET /api/profile/students 500 5ms
+2025-04-15 23:48:28 [INFO]: User authenticated, preparing token
+2025-04-15 23:48:28 [INFO]: Creating access token for user
+2025-04-15 23:48:28 [INFO]: User logged in successfully
+2025-04-15 23:48:28 [HTTP]: POST /api/auth/login 200 178ms
+2025-04-15 23:48:40 [INFO]: Token verified successfully
+2025-04-15 23:48:40 [DEBUG]: Admin 67fe7980adb46966fcd94f57 retrieving all student profiles
+2025-04-15 23:48:40 [INFO]: Retrieved 1 student profiles
+2025-04-15 23:48:40 [HTTP]: GET /api/profile/students 200 118ms
+2025-04-15 23:51:14 [WARN]: 404 - Route not found: /api/profile/students/67fe483aafb214ad85dc9418
+2025-04-15 23:51:14 [WARN]: GET /api/profile/students/67fe483aafb214ad85dc9418 404 1ms
+2025-04-15 23:51:25 [INFO]: Token verified successfully
+2025-04-15 23:51:25 [ERROR]: GET /api/profile/student/67fe483aafb214ad85dc9418 500 4ms
+2025-04-15 23:51:41 [INFO]: User authenticated, preparing token
+2025-04-15 23:51:41 [INFO]: Creating access token for user
+2025-04-15 23:51:41 [INFO]: User logged in successfully
+2025-04-15 23:51:41 [HTTP]: POST /api/auth/login 200 148ms
+2025-04-15 23:51:55 [INFO]: Token verified successfully
+2025-04-15 23:51:55 [DEBUG]: Admin 67fe7980adb46966fcd94f57 accessing student profile 67fe483aafb214ad85dc9418
+2025-04-15 23:51:55 [WARN]: Student not found with ID: 67fe483aafb214ad85dc9418
+2025-04-15 23:51:55 [WARN]: GET /api/profile/student/67fe483aafb214ad85dc9418 404 42ms
+2025-04-15 23:52:40 [INFO]: Token verified successfully
+2025-04-15 23:52:40 [DEBUG]: Admin 67fe7980adb46966fcd94f57 accessing student profile 67fe483aafb214ad85dc941
+2025-04-15 23:52:40 [ERROR]: Error fetching student profile: Cast to ObjectId failed for value "67fe483aafb214ad85dc941" (type string) at path "_id" for model "User"
+CastError: Cast to ObjectId failed for value "67fe483aafb214ad85dc941" (type string) at path "_id" for model "User"
+    at SchemaObjectId.cast (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\mongoose\lib\schema\objectId.js:251:11)
+    at SchemaType.applySetters (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\mongoose\lib\schemaType.js:1255:12)
+    at SchemaType.castForQuery (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\mongoose\lib\schemaType.js:1673:17)
+    at cast (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\mongoose\lib\cast.js:390:32)
+    at Query.cast (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\mongoose\lib\query.js:4907:12)
+    at Query._castConditions (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\mongoose\lib\query.js:2325:10)
+    at model.Query._findOne (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\mongoose\lib\query.js:2648:8)
+    at model.Query.exec (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\mongoose\lib\query.js:4456:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async exports.getStudentProfile (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\profileController.js:313:21)
+2025-04-15 23:52:40 [WARN]: GET /api/profile/student/67fe483aafb214ad85dc941 404 7ms
+2025-04-15 23:55:28 [INFO]: Token verified successfully
+2025-04-15 23:55:28 [DEBUG]: Admin 67fe7980adb46966fcd94f57 accessing student profile 67fe483aafb214ad85dc9418
+2025-04-15 23:55:28 [WARN]: Student not found with ID: 67fe483aafb214ad85dc9418
+2025-04-15 23:55:28 [WARN]: GET /api/profile/student/67fe483aafb214ad85dc9418 404 42ms
+2025-04-15 23:56:42 [INFO]: Token verified successfully
+2025-04-15 23:56:42 [DEBUG]: Admin 67fe7980adb46966fcd94f57 accessing student profile 67fe483aafb214ad85dc9415
+2025-04-15 23:56:42 [INFO]: Student profile retrieved successfully: 67fe483aafb214ad85dc9415
+2025-04-15 23:56:42 [HTTP]: GET /api/profile/student/67fe483aafb214ad85dc9415 200 160ms
+2025-04-15 23:57:40 [WARN]: 404 - Route not found: /api/question/create
+2025-04-15 23:57:40 [WARN]: POST /api/question/create 404 1ms
+2025-04-15 23:58:30 [INFO]: Server is running on port 10000
+2025-04-15 23:59:38 [INFO]: Server is running on port 10000
+2025-04-15 23:59:41 [INFO]: Server is running on port 10000
+2025-04-16 00:01:00 [INFO]: Server is running on port 10000
+2025-04-16 00:01:30 [INFO]: Server is running on port 10000
+2025-04-16 00:01:35 [WARN]: 404 - Route not found: /api/question/create
+2025-04-16 00:01:35 [WARN]: POST /api/question/create 404 8ms
+2025-04-16 00:02:37 [INFO]: Server is running on port 10000
+2025-04-16 00:03:40 [INFO]: User authenticated, preparing token
+2025-04-16 00:03:40 [INFO]: Creating access token for user
+2025-04-16 00:03:40 [INFO]: User logged in successfully
+2025-04-16 00:03:40 [HTTP]: POST /api/auth/login 200 175ms
+2025-04-16 00:04:54 [INFO]: Token verified successfully
+2025-04-16 00:04:54 [WARN]: Validation error in question creation: [{"type":"field","value":"multiple choice","msg":"Question type is required","path":"type","location":"body"}]
+2025-04-16 00:04:54 [WARN]: POST /api/question/ 400 8ms
+2025-04-16 08:25:22 [ERROR]: Token verification failed
+2025-04-16 08:25:22 [WARN]: POST /api/question/ 401 70ms
+2025-04-16 08:25:32 [INFO]: User authenticated, preparing token
+2025-04-16 08:25:32 [INFO]: Creating access token for user
+2025-04-16 08:25:32 [INFO]: User logged in successfully
+2025-04-16 08:25:32 [HTTP]: POST /api/auth/login 200 415ms
+2025-04-16 08:26:09 [INFO]: Token verified successfully
+2025-04-16 08:26:09 [WARN]: Validation error in question creation: [{"type":"field","value":"multiple choice","msg":"Question type is required","path":"type","location":"body"}]
+2025-04-16 08:26:09 [WARN]: POST /api/question/ 400 8ms
+2025-04-16 08:35:28 [INFO]: Token verified successfully
+2025-04-16 08:35:28 [DEBUG]: Attempting to create new multiple-choice question by user 67fe7980adb46966fcd94f57
+2025-04-16 08:35:28 [INFO]: Question created successfully: 67ff1e78a76c4b57f38ada6a by user 67fe7980adb46966fcd94f57
+2025-04-16 08:35:28 [HTTP]: POST /api/question/ 201 138ms
+2025-04-16 08:40:36 [INFO]: Token verified successfully
+2025-04-16 08:40:36 [DEBUG]: Attempting to create new multiple-choice question by user 67fe7980adb46966fcd94f57
+2025-04-16 08:40:36 [INFO]: Question created successfully: 67ff1faca76c4b57f38ada6c by user 67fe7980adb46966fcd94f57
+2025-04-16 08:40:36 [HTTP]: POST /api/question/ 201 95ms
+2025-04-16 08:42:48 [INFO]: Token verified successfully
+2025-04-16 08:42:48 [DEBUG]: Attempting to create new multiple-choice question by user 67fe7980adb46966fcd94f57
+2025-04-16 08:42:48 [INFO]: Question created successfully: 67ff2030a76c4b57f38ada6e by user 67fe7980adb46966fcd94f57
+2025-04-16 08:42:48 [HTTP]: POST /api/question/ 201 52ms
+2025-04-16 09:31:50 [INFO]: Server is running on port 10000
+2025-04-16 09:33:48 [INFO]: Server is running on port 10000
+2025-04-16 09:39:42 [INFO]: Server is running on port 10000
+2025-04-16 09:48:30 [INFO]: Server is running on port 10000
+2025-04-16 09:53:02 [INFO]: Server is running on port 10000
+2025-04-16 09:53:56 [INFO]: Server is running on port 10000
+2025-04-16 09:55:09 [INFO]: Server is running on port 10000
+2025-04-16 09:56:44 [INFO]: Server is running on port 10000
+2025-04-16 09:58:14 [INFO]: Server is running on port 10000
+2025-04-16 09:59:40 [INFO]: Server is running on port 10000
+2025-04-16 10:01:01 [INFO]: Server is running on port 10000
+2025-04-16 10:01:36 [INFO]: Server is running on port 10000
+2025-04-16 10:02:54 [INFO]: Server is running on port 10000
+2025-04-16 10:03:07 [INFO]: Server is running on port 10000
+2025-04-16 10:04:01 [INFO]: Server is running on port 10000
+2025-04-16 10:04:20 [INFO]: Server is running on port 10000
+2025-04-16 10:06:06 [INFO]: Server is running on port 10000
+2025-04-16 10:06:25 [INFO]: Server is running on port 10000
+2025-04-16 10:08:39 [INFO]: Server is running on port 10000
+2025-04-16 10:09:27 [INFO]: Server is running on port 10000
+2025-04-16 10:11:32 [INFO]: Server is running on port 10000
+2025-04-16 10:14:43 [INFO]: Server is running on port 10000
+2025-04-16 10:17:47 [INFO]: Server is running on port 10000
+2025-04-16 10:19:44 [INFO]: Server is running on port 10000
+2025-04-16 10:20:41 [INFO]: Server is running on port 10000
+2025-04-16 10:27:49 [INFO]: Server is running on port 10000
+2025-04-16 10:33:55 [INFO]: Server is running on port 10000
+2025-04-16 10:34:54 [INFO]: Server is running on port 10000
+2025-04-16 10:44:01 [WARN]: POST /api/auth/register 409 110ms
+2025-04-16 10:44:10 [INFO]: User authenticated, preparing token
+2025-04-16 10:44:10 [INFO]: Creating access token for user
+2025-04-16 10:44:10 [INFO]: User logged in successfully
+2025-04-16 10:44:10 [HTTP]: POST /api/auth/login 200 192ms
+2025-04-16 10:47:08 [INFO]: Server is running on port 10000
+2025-04-16 10:47:33 [INFO]: Server is running on port 10000
+2025-04-16 10:47:53 [INFO]: Server is running on port 10000
+2025-04-16 10:48:01 [WARN]: POST /api/auth/register 400 14ms
+2025-04-16 10:58:53 [WARN]: POST /api/auth/register 400 34ms
+2025-04-16 10:59:33 [WARN]: POST /api/auth/register 400 5ms
+2025-04-16 11:05:05 [WARN]: POST /api/auth/register 409 118ms
+2025-04-16 11:07:45 [HTTP]: POST /api/auth/register 201 3151ms
+2025-04-16 11:08:22 [INFO]: User authenticated, preparing token
+2025-04-16 11:08:22 [INFO]: Creating access token for user
+2025-04-16 11:08:22 [INFO]: User logged in successfully
+2025-04-16 11:08:22 [HTTP]: POST /api/auth/login 200 162ms
+2025-04-16 11:14:34 [ERROR]: Token verification failed
+2025-04-16 11:14:34 [WARN]: POST /api/question/ 401 54ms
+2025-04-16 11:14:52 [INFO]: User authenticated, preparing token
+2025-04-16 11:14:52 [INFO]: Creating access token for user
+2025-04-16 11:14:52 [INFO]: User logged in successfully
+2025-04-16 11:14:52 [HTTP]: POST /api/auth/login 200 175ms
+2025-04-16 11:15:08 [INFO]: Token verified successfully
+2025-04-16 11:15:08 [DEBUG]: Attempting to create new multiple-choice question by user 67fe7980adb46966fcd94f57
+2025-04-16 11:15:08 [ERROR]: Error creating question: exam is not defined
+ReferenceError: exam is not defined
+    at exports.createQuestion (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\questionController.js:54:5)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at middleware (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\express-validator\lib\middlewares\check.js:16:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-04-16 11:15:08 [ERROR]: POST /api/question/ 500 20ms
+2025-04-16 11:16:15 [INFO]: Token verified successfully
+2025-04-16 11:16:15 [DEBUG]: Attempting to create new multiple-choice question by user 67fe7980adb46966fcd94f57
+2025-04-16 11:16:15 [ERROR]: Error creating question: exam is not defined
+ReferenceError: exam is not defined
+    at exports.createQuestion (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\questionController.js:54:5)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at middleware (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\express-validator\lib\middlewares\check.js:16:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-04-16 11:16:15 [ERROR]: POST /api/question/ 500 5ms
+2025-04-16 11:17:03 [INFO]: Server is running on port 10000
+2025-04-16 11:17:06 [INFO]: Token verified successfully
+2025-04-16 11:17:06 [DEBUG]: Attempting to create new multiple-choice question by user 67fe7980adb46966fcd94f57
+2025-04-16 11:17:06 [INFO]: Question created successfully: 67ff445a76a722de45a7831a by user 67fe7980adb46966fcd94f57
+2025-04-16 11:17:06 [HTTP]: POST /api/question/ 201 104ms
+2025-04-16 11:17:28 [ERROR]: Token verification failed
+2025-04-16 11:17:28 [WARN]: GET /api/exam/67fe8aa980316bcd278074a1 401 4ms
+2025-04-16 11:17:59 [INFO]: Token verified successfully
+2025-04-16 11:17:59 [DEBUG]: Fetching exam with ID: 67fe8aa980316bcd278074a1
+2025-04-16 11:17:59 [INFO]: Successfully retrieved exam: 67fe8aa980316bcd278074a1 for user: 67fe7980adb46966fcd94f57
+2025-04-16 11:17:59 [HTTP]: GET /api/exam/67fe8aa980316bcd278074a1 200 85ms
+2025-04-16 11:32:05 [INFO]: Server is running on port 10000
+2025-04-16 11:32:21 [INFO]: Server is running on port 10000
+2025-04-16 11:34:43 [INFO]: Token verified successfully
+2025-04-16 11:34:43 [DEBUG]: Attempting to create new multiple-choice question by user 67fe7980adb46966fcd94f57
+2025-04-16 11:34:44 [INFO]: Exam 67fe8aa980316bcd278074a1 updated with question 67ff487b3449e5654c416fde by user 67fe7980adb46966fcd94f57
+2025-04-16 11:34:44 [INFO]: Question created successfully: 67ff487b3449e5654c416fde by user 67fe7980adb46966fcd94f57
+2025-04-16 11:34:44 [HTTP]: POST /api/question/ 201 256ms
+2025-04-16 11:34:56 [INFO]: Token verified successfully
+2025-04-16 11:34:56 [DEBUG]: Fetching exam with ID: 67fe8aa980316bcd278074a1
+2025-04-16 11:34:56 [INFO]: Successfully retrieved exam: 67fe8aa980316bcd278074a1 for user: 67fe7980adb46966fcd94f57
+2025-04-16 11:34:56 [HTTP]: GET /api/exam/67fe8aa980316bcd278074a1 200 78ms
+2025-04-16 11:46:28 [INFO]: Server is running on port 10000
+2025-04-16 11:53:15 [ERROR]: Token verification failed
+2025-04-16 11:53:15 [WARN]: POST /api/exam/createExam 401 48ms
+2025-04-16 11:53:22 [INFO]: User authenticated, preparing token
+2025-04-16 11:53:22 [INFO]: Creating access token for user
+2025-04-16 11:53:22 [INFO]: User logged in successfully
+2025-04-16 11:53:22 [HTTP]: POST /api/auth/login 200 212ms
+2025-04-16 11:53:32 [INFO]: Token verified successfully
+2025-04-16 11:53:32 [INFO]: Exam created successfully: 67ff4ce4a6697856e21455a2 by user 67fe7980adb46966fcd94f57
+2025-04-16 11:53:32 [HTTP]: POST /api/exam/createExam 201 51ms
+2025-04-16 11:54:23 [ERROR]: Token verification failed
+2025-04-16 11:54:23 [WARN]: GET /api/exam/all 401 6ms
+2025-04-16 11:54:41 [INFO]: Token verified successfully
+2025-04-16 11:54:41 [INFO]: Retrieved 4 exams successfully
+2025-04-16 11:54:41 [HTTP]: GET /api/exam/all 200 101ms
+2025-04-16 11:55:07 [ERROR]: Token verification failed
+2025-04-16 11:55:07 [WARN]: PUT /api/exam/67ff4ce4a6697856e21455a2 401 4ms
+2025-04-16 11:55:25 [INFO]: Token verified successfully
+2025-04-16 11:55:25 [DEBUG]: Attempting to update exam ID: 67ff4ce4a6697856e21455a2
+2025-04-16 11:55:25 [DEBUG]: Updating exam with fields: ["totalMarks","passingMarks"]
+2025-04-16 11:55:25 [INFO]: Exam updated successfully: 67ff4ce4a6697856e21455a2 by user 67fe7980adb46966fcd94f57
+2025-04-16 11:55:25 [HTTP]: PUT /api/exam/67ff4ce4a6697856e21455a2 200 97ms
+2025-04-16 12:03:31 [INFO]: Server is running on port 10000
+2025-04-16 12:06:59 [WARN]: 404 - Route not found: /api/questions
+2025-04-16 12:06:59 [WARN]: GET /api/questions 404 8ms
+2025-04-16 12:07:04 [INFO]: Token verified successfully
+2025-04-16 12:07:04 [DEBUG]: Fetching all questions from database
+2025-04-16 12:07:04 [INFO]: Retrieved 5 questions successfully
+2025-04-16 12:07:04 [HTTP]: GET /api/question 200 103ms
+2025-04-16 12:08:36 [INFO]: Token verified successfully
+2025-04-16 12:08:36 [DEBUG]: Fetching all questions from database
+2025-04-16 12:08:36 [INFO]: Retrieved 2 questions successfully
+2025-04-16 12:08:36 [HTTP]: GET /api/question 200 73ms
+2025-04-16 12:11:32 [INFO]: Token verified successfully
+2025-04-16 12:11:32 [DEBUG]: Attempting to create new multiple-choice question by user 67fe7980adb46966fcd94f57
+2025-04-16 12:11:32 [INFO]: Exam 67fe8aa980316bcd278074a1 updated with question 67ff511c68edd103c0a0c4df by user 67fe7980adb46966fcd94f57
+2025-04-16 12:11:32 [INFO]: Question created successfully: 67ff511c68edd103c0a0c4df by user 67fe7980adb46966fcd94f57
+2025-04-16 12:11:32 [HTTP]: POST /api/question/ 201 319ms
+2025-04-16 12:11:59 [INFO]: Token verified successfully
+2025-04-16 12:11:59 [DEBUG]: Attempting to create new multiple-choice question by user 67fe7980adb46966fcd94f57
+2025-04-16 12:11:59 [INFO]: Exam 67fe8aa980316bcd278074a1 updated with question 67ff513768edd103c0a0c4e7 by user 67fe7980adb46966fcd94f57
+2025-04-16 12:11:59 [INFO]: Question created successfully: 67ff513768edd103c0a0c4e7 by user 67fe7980adb46966fcd94f57
+2025-04-16 12:11:59 [HTTP]: POST /api/question/ 201 241ms
+2025-04-16 12:12:10 [INFO]: Token verified successfully
+2025-04-16 12:12:10 [DEBUG]: Attempting to create new multiple-choice question by user 67fe7980adb46966fcd94f57
+2025-04-16 12:12:10 [INFO]: Exam 67fe8aa980316bcd278074a1 updated with question 67ff514268edd103c0a0c4ef by user 67fe7980adb46966fcd94f57
+2025-04-16 12:12:10 [INFO]: Question created successfully: 67ff514268edd103c0a0c4ef by user 67fe7980adb46966fcd94f57
+2025-04-16 12:12:10 [HTTP]: POST /api/question/ 201 239ms
+2025-04-16 12:12:52 [INFO]: Token verified successfully
+2025-04-16 12:12:52 [DEBUG]: Fetching exam with ID: 67fe8aa980316bcd278074a1
+2025-04-16 12:12:52 [INFO]: Successfully retrieved exam: 67fe8aa980316bcd278074a1 for user: 67fe7980adb46966fcd94f57
+2025-04-16 12:12:52 [HTTP]: GET /api/exam/67fe8aa980316bcd278074a1 200 74ms
+2025-04-16 12:14:07 [INFO]: Token verified successfully
+2025-04-16 12:14:07 [DEBUG]: Fetching all questions from database
+2025-04-16 12:14:07 [INFO]: Retrieved 5 questions successfully
+2025-04-16 12:14:07 [HTTP]: GET /api/question 200 195ms
+2025-04-16 12:16:38 [INFO]: Token verified successfully
+2025-04-16 12:16:38 [DEBUG]: Fetching question with ID: 67ff445a76a722de45a7831a
+2025-04-16 12:16:38 [INFO]: Question fetched successfully: 67ff445a76a722de45a7831a
+2025-04-16 12:16:38 [HTTP]: GET /api/question/67ff445a76a722de45a7831a 200 72ms
+2025-04-16 12:18:35 [INFO]: Token verified successfully
+2025-04-16 12:18:35 [DEBUG]: Attempting to update question with ID: 67ff445a76a722de45a7831a
+2025-04-16 12:18:35 [DEBUG]: Saving updated question 67ff445a76a722de45a7831a
+2025-04-16 12:18:35 [INFO]: Question updated successfully: 67ff445a76a722de45a7831a by user 67fe7980adb46966fcd94f57
+2025-04-16 12:18:35 [HTTP]: PUT /api/question/67ff445a76a722de45a7831a 200 92ms
+2025-04-16 12:22:12 [INFO]: Token verified successfully
+2025-04-16 12:22:12 [DEBUG]: Attempting to delete question with ID: 67ff445a76a722de45a7831a
+2025-04-16 12:22:12 [INFO]: Question deleted successfully: 67ff445a76a722de45a7831a by user 67fe7980adb46966fcd94f57
+2025-04-16 12:22:12 [HTTP]: DELETE /api/question/67ff445a76a722de45a7831a 200 140ms
+2025-04-16 12:23:19 [INFO]: Server is running on port 10000
+2025-04-16 12:23:35 [ERROR]: Token verification failed
+2025-04-16 12:23:35 [WARN]: POST /api/question/ 401 12ms
+2025-04-16 12:23:46 [INFO]: User authenticated, preparing token
+2025-04-16 12:23:46 [INFO]: Creating access token for user
+2025-04-16 12:23:46 [INFO]: User logged in successfully
+2025-04-16 12:23:46 [HTTP]: POST /api/auth/login 200 164ms
+2025-04-16 12:23:57 [INFO]: Token verified successfully
+2025-04-16 12:23:57 [DEBUG]: Attempting to create new multiple-choice question by user 67fe7980adb46966fcd94f57
+2025-04-16 12:23:57 [INFO]: Exam 67fe8aa980316bcd278074a1 updated with question 67ff540586540246eb58e8c9 by user 67fe7980adb46966fcd94f57
+2025-04-16 12:23:57 [INFO]: Question created successfully: 67ff540586540246eb58e8c9 by user 67fe7980adb46966fcd94f57
+2025-04-16 12:23:57 [HTTP]: POST /api/question/ 201 287ms
+2025-04-16 12:24:10 [INFO]: Token verified successfully
+2025-04-16 12:24:10 [DEBUG]: Fetching all questions from database
+2025-04-16 12:24:10 [INFO]: Retrieved 5 questions successfully
+2025-04-16 12:24:10 [HTTP]: GET /api/question 200 75ms
+2025-04-16 12:24:29 [INFO]: Token verified successfully
+2025-04-16 12:24:29 [DEBUG]: Attempting to delete question with ID: 67ff540586540246eb58e8c9
+2025-04-16 12:24:29 [INFO]: Question deleted successfully: 67ff540586540246eb58e8c9 by user 67fe7980adb46966fcd94f57
+2025-04-16 12:24:29 [HTTP]: DELETE /api/question/67ff540586540246eb58e8c9 200 121ms
+2025-04-16 12:25:14 [ERROR]: Token verification failed
+2025-04-16 12:25:14 [WARN]: GET /api/profile/me 401 3ms
+2025-04-16 12:25:24 [WARN]: Login attempt with incorrect password
+2025-04-16 12:25:24 [WARN]: POST /api/auth/login 401 92ms
+2025-04-16 12:25:32 [WARN]: POST /api/auth/register 409 37ms
+2025-04-16 12:25:50 [INFO]: User authenticated, preparing token
+2025-04-16 12:25:50 [INFO]: Creating access token for user
+2025-04-16 12:25:50 [INFO]: User logged in successfully
+2025-04-16 12:25:50 [HTTP]: POST /api/auth/login 200 183ms
+2025-04-16 12:26:23 [INFO]: Token verified successfully
+2025-04-16 12:26:23 [DEBUG]: Fetching profile for user 67ff422514a42f2a23276cf9 with role student
+2025-04-16 12:26:23 [INFO]: Profile successfully retrieved for user 67ff422514a42f2a23276cf9
+2025-04-16 12:26:23 [HTTP]: GET /api/profile/me 200 78ms
+2025-04-16 12:28:53 [INFO]: Server is running on port 10000
+2025-04-16 12:33:23 [INFO]: Server is running on port 10000
+2025-04-16 12:33:37 [INFO]: Server is running on port 10000
+2025-04-16 12:34:21 [INFO]: Server is running on port 10000
+2025-04-16 12:36:24 [INFO]: Server is running on port 10000
+2025-04-16 12:40:32 [WARN]: 404 - Route not found: /api/profile/students
+2025-04-16 12:40:32 [WARN]: POST /api/profile/students 404 13ms
+2025-04-16 12:41:16 [INFO]: Server is running on port 10000
+2025-04-16 12:41:21 [WARN]: 404 - Route not found: /api/profile/students
+2025-04-16 12:41:21 [WARN]: POST /api/profile/students 404 5ms
+2025-04-16 12:41:28 [ERROR]: Token verification failed
+2025-04-16 12:41:28 [WARN]: GET /api/profile/students 401 7ms
+2025-04-16 12:41:52 [INFO]: Token verified successfully
+2025-04-16 12:41:52 [DEBUG]: Admin 67fe7980adb46966fcd94f57 retrieving all student profiles
+2025-04-16 12:41:53 [INFO]: Retrieved 1 student profiles
+2025-04-16 12:41:53 [HTTP]: GET /api/profile/students 200 125ms
+2025-04-16 12:44:28 [ERROR]: Token verification failed
+2025-04-16 12:44:28 [WARN]: PUT /api/profile/update 401 2ms
+2025-04-16 12:44:37 [INFO]: User authenticated, preparing token
+2025-04-16 12:44:37 [INFO]: Creating access token for user
+2025-04-16 12:44:37 [INFO]: User logged in successfully
+2025-04-16 12:44:37 [HTTP]: POST /api/auth/login 200 178ms
+2025-04-16 12:44:59 [INFO]: Token verified successfully
+2025-04-16 12:44:59 [DEBUG]: Attempting to update profile for user 67ff422514a42f2a23276cf9
+2025-04-16 12:44:59 [INFO]: Profile successfully updated for user 67ff422514a42f2a23276cf9
+2025-04-16 12:44:59 [HTTP]: PUT /api/profile/update 200 124ms
+2025-04-16 12:46:22 [INFO]: Server is running on port 10000
+2025-04-16 12:47:41 [INFO]: Token verified successfully
+2025-04-16 12:47:41 [DEBUG]: User 67ff422514a42f2a23276cf9 attempting to enroll in exam 67fe8c1f80316bcd278074a3
+2025-04-16 12:47:41 [INFO]: User 67ff422514a42f2a23276cf9 successfully enrolled in exam 67fe8c1f80316bcd278074a3
+2025-04-16 12:47:44 [INFO]: Enrollment confirmation email sent to nishantmehto7588@gmail.com for exam 67fe8c1f80316bcd278074a3
+2025-04-16 12:47:44 [HTTP]: POST /api/exam/67fe8c1f80316bcd278074a3/enroll 200 2920ms
+2025-04-16 12:47:58 [INFO]: Token verified successfully
+2025-04-16 12:47:58 [DEBUG]: Fetching profile for user 67ff422514a42f2a23276cf9 with role student
+2025-04-16 12:47:58 [INFO]: Profile successfully retrieved for user 67ff422514a42f2a23276cf9
+2025-04-16 12:47:58 [HTTP]: GET /api/profile/me 200 118ms
+2025-04-16 13:11:02 [INFO]: Token verified successfully
+2025-04-16 13:11:02 [INFO]: Result created successfully for exam: 67fe8aa980316bcd278074a1, student: 67ff422514a42f2a23276cf9
+2025-04-16 13:11:02 [HTTP]: POST /api/result/ 201 241ms
+2025-04-16 13:14:52 [INFO]: Token verified successfully
+2025-04-16 13:14:52 [WARN]: Invalid result ID format: all
+2025-04-16 13:14:52 [WARN]: GET /api/result/all 404 16ms
+2025-04-16 13:16:16 [INFO]: Token verified successfully
+2025-04-16 13:16:16 [WARN]: Invalid result ID format: all
+2025-04-16 13:16:16 [WARN]: GET /api/result/all 404 4ms
+2025-04-16 13:23:27 [INFO]: Token verified successfully
+2025-04-16 13:23:27 [WARN]: Invalid result ID format: all
+2025-04-16 13:23:27 [WARN]: GET /api/result/all 404 37ms
+2025-04-16 13:23:30 [INFO]: Token verified successfully
+2025-04-16 13:23:30 [WARN]: Invalid result ID format: all
+2025-04-16 13:23:30 [WARN]: GET /api/result/all 404 7ms
+2025-04-16 13:27:22 [INFO]: Token verified successfully
+2025-04-16 13:27:22 [WARN]: Invalid result ID format: all
+2025-04-16 13:27:22 [WARN]: GET /api/result/all 404 65ms
+2025-04-16 13:28:49 [INFO]: Token verified successfully
+2025-04-16 13:28:49 [WARN]: Invalid result ID format: all
+2025-04-16 13:28:49 [WARN]: GET /api/result/all 404 11ms
+2025-04-16 13:30:03 [INFO]: Server is running on port 10000
+2025-04-16 13:30:07 [INFO]: Token verified successfully
+2025-04-16 13:30:07 [WARN]: Invalid result ID format: all
+2025-04-16 13:30:07 [WARN]: GET /api/result/all 404 38ms
+2025-04-16 13:30:33 [ERROR]: Token verification failed
+2025-04-16 13:30:33 [WARN]: GET /api/result/all 401 3ms
+2025-04-16 13:30:41 [INFO]: User authenticated, preparing token
+2025-04-16 13:30:41 [INFO]: Creating access token for user
+2025-04-16 13:30:41 [INFO]: User logged in successfully
+2025-04-16 13:30:41 [HTTP]: POST /api/auth/login 200 156ms
+2025-04-16 13:30:53 [INFO]: Token verified successfully
+2025-04-16 13:30:53 [WARN]: Invalid result ID format: all
+2025-04-16 13:30:53 [WARN]: GET /api/result/all 404 3ms
+2025-04-16 13:31:18 [INFO]: Token verified successfully
+2025-04-16 13:31:18 [INFO]: Retrieved all results: 1 records found
+2025-04-16 13:31:18 [HTTP]: GET /api/result/ 200 94ms
+2025-04-16 13:31:36 [INFO]: Server is running on port 10000
+2025-04-16 13:38:18 [INFO]: Token verified successfully
+2025-04-16 13:38:18 [INFO]: Result 67ff5f0e676e8579819d138b retrieved successfully by user 67fe7980adb46966fcd94f57
+2025-04-16 13:38:18 [HTTP]: GET /api/result/67ff5f0e676e8579819d138b 200 117ms
+2025-04-16 13:39:27 [INFO]: Server is running on port 10000
+2025-04-16 13:41:31 [INFO]: Token verified successfully
+2025-04-16 13:41:31 [INFO]: Retrieved 1 results for exam 67fe8aa980316bcd278074a1
+2025-04-16 13:41:31 [HTTP]: GET /api/result/exam/67fe8aa980316bcd278074a1 200 101ms
+2025-04-16 13:42:59 [INFO]: Server is running on port 10000
+2025-04-16 13:47:25 [INFO]: Server is running on port 10000
+2025-04-16 14:38:55 [INFO]: Server is running on port 10000
+2025-04-16 14:40:54 [INFO]: User authenticated, preparing token
+2025-04-16 14:40:54 [INFO]: Creating access token for user
+2025-04-16 14:40:54 [INFO]: User logged in successfully
+2025-04-16 14:40:54 [HTTP]: POST /api/auth/login 200 172ms
+2025-04-16 14:41:09 [INFO]: Token verified successfully
+2025-04-16 14:41:09 [WARN]: Invalid result ID format: me
+2025-04-16 14:41:09 [WARN]: GET /api/result/me 404 6ms
+2025-04-16 14:41:44 [INFO]: Server is running on port 10000
+2025-04-16 14:41:48 [INFO]: Token verified successfully
+2025-04-16 14:41:48 [WARN]: Invalid result ID format: me
+2025-04-16 14:41:48 [WARN]: GET /api/result/me 404 20ms
+2025-04-16 14:42:05 [INFO]: Server is running on port 10000
+2025-04-16 14:42:28 [INFO]: Server is running on port 10000
+2025-04-16 14:42:31 [INFO]: Token verified successfully
+2025-04-16 14:42:31 [WARN]: Invalid result ID format: me
+2025-04-16 14:42:31 [WARN]: GET /api/result/me 404 13ms
+2025-04-16 14:42:37 [INFO]: Token verified successfully
+2025-04-16 14:42:37 [WARN]: Invalid result ID format: my-result
+2025-04-16 14:42:37 [WARN]: GET /api/result/my-result 404 5ms
+2025-04-16 14:43:17 [INFO]: Server is running on port 10000
+2025-04-16 14:43:39 [INFO]: Server is running on port 10000
+2025-04-16 14:43:42 [INFO]: Token verified successfully
+2025-04-16 14:43:42 [WARN]: Invalid result ID format: my-result
+2025-04-16 14:43:42 [WARN]: GET /api/result/my-result 404 12ms
+2025-04-16 14:43:57 [INFO]: User authenticated, preparing token
+2025-04-16 14:43:57 [INFO]: Creating access token for user
+2025-04-16 14:43:57 [INFO]: User logged in successfully
+2025-04-16 14:43:57 [HTTP]: POST /api/auth/login 200 160ms
+2025-04-16 14:44:50 [INFO]: Token verified successfully
+2025-04-16 14:44:50 [WARN]: Invalid result ID format: my-result
+2025-04-16 14:44:50 [WARN]: GET /api/result/my-result 404 5ms
+2025-04-16 14:44:55 [WARN]: 404 - Route not found: /api/results/my-result
+2025-04-16 14:44:55 [WARN]: GET /api/results/my-result 404 1ms
+2025-04-16 14:51:17 [INFO]: Server is running on port 10000
+2025-04-16 14:51:33 [ERROR]: Token verification failed
+2025-04-16 14:51:33 [WARN]: POST /api/result/ 401 12ms
+2025-04-16 14:52:19 [INFO]: Token verified successfully
+2025-04-16 14:52:19 [INFO]: Result created successfully for exam: 67fe8aa980316bcd278074a1, student: 67ff422514a42f2a23276cf9, and completedExams updated
+2025-04-16 14:52:19 [HTTP]: POST /api/result/ 201 202ms
+2025-04-16 14:54:57 [INFO]: Token verified successfully
+2025-04-16 14:54:57 [WARN]: Invalid result ID format: my-result
+2025-04-16 14:54:57 [WARN]: GET /api/result/my-result 404 11ms
+2025-04-16 14:55:06 [INFO]: Token verified successfully
+2025-04-16 14:55:06 [WARN]: Invalid result ID format: my-result
+2025-04-16 14:55:06 [WARN]: GET /api/result/my-result 404 6ms
+2025-04-16 15:03:11 [INFO]: Server is running on port 10000
+2025-04-16 15:03:16 [INFO]: Token verified successfully
+2025-04-16 15:03:16 [WARN]: Invalid result ID format: my-result
+2025-04-16 15:03:16 [WARN]: GET /api/result/my-result 404 25ms
+2025-04-16 15:05:43 [INFO]: Server is running on port 10000
+2025-04-16 15:05:46 [INFO]: Token verified successfully
+2025-04-16 15:05:46 [INFO]: Retrieved 1 personal results for student 67ff422514a42f2a23276cf9
+2025-04-16 15:05:46 [HTTP]: GET /api/result/my-result 200 150ms
+2025-04-16 15:09:59 [INFO]: User authenticated, preparing token
+2025-04-16 15:09:59 [INFO]: Creating access token for user
+2025-04-16 15:09:59 [INFO]: User logged in successfully
+2025-04-16 15:09:59 [HTTP]: POST /api/auth/login 200 168ms
+2025-04-16 15:11:05 [INFO]: Token verified successfully
+2025-04-16 15:11:05 [WARN]: Attempt to delete non-existent result with ID: 67ff5f0e676e8579819d138b
+2025-04-16 15:11:05 [WARN]: DELETE /api/result/67ff5f0e676e8579819d138b 404 43ms
+2025-04-16 15:11:39 [INFO]: Token verified successfully
+2025-04-16 15:11:39 [INFO]: Result 67ff76cb0ab8693b921d8ce3 deleted successfully by user 67fe7980adb46966fcd94f57
+2025-04-16 15:11:39 [HTTP]: DELETE /api/result/67ff76cb0ab8693b921d8ce3 200 83ms
+2025-04-16 15:12:25 [INFO]: Server is running on port 10000
+2025-04-16 15:12:32 [INFO]: Token verified successfully
+2025-04-16 15:12:32 [INFO]: Result created successfully for exam: 67fe8aa980316bcd278074a1, student: 67ff422514a42f2a23276cf9, and completedExams updated
+2025-04-16 15:12:32 [HTTP]: POST /api/result/ 201 207ms
+2025-04-16 15:12:44 [ERROR]: Token verification failed
+2025-04-16 15:12:44 [WARN]: GET /api/result/ 401 4ms
+2025-04-16 15:13:14 [INFO]: Token verified successfully
+2025-04-16 15:13:14 [INFO]: Retrieved all results: 1 records found
+2025-04-16 15:13:14 [HTTP]: GET /api/result/ 200 83ms
+2025-04-16 15:14:49 [INFO]: Server is running on port 10000
+2025-04-16 15:28:16 [INFO]: Server is running on port 10000
+2025-04-16 15:30:26 [INFO]: Server is running on port 10000
+2025-04-16 15:35:45 [INFO]: Token verified successfully
+2025-04-16 15:35:45 [WARN]: Invalid result ID format: analytics
+2025-04-16 15:35:45 [WARN]: GET /api/result/analytics 404 64ms
+2025-04-16 15:36:31 [INFO]: Token verified successfully
+2025-04-16 15:36:31 [WARN]: Invalid result ID format: analytics
+2025-04-16 15:36:31 [WARN]: GET /api/result/analytics 404 7ms
+2025-04-16 15:36:47 [INFO]: User authenticated, preparing token
+2025-04-16 15:36:47 [INFO]: Creating access token for user
+2025-04-16 15:36:47 [INFO]: User logged in successfully
+2025-04-16 15:36:47 [HTTP]: POST /api/auth/login 200 198ms
+2025-04-16 15:36:58 [INFO]: Token verified successfully
+2025-04-16 15:36:58 [WARN]: Invalid result ID format: analytics
+2025-04-16 15:36:58 [WARN]: GET /api/result/analytics 404 6ms
+2025-04-16 15:37:22 [INFO]: Server is running on port 10000
+2025-04-16 15:38:26 [INFO]: Server is running on port 10000
+2025-04-16 15:38:29 [INFO]: Token verified successfully
+2025-04-16 15:38:29 [DEBUG]: Fetching analytics for all exams created by admin 67fe7980adb46966fcd94f57
+2025-04-16 15:38:29 [INFO]: Found 3 exams created by user 67fe7980adb46966fcd94f57 for analytics
+2025-04-16 15:38:29 [INFO]: Analytics generated for 3 exams by admin 67fe7980adb46966fcd94f57
+2025-04-16 15:38:29 [HTTP]: GET /api/result/analytics 200 248ms

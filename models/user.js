@@ -1,55 +1,61 @@
 const mongoose = require("mongoose");
-const bcrypt = require("bcryptjs"); // Import bcrypt for password hashing
+const bcrypt = require("bcrypt"); // Import bcrypt for password hashing
 
-const userSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-    trim: true,
-  },
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-    lowercase: true,
-    trim: true,
-  },
-  password: {
-    type: String,
-    required: true,
-  },
-  role: {
-    type: String,
-    enum: ["student", "admin"],
-    default: "student",
-  },
-  phone: {
-    type: Number,
-    required: true,
-  },
-  enrolledExams: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Exam", // Reference to the Exam model
+const userSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+      trim: true,
     },
-  ],
-  completedExams: [
-    {
-      exam: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Exam",
-      },
-      result: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Results",
-      },
+    email: {
+      type: String,
+      required: true,
+      trim: true,
     },
-  ],
-  createdAt: {
-    type: Date,
-    default: Date.now,
+    password: {
+      type: String,
+      required: true,
+    },
+    role: {
+      type: String,
+      enum: ["student", "admin"],
+      default: "student",
+      required: true,
+    },
+    phone: {
+      type: Number,
+      required: true,
+    },
+    enrolledExams: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Exam", // Reference to the Exam model
+      },
+    ],
+    completedExams: [
+      {
+        exam: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Exam",
+        },
+        result: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Result",
+        },
+      },
+    ],
+    resetToken: {
+      type: String,
+    },
+    resetTokenExpiration: {
+      type: Date,
+    },
   },
-});
+  {
+    timestamps: true,
+  }
+);
 
 // Hash the password before saving the user
 userSchema.pre("save", async function (next) {
