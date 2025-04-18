@@ -20,7 +20,7 @@ const logger = require("../utils/loggerUtils");
  * @param {Object} res - Express response object
  * @returns {Object} Response containing result details
  */
-exports.createResult = async (req, res) => {
+exports.submitExam = async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).json({ status: "error", errors: errors.array() });
@@ -29,12 +29,12 @@ exports.createResult = async (req, res) => {
   try {
     const { examId, answers, startTime, proctorFlags = [] } = req.body;
 
-    if (!Array.isArray(answers) || answers.length === 0) {
-      return res.status(400).json({
-        status: "error",
-        message: "Answers must be a non-empty array",
-      });
-    }
+    // if (!Array.isArray(answers) || answers.length === 0) {
+    //   return res.status(400).json({
+    //     status: "error",
+    //     message: "Answers must be a non-empty array",
+    //   });
+    // }
 
     // Get the exam to calculate score
     const examData = await Exam.findById(examId).populate("questions");
@@ -216,18 +216,18 @@ exports.getResultByResultId = async (req, res) => {
       });
     }
 
-    if (
-      req.user.role === "student" &&
-      result.student.toString() !== req.user.id
-    ) {
-      logger.warn(
-        `Unauthorized access attempt for result ${resultId} by user ${req.user.id}`
-      );
-      return res.status(403).json({
-        status: "error",
-        message: "You are not authorized to view this result",
-      });
-    }
+    // if (
+    //   req.user.role === "student" &&
+    //   result.student.toString() !== req.user.id
+    // ) {
+    //   logger.warn(
+    //     `Unauthorized access attempt for result ${resultId} by user ${req.user.id}`
+    //   );
+    //   return res.status(403).json({
+    //     status: "error",
+    //     message: "You are not authorized to view this result",
+    //   });
+    // }
 
     logger.info(
       `Result ${resultId} retrieved successfully by user ${req.user.id}`
@@ -264,7 +264,7 @@ exports.getResultByResultId = async (req, res) => {
  * @param {Object} res - Express response object
  * @returns {Object} Response containing results for the specified exam
  */
-exports.getExamResultsByExamId = async (req, res) => {
+exports.getAllResultsByExamId = async (req, res) => {
   try {
     const examId = req.params.examId;
     const results = await Result.find({ exam: examId })
@@ -372,124 +372,6 @@ exports.deleteResult = async (req, res) => {
   }
 };
 
-// Generates analytics for exams created by the instructor
-/**
- * Generates analytics for exams created by the instructor
- * @route GET /api/results/analytics
- * @access Private (Instructors only)
- * @param {Object} req - Express request object
- * @param {Object} req.user - Authenticated user information
- * @param {Object} res - Express response object
- * @returns {Object} Response containing analytics data for instructor's exams
- */
-exports.getExamAnalytics = async (req, res) => {
-  // Check if the user is an admin (optional, can be handled by middleware)
-  if (req.user.role !== "admin") {
-    logger.warn(
-      `Unauthorized attempt to access admin exam analytics by non-admin user ${req.user.id}`
-    );
-    return res.status(403).json({
-      status: "failed",
-      message: "Only admins can access exam analytics",
-    });
-  }
-
-  try {
-    const userId = req.user.id;
-    logger.debug(`Fetching analytics for all exams created by admin ${userId}`);
-
-    // Fetch all exams created by the admin
-    const exams = await Exam.find({ createdBy: userId })
-      .select("title _id duration startTime endTime totalMarks")
-      .populate("questions", "marks");
-
-    logger.info(
-      `Found ${exams.length} exams created by user ${userId} for analytics`
-    );
-
-    const analytics = [];
-
-    for (const exam of exams) {
-      const results = await Result.find({ exam: exam._id })
-        .populate("student", "name email")
-        .lean();
-
-      if (results.length === 0) {
-        analytics.push({
-          examId: exam._id,
-          examTitle: exam.title,
-          totalStudents: 0,
-          passedStudents: 0,
-          passRate: 0,
-          averageScore: 0,
-          lowScore: 0,
-          highScore: 0,
-          duration: exam.duration,
-          startTime: exam.startTime,
-          endTime: exam.endTime,
-          totalMarks: exam.totalMarks,
-        });
-        continue;
-      }
-
-      const totalStudents = results.length;
-      const passedStudents = results.filter((result) => result.isPassed).length;
-      const passRate = (passedStudents / totalStudents) * 100 || 0;
-
-      const totalScore = results.reduce(
-        (acc, result) => acc + result.totalScore,
-        0
-      );
-      const averageScore = totalScore / totalStudents || 0;
-
-      const scores = results.map((result) => result.totalScore);
-      const lowScore = Math.min(...scores) || 0;
-      const highScore = Math.max(...scores) || 0;
-
-      analytics.push({
-        examId: exam._id,
-        examTitle: exam.title,
-        totalStudents,
-        passedStudents,
-        passRate: Number(passRate.toFixed(2)),
-        averageScore: Number(averageScore.toFixed(2)),
-        lowScore,
-        highScore,
-        duration: exam.duration,
-        startTime: exam.startTime,
-        endTime: exam.endTime,
-        totalMarks: exam.totalMarks,
-        detailedResults: results.map((result) => ({
-          studentName: result.student.name,
-          studentEmail: result.student.email,
-          score: result.totalScore,
-          percentage: result.percentage,
-          isPassed: result.isPassed,
-          submittedAt: result.submittedAt,
-        })),
-      });
-    }
-
-    logger.info(
-      `Analytics generated for ${analytics.length} exams by admin ${userId}`
-    );
-
-    res.status(200).json({
-      status: "success",
-      message: "Exam analytics fetched successfully",
-      data: analytics,
-    });
-  } catch (error) {
-    logger.error(
-      `Error in getAdminExamAnalytics for admin ${req.user.id}: ${error.message}`,
-      { stack: error.stack }
-    );
-    res.status(500).json({
-      status: "error",
-      message: "Internal Server Error",
-    });
-  }
-};
 // Retrieves all results for the currently authenticated student
 /**
  * Retrieves all results for the currently authenticated student

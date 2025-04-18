@@ -19,71 +19,7 @@ router.get("/me", auth, getCurrentProfileByUserId);
 // @route   PUT api/profile
 // @desc    Update or create user profile
 // @access  Private
-router.put(
-  "/update",
-  [
-    auth,
-    [
-      // General profile fields
-      check("bio", "Bio cannot be empty if provided").optional().notEmpty(),
-
-      // Education fields
-      check("education.institution", "Institution cannot be empty if provided")
-        .optional()
-        .notEmpty(),
-      check("education.degree", "Degree cannot be empty if provided")
-        .optional()
-        .notEmpty(),
-      check(
-        "education.fieldOfStudy",
-        "Field of study cannot be empty if provided"
-      )
-        .optional()
-        .notEmpty(),
-      check(
-        "education.graduationYear",
-        "Graduation year must be between 1900 and 2100"
-      )
-        .optional()
-        .isInt({ min: 1900, max: 2100 }), // Enhanced validation
-
-      // Admin-specific fields (based on your snippet)
-      check("adminInfo.companyName", "Company name cannot be empty if provided")
-        .optional()
-        .notEmpty(),
-      check("adminInfo.companySize", "Company size must be valid")
-        .optional()
-        .isIn(["1-10", "11-50", "51-200", "201-500", "501-1000", "1000+"]),
-      check("adminInfo.jobTitle", "Job title cannot be empty if provided")
-        .optional()
-        .notEmpty(),
-      check("adminInfo.country", "Country cannot be empty if provided")
-        .optional()
-        .notEmpty(),
-      check("adminInfo.companyType", "Company type must be valid")
-        .optional()
-        .isIn([
-          "startup",
-          "serviceBased",
-          "productBased",
-          "enterprise",
-          "other",
-        ]),
-
-      // Social links
-      check("socialLinks.website", "Website must be a valid URL")
-        .optional()
-        .isURL({ require_protocol: true }), // Enhanced URL validation
-      check("socialLinks.linkedin", "LinkedIn must be a valid URL")
-        .optional()
-        .isURL({ require_protocol: true }),
-      check("socialLinks.github", "GitHub must be a valid URL")
-        .optional()
-        .isURL({ require_protocol: true }),
-    ],
-  ],
-  updateProfileByUserId
-);
+router.put("/update", auth, updateProfileByUserId);
 
 // @route   PUT api/profile/account
 // @desc    Update user account information

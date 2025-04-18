@@ -1,4 +1,6 @@
 node_modules
 .env
 futureScope
-logs
+
+logs/
+*.log

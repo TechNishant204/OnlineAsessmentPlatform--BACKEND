@@ -129,37 +129,53 @@ exports.createQuestion = async (req, res) => {
   }
 };
 
+// Fetch questions for the specific examId, sorted by created date in descending order
 /**
- * Gets all questions from the database
+ * Fetches questions associated with a specific exam ID.
  * @async
- * @function getAllQuestions
- * @param {Object} req - Express request object
- * @param {Object} res - Express response object
- * @returns {Object} JSON response with all questions or error message
+ * @param {string} examId - The ID of the exam to fetch questions for
+ * @returns {Promise<Array>} Array of question documents
+ * - Each question is populated with:
+ *   - createdBy: Author's name and email
+ *   - exam: Exam title
+ * - Questions are sorted by creation date in descending order
  */
-exports.getAllQuestions = async (req, res) => {
+exports.getAllQuestionsByExamId = async (req, res) => {
   try {
-    logger.debug("Fetching all questions from database");
+    const { examId } = req.params; // Extract examId from URL parameters
+    logger.debug(`Fetching questions for examId: ${examId} from database`);
 
-    // Fetch all questions from the database
-    // sort by created date in descending order
-    const questions = await Question.find()
+    // Validate examId
+    if (!examId) {
+      return res.status(400).json({
+        status: "failed",
+        message: "examId is required",
+      });
+    }
+
+    const questions = await Question.find({ exam: examId })
       .sort({ created: -1 })
       .populate("createdBy", "name email")
       .populate("exam", "title")
       .exec();
 
-    logger.info(`Retrieved ${questions.length} questions successfully`);
+    logger.info(
+      `Retrieved ${questions.length} questions for examId: ${examId} successfully`
+    );
 
     // Return the questions as a response
     res.status(200).json({
       status: "success",
+      message: "All Questions fetched successfully",
       data: questions,
     });
   } catch (error) {
-    logger.error(`Error fetching questions: ${error.message}`, {
-      stack: error.stack,
-    });
+    logger.error(
+      `Error fetching questions for examId ${examId}: ${error.message}`,
+      {
+        stack: error.stack,
+      }
+    );
     res.status(500).json({
       status: "failed",
       message: "Failed to fetch questions",

@@ -3,63 +3,53 @@ const express = require("express");
 const router = express.Router();
 const { check } = require("express-validator");
 const { auth, isStudent, isAdmin } = require("../middlewares/auth");
+const mongoose = require("mongoose");
 const {
-  createResult,
-  getAllResults,
-  getExamAnalytics,
-  getMyResults,
-  // getStudentResults,
-  getExamResultsByExamId,
+  submitExam,
+  getAllResultsByExamId,
   getResultByResultId,
   deleteResult,
 } = require("../controllers/resultController");
 
-// @route   POST api/results
-// @desc    Create a new result
-// @access  Private
-router.post(
-  "/",
-  [
-    auth,
-    isStudent,
-    check("examId", "Exam ID is required").not().isEmpty(),
-    check("answers", "Answers are required").isArray({ min: 1 }),
-    check("startTime", "Start time is required").not().isEmpty(),
-    check("proctorFlags", "Proctor flags must be an array")
-      .optional()
-      .isArray(),
-  ],
-  createResult
-);
-
-// @route GET api/results/analytics
-// @desc Get analytics for exams created by instructor
-// @access Private
-router.get("/analytics", [auth, isAdmin], getExamAnalytics);
-// @route GET api/result
-// @desc Get all results
-// @access Private (Admin)
-router.get("/", [auth, isAdmin], getAllResults);
-
-// @route GET api/results/me
-// @desc Get all results for the logged-in student
-// @access Private
-router.get("/my-result", [auth, isStudent], getMyResults);
-
-// @route GET api/result/:id
-// @desc Get result by ID
-// @access Private
-router.get("/:id", auth, getResultByResultId);
+const validateObjectId = (req, res, next) => {
+  if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+    return res.status(400).json({
+      status: "failed",
+      message: "Invalid exam ID",
+      data: null,
+    });
+  }
+  next();
+};
 
 // @route GET api/result/exam/:examId
 // @desc Get all results for a specific exam by examId
 // @access Private (Admin)
-router.get("/exam/:examId", [auth, isAdmin], getExamResultsByExamId);
+router.get(
+  "/exam/:id",
+  [auth, isAdmin],
+  validateObjectId,
+  getAllResultsByExamId
+);
+// @route   POST api/result
+// @desc    Create a new result
+// @access  Private
+router.post("/", auth, isStudent, submitExam);
+
+// @route GET api/results/analytics
+// @desc Get analytics for exams created by instructor
+// @access Private
+// router.get("/analytics", [auth, isAdmin], getExamAnalytics);
+
+// @route GET api/result/:id
+// @desc Get result by ID
+// @access Private
+router.get("/:id", auth, validateObjectId, getResultByResultId);
 
 // @route DELETE api/results/:id
 // @desc Delete a result
 // @access Private (Admin)
-router.delete("/:id", [auth, isAdmin], deleteResult);
+router.delete("/:id", validateObjectId, [(auth, isAdmin)], deleteResult);
 
 // @route GET api/results/student
 // @desc Get results for the current student
@@ -67,3 +57,13 @@ router.delete("/:id", [auth, isAdmin], deleteResult);
 // router.get("/student", [auth, isStudent], getStudentResults);
 
 module.exports = router;
+
+// @route GET api/results/me
+// @desc Get all results for the logged-in student
+// @access Private
+// router.get("/my-result", [auth, isStudent], getMyResults);
+
+// @route GET api/result
+// @desc Get all results
+// @access Private (Admin)
+// router.get("/", [auth, isAdmin], getAllResults);

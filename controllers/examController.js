@@ -8,6 +8,7 @@
  */
 const { validationResult } = require("express-validator");
 const Exam = require("../models/exam");
+const Result = require("../models/result");
 const emailService = require("../utils/emailService");
 const User = require("../models/user");
 const logger = require("../utils/loggerUtils");
@@ -37,7 +38,11 @@ exports.createExam = async (req, res) => {
     logger.warn(
       `Validation error in exam creation: ${JSON.stringify(errors.array())}`
     );
-    return res.status(400).json({ errors: errors.array() });
+    return res.status(400).json({
+      status: "failed",
+      message: "Validation errors",
+      data: errors.array(),
+    });
   }
 
   try {
@@ -52,11 +57,24 @@ exports.createExam = async (req, res) => {
       passingMarks,
     } = req.body;
 
-    // Validate questions array if provided (ask mentor)
+    // Validate questions array
     if (questions && !Array.isArray(questions)) {
-      return res
-        .status(400)
-        .json({ status: "failed", message: "Questions must be an array" });
+      return res.status(400).json({
+        status: "failed",
+        message: "Questions must be an array",
+        data: null,
+      });
+    }
+
+    // Validate dates
+    const start = new Date(startTime);
+    const end = new Date(endTime);
+    if (start >= end) {
+      return res.status(400).json({
+        status: "failed",
+        message: "End time must be after start time",
+        data: null,
+      });
     }
 
     // Create new exam
@@ -64,8 +82,8 @@ exports.createExam = async (req, res) => {
       title,
       description,
       duration,
-      startTime: new Date(startTime),
-      endTime: new Date(endTime),
+      startTime: start,
+      endTime: end,
       questions: questions || [],
       totalMarks,
       passingMarks,
@@ -89,6 +107,7 @@ exports.createExam = async (req, res) => {
     return res.status(500).json({
       status: "failed",
       message: "Server Error",
+      data: null,
     });
   }
 };
@@ -103,19 +122,20 @@ exports.createExam = async (req, res) => {
  */
 exports.getAllExams = async (req, res) => {
   try {
-    // Get all exams
     const exams = await Exam.find()
       .populate("questions", "text type marks")
       .populate("createdBy", "name email");
 
     if (!exams || exams.length === 0) {
       logger.info("No exams found in database");
-      return res
-        .status(404)
-        .json({ status: "fail", message: "No exams found" });
+      return res.status(200).json({
+        status: "success",
+        message: "No exams found",
+        data: [],
+      });
     }
-    logger.info(`Retrieved ${exams.length} exams successfully`);
 
+    logger.info(`Retrieved ${exams.length} exams successfully`);
     res.status(200).json({
       status: "success",
       message: "Exams fetched successfully",
@@ -126,8 +146,9 @@ exports.getAllExams = async (req, res) => {
       stack: error.stack,
     });
     return res.status(500).json({
-      status: "fail",
+      status: "failed",
       message: "Server Error",
+      data: null,
     });
   }
 };
@@ -138,13 +159,12 @@ exports.getAllExams = async (req, res) => {
  * @function getAvailableExams
  * @param {Object} req - Express request object
  * @param {Object} res - Express response object
- * @returns {Object} JSON response with available exams or error message
+ * @returns {Object} JSON response with available exams
  */
 exports.getAvailableExams = async (req, res) => {
   try {
     const now = new Date();
 
-    // Get exams that are active and not yet ended
     const exams = await Exam.find({
       isActive: true,
       endTime: { $gt: now },
@@ -153,19 +173,18 @@ exports.getAvailableExams = async (req, res) => {
       .lean();
 
     logger.debug(`Found ${exams.length} available exams`);
-    console.log(exams);
 
     if (!exams || exams.length === 0) {
       logger.info("No available exams found for students");
-      return res.status(404).json({
+      return res.status(200).json({
         status: "success",
         message: "No available exams found",
+        data: [],
       });
     }
 
     logger.info(`Retrieved ${exams.length} available exams successfully`);
-
-    res.json({
+    res.status(200).json({
       status: "success",
       message: "Available exams fetched successfully",
       data: exams,
@@ -177,6 +196,7 @@ exports.getAvailableExams = async (req, res) => {
     return res.status(500).json({
       status: "failed",
       message: "Server Error",
+      data: null,
     });
   }
 };
@@ -187,35 +207,34 @@ exports.getAvailableExams = async (req, res) => {
  * @function getExamById
  * @param {Object} req - Express request object
  * @param {string} req.params.id - Exam ID
- * @param {Object} req.user - User object containing role information
+ * @param {Object} req.user - User object
  * @param {Object} res - Express response object
- * @returns {Object} JSON response with exam data or error message
+ * @returns {Object} JSON response with exam data
  */
 exports.getExamById = async (req, res) => {
   try {
     const examId = req.params.id;
     logger.debug(`Fetching exam with ID: ${examId}`);
 
-    // find exam by ID
     const exam = await Exam.findById(examId)
       .populate("questions", "text type options marks")
       .populate("createdBy", "name email");
 
-    // Check if exam ID is valid
     if (!exam) {
+      logger.warn(`Exam not found with ID: ${examId}`);
       return res.status(404).json({
         status: "failed",
         message: "Exam not found",
+        data: null,
       });
     }
 
-    //If student is accessing, don't send the correct answer
     let sanitizedExam = exam.toObject();
     if (req.user.role === "student") {
       sanitizedExam.questions.forEach((question) => {
         if (question.options) {
           question.options.forEach((option) => {
-            delete option.isCorrect; // Assuming options might have isCorrect in the future
+            delete option.isCorrect;
           });
         }
       });
@@ -224,8 +243,6 @@ exports.getExamById = async (req, res) => {
     logger.info(
       `Successfully retrieved exam: ${examId} for user: ${req.user.id}`
     );
-
-    // send the modified exam data back to the client
     res.status(200).json({
       status: "success",
       message: "Exam fetched successfully",
@@ -236,17 +253,18 @@ exports.getExamById = async (req, res) => {
       stack: error.stack,
     });
 
-    // Check if the error is due to an invalid ObjectId
     if (error.kind === "ObjectId") {
       logger.warn(`Invalid exam ID format: ${req.params.id}`);
       return res.status(400).json({
         status: "failed",
         message: "Invalid exam ID",
+        data: null,
       });
     }
     return res.status(500).json({
       status: "failed",
       message: "Server Error",
+      data: null,
     });
   }
 };
@@ -259,25 +277,23 @@ exports.getExamById = async (req, res) => {
  * @param {string} req.params.id - Exam ID
  * @param {Object} req.body - Updated exam fields
  * @param {Object} res - Express response object
- * @returns {Object} JSON response with updated exam data or error message
+ * @returns {Object} JSON response with updated exam data
  */
 exports.updateExam = async (req, res) => {
   try {
-    // fetch exam Id from params
     const examId = req.params.id;
     logger.debug(`Attempting to update exam ID: ${examId}`);
 
-    // find the exam by ID
     let exam = await Exam.findById(examId);
     if (!exam) {
       logger.info(`Update failed - Exam not found with ID: ${examId}`);
       return res.status(404).json({
         status: "failed",
         message: "Exam not found",
+        data: null,
       });
     }
 
-    // Update exam fields
     const updateFields = {};
     for (const [key, value] of Object.entries(req.body)) {
       if (key === "startTime" || key === "endTime") {
@@ -289,19 +305,29 @@ exports.updateExam = async (req, res) => {
       }
     }
 
+    if (updateFields.startTime || updateFields.endTime) {
+      const start = updateFields.startTime || exam.startTime;
+      const end = updateFields.endTime || exam.endTime;
+      if (start >= end) {
+        return res.status(400).json({
+          status: "failed",
+          message: "End time must be after start time",
+          data: null,
+        });
+      }
+    }
+
     logger.debug(
       `Updating exam with fields: ${JSON.stringify(Object.keys(updateFields))}`
     );
 
-    // Update exam in database
     exam = await Exam.findByIdAndUpdate(
       examId,
       { $set: updateFields },
       { new: true, runValidators: true }
-    );
+    ).populate("questions", "text type marks");
 
     logger.info(`Exam updated successfully: ${examId} by user ${req.user.id}`);
-
     res.status(200).json({
       status: "success",
       message: "Exam updated successfully",
@@ -312,18 +338,19 @@ exports.updateExam = async (req, res) => {
       stack: error.stack,
     });
 
-    // Check if the error is due to an invalid ObjectId
     if (error.kind === "ObjectId") {
       logger.warn(`Invalid exam ID format for update: ${req.params.id}`);
       return res.status(400).json({
         status: "failed",
         message: "Invalid exam ID",
+        data: null,
       });
     }
 
     return res.status(500).json({
       status: "failed",
       message: "Server Error",
+      data: null,
     });
   }
 };
@@ -335,67 +362,55 @@ exports.updateExam = async (req, res) => {
  * @param {Object} req - Express request object
  * @param {string} req.params.id - Exam ID
  * @param {Object} res - Express response object
- * @returns {Object} JSON response with success message or error message
+ * @returns {Object} JSON response with success message
  */
 exports.deleteExam = async (req, res) => {
   try {
     const examId = req.params.id;
     logger.debug(`Attempting to delete exam ID: ${examId}`);
 
-    // fetch examId from req.params and then find exam by id
     const exam = await Exam.findById(examId);
 
-    // if exam is not found
     if (!exam) {
       logger.info(`Delete failed - Exam not found with ID: ${examId}`);
       return res.status(404).json({
         status: "failed",
         message: "Exam not found or already deleted",
+        data: null,
       });
     }
 
-    /* Remove exam from all users' exam lists
-    The $pull operator removes a specific value (this._id) from the exams array for all matching users.
-    If  exists in the  array of a user, it will be deleted.
-    */
     await User.updateMany(
       { enrolledExams: examId },
       { $pull: { enrolledExams: examId } }
     );
 
-    /* Delete submissions related to this exam
-        if (global.Submission) {
-         await global.Submission.deleteMany({ exam: exam._id });
-     }
-    */
-
-    // Delete the exam
     await exam.deleteOne();
 
     logger.info(`Exam deleted successfully: ${examId} by user ${req.user.id}`);
-
     res.status(200).json({
       status: "success",
       message: "Exam Removed Successfully",
-      RemovedExam: exam,
+      data: { removedExam: exam },
     });
   } catch (error) {
     logger.error(`Failed to delete exam: ${error.message}`, {
       stack: error.stack,
     });
 
-    // Check if the error is due to an invalid ObjectId
     if (error.kind === "ObjectId") {
       logger.warn(`Invalid exam ID format for deletion: ${req.params.id}`);
       return res.status(400).json({
         status: "failed",
         message: "Invalid Exam ID",
+        data: null,
       });
     }
 
     return res.status(500).json({
       status: "failed",
       message: "Server Error",
+      data: null,
     });
   }
 };
@@ -405,10 +420,10 @@ exports.deleteExam = async (req, res) => {
  * @async
  * @function enrollInExam
  * @param {Object} req - Express request object
- * @param {string} req.params.id - Exam ID
+ * @param {string} req.params.examId - Exam ID
  * @param {Object} req.user - User object
  * @param {Object} res - Express response object
- * @returns {Object} JSON response with success message or error message
+ * @returns {Object} JSON response with enrollment details
  */
 exports.enrollInExam = async (req, res) => {
   try {
@@ -417,93 +432,86 @@ exports.enrollInExam = async (req, res) => {
 
     logger.debug(`User ${userId} attempting to enroll in exam ${examId}`);
 
-    // // Only allow students to enroll
-    // if (userRole !== "student") {
-    //   logger.info(
-    //     `Enrollment failed - User ${userId} with role ${userRole} not authorized to enroll`
-    //   );
-    //   return res.status(403).json({
-    //     status: "failed",
-    //     message: "Only students can enroll in exams",
-    //   });
-    // }
-
-    // fetch exam details using req.params.id
     const exam = await Exam.findById(examId);
 
-    // Check if the exam exists
     if (!exam) {
       logger.info(`Enrollment failed - Exam not found with ID: ${examId}`);
       return res.status(404).json({
         status: "failed",
         message: "Exam not found",
+        data: null,
       });
     }
-    // check if exam is active
+
     if (!exam.isActive) {
       logger.info(`Enrollment failed - Exam ${examId} is not active`);
       return res.status(400).json({
         status: "failed",
         message: "Exam is not active",
+        data: null,
+        active: false,
       });
     }
-    // check if exam is already started
+
     if (new Date(exam.startTime) < new Date()) {
       logger.info(
         `Enrollment failed - Enrollment period has ended for exam ${examId}`
       );
-      return res
-        .status(400)
-        .json({ status: "failed", message: "Enrollment period has ended" });
-    }
-
-    // check if user is already enrolled
-    const newUser = await User.findById(userId);
-    if (newUser.enrolledExams.includes(examId)) {
-      logger.info(`User ${userId} is already enrolled in exam ${examId}`);
       return res.status(400).json({
         status: "failed",
-        message: "You are already enrolled in this exam",
+        message: "Enrollment period has ended",
+        data: null,
+        active: false,
       });
     }
 
-    // Add exam to user's enrolled exams array
-    newUser.enrolledExams.push(examId);
+    const user = await User.findById(userId);
+    if (user.enrolledExams.includes(examId)) {
+      logger.info(`User ${userId} is already enrolled in exam ${examId}`);
+      return res.status(200).json({
+        status: "ok",
+        message: "You are already enrolled in this exam",
+        data: null,
+        enrolled: true,
+      });
+    }
 
-    // After adding exam in enrolledExams Save user document
-    await newUser.save();
+    // update user enrolledExams array
+    user.enrolledExams.push(examId);
+    await user.save();
 
     logger.info(`User ${userId} successfully enrolled in exam ${examId}`);
 
-    // Send email notification
     try {
       await emailService.sendExamEnrollmentEmail(
-        newUser.email,
-        newUser.name,
+        user.email,
+        user.name,
         exam.title,
         exam.duration,
         exam.startTime,
         exam.questions.length
       );
       logger.info(
-        `Enrollment confirmation email sent to ${newUser.email} for exam ${examId}`
+        `Enrollment confirmation email sent to ${user.email} for exam ${examId}`
       );
     } catch (emailError) {
       logger.warn(
-        `Failed to send enrollment email to ${newUser.email}: ${emailError.message}`
+        `Failed to send enrollment email to ${user.email}: ${emailError.message}`
       );
-      // Continue despite email failure
     }
 
     res.status(200).json({
       status: "success",
       message: "Successfully Enrolled in exam",
-      exam: exam,
-      student: {
-        _id: newUser._id,
-        name: newUser.name,
-        enrolledExams: newUser.enrolledExams,
+      data: {
+        exam,
+        student: {
+          _id: user._id,
+          name: user.name,
+          enrolledExams: user.enrolledExams,
+        },
       },
+      valid: true,
     });
   } catch (error) {
     logger.error(`Failed to enroll in exam: ${error.message}`, {
@@ -511,16 +519,343 @@ exports.enrollInExam = async (req, res) => {
     });
 
     if (error.kind === "ObjectId") {
-      logger.warn(`Invalid exam ID format for enrollment: ${req.params.id}`);
+      logger.warn(
+        `Invalid exam ID format for enrollment: ${req.params.examId}`
+      );
       return res.status(404).json({
         status: "failed",
         message: "Exam not found",
+        data: null,
       });
     }
 
     return res.status(500).json({
       status: "failed",
       message: "Server Error",
+      data: null,
+    });
+  }
+};
+
+/**
+ * Retrieves enrolled exams for the authenticated user
+ * @async
+ * @function getEnrolledExams
+ * @param {Object} req - Express request object
+ * @param {Object} req.user - User object
+ * @param {Object} res - Express response object
+ * @returns {Object} JSON response with enrolled exams
+ */
+exports.getEnrolledExams = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    logger.debug(`Fetching enrolled exams for user ${userId}`);
+
+    const user = await User.findById(userId).populate({
+      path: "enrolledExams",
+      select: "title description duration startTime endTime totalMarks",
+    });
+
+    if (!user.enrolledExams || user.enrolledExams.length === 0) {
+      logger.info(`No enrolled exams found for user ${userId}`);
+      return res.status(200).json({
+        status: "success",
+        message: "No enrolled exams found",
+        data: [],
+      });
+    }
+
+    logger.info(
+      `Retrieved ${user.enrolledExams.length} enrolled exams for user ${userId}`
+    );
+    res.status(200).json({
+      status: "success",
+      message: "Enrolled exams fetched successfully",
+      data: user.enrolledExams,
+    });
+  } catch (error) {
+    logger.error(`Failed to fetch enrolled exams: ${error.message}`, {
+      stack: error.stack,
+    });
+    return res.status(500).json({
+      status: "failed",
+      message: "Server Error",
+      data: null,
+    });
+  }
+};
+
+/**
+ * Retrieves completed exams for the authenticated user
+ * @async
+ * @function getCompletedExams
+ * @param {Object} req - Express request object
+ * @param {Object} req.user - User object
+ * @param {Object} res - Express response object
+ * @returns {Object} JSON response with completed exams
+ */
+exports.getCompletedExams = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    logger.debug(`Fetching completed exams for user ${userId}`);
+
+    const user = await User.findById(userId)
+      .populate({
+        path: "completedExams.exam",
+        select: "title description duration startTime endTime totalMarks",
+      })
+      .populate({
+        path: "completedExams.result",
+        select: "totalScore percentage isPassed submittedAt",
+      });
+
+    if (!user.completedExams || user.completedExams.length === 0) {
+      logger.info(`No completed exams found for user ${userId}`);
+      return res.status(200).json({
+        status: "success",
+        message: "No completed exams found",
+        data: [],
+      });
+    }
+
+    const completedExams = user.completedExams.map((ce) => ({
+      exam: ce.exam,
+      result: ce.result,
+    }));
+
+    logger.info(
+      `Retrieved ${completedExams.length} completed exams for user ${userId}`
+    );
+    res.status(200).json({
+      status: "success",
+      message: "Completed exams fetched successfully",
+      data: completedExams,
+    });
+  } catch (error) {
+    logger.error(`Failed to fetch completed exams: ${error.message}`, {
+      stack: error.stack,
+    });
+    return res.status(500).json({
+      status: "failed",
+      message: "Server Error",
+      data: null,
+    });
+  }
+};
+
+/**
+ * Starts an exam session for the authenticated user
+ * @async
+ * @function startExam
+ * @param {Object} req - Express request object
+ * @param {string} req.params.examId - Exam ID
+ * @param {Object} req.user - User object
+ * @param {Object} res - Express response object
+ * @returns {Object} JSON response with exam session details
+ */
+exports.startExam = async (req, res) => {
+  console.log("start exam pe aa gaya");
+  try {
+    const examId = req.params.id;
+    logger.debug(`Starting exam ${examId} for user ${req.user.id}`);
+
+    const exam = await Exam.findById(examId).populate(
+      "questions",
+      "text type options marks"
+    );
+    if (!exam) {
+      logger.warn(`Exam not found with ID: ${examId}`);
+      return res.status(404).json({
+        status: "failed",
+        message: "Exam not found",
+        data: null,
+      });
+    }
+
+    if (!exam.isActive || new Date() > exam.endTime) {
+      logger.warn(`Exam ${examId} is not active or has ended`);
+      return res.status(400).json({
+        status: "failed",
+        message: "Exam is not active or has ended",
+        data: null,
+      });
+    }
+
+    // Check if user is enrolled
+    const user = await User.findById(req.user.id);
+    if (!user.enrolledExams.includes(examId)) {
+      logger.warn(`User ${req.user.id} is not enrolled in exam ${examId}`);
+      return res.status(403).json({
+        status: "failed",
+        message: "User is not enrolled in this exam",
+        data: null,
+      });
+    }
+
+    // Return exam details to start the session
+    return res.status(200).json({
+      status: "success",
+      message: "Exam started successfully",
+      data: {
+        examId: exam._id,
+        title: exam.title,
+        duration: exam.duration,
+        questions: exam.questions,
+        startTime: new Date(),
+        totalMarks: exam.totalMarks,
+      },
+    });
+  } catch (error) {
+    logger.error(`Failed to start exam: ${error.message}`, {
+      stack: error.stack,
+    });
+    return res.status(500).json({
+      status: "failed",
+      message: "Server Error",
+      data: null,
+    });
+  }
+};
+
+// Generates analytics for exams created by the instructor or ExamId
+/**
+ * Generates analytics for exams created by the instructor
+ * @route GET /api/exam/analytics
+ * @access Private (Instructors only)
+ * @param {Object} req - Express request object
+ * @param {Object} req.user - Authenticated user information
+ * @param {Object} res - Express response object
+ * @returns {Object} Response containing analytics data for instructor's exams
+ */
+exports.getExamAnalytics = async (req, res) => {
+  // Check if the user is an admin (optional, can be handled by middleware)
+  if (req.user.role !== "admin") {
+    logger.warn(
+      `Unauthorized attempt to access admin exam analytics by non-admin user ${req.user.id}`
+    );
+    return res.status(403).json({
+      status: "failed",
+      message: "Only admins can access exam analytics",
+    });
+  }
+
+  try {
+    const userId = req.user.id;
+    const examId = req.params.examId; // Get examId from request parameters
+    logger.debug(
+      `Fetching analytics for exams created by admin ${userId}${
+        examId ? ` for exam ${examId}` : ""
+      }`
+    );
+
+    // Build query object
+    const query = { createdBy: userId };
+    if (examId) {
+      query._id = examId;
+    }
+
+    // Fetch exams based on query
+    const exams = await Exam.find(query)
+      .select("title _id duration startTime endTime totalMarks")
+      .populate("questions");
+
+    if (exams.length === 0) {
+      logger.info(
+        `No exams found for user ${userId}${
+          examId ? ` and exam ${examId}` : ""
+        }`
+      );
+      return res.status(404).json({
+        status: "failed",
+        message: "No exams found",
+        data: [],
+      });
+    }
+
+    logger.info(
+      `Found ${exams.length} exams created by user ${userId} for analytics`
+    );
+
+    const analytics = [];
+
+    for (const exam of exams) {
+      const results = await Result.find({ exam: exam._id })
+        .populate("student", "name email")
+        .lean();
+
+      if (results.length === 0) {
+        analytics.push({
+          examId: exam._id,
+          examTitle: exam.title,
+          totalStudents: 0,
+          passedStudents: 0,
+          passRate: 0,
+          averageScore: 0,
+          lowScore: 0,
+          highScore: 0,
+          duration: exam.duration,
+          startTime: exam.startTime,
+          endTime: exam.endTime,
+          totalMarks: exam.totalMarks,
+        });
+        continue;
+      }
+
+      const totalStudents = results.length;
+      const passedStudents = results.filter((result) => result.isPassed).length;
+      const passRate = (passedStudents / totalStudents) * 100 || 0;
+
+      const totalScore = results.reduce(
+        (acc, result) => acc + result.totalScore,
+        0
+      );
+      const averageScore = totalScore / totalStudents || 0;
+
+      const scores = results.map((result) => result.totalScore);
+      const lowScore = Math.min(...scores) || 0;
+      const highScore = Math.max(...scores) || 0;
+
+      analytics.push({
+        examId: exam._id,
+        examTitle: exam.title,
+        totalStudents,
+        passedStudents,
+        passRate: Number(passRate.toFixed(2)),
+        averageScore: Number(averageScore.toFixed(2)),
+        lowScore,
+        highScore,
+        duration: exam.duration,
+        startTime: exam.startTime,
+        endTime: exam.endTime,
+        totalMarks: exam.totalMarks,
+        detailedResults: results.map((result) => ({
+          studentName: result.student.name,
+          studentEmail: result.student.email,
+          score: result.totalScore,
+          percentage: result.percentage,
+          isPassed: result.isPassed,
+          submittedAt: result.submittedAt,
+        })),
+      });
+    }
+
+    logger.info(
+      `Analytics generated for ${analytics.length} exams by admin ${userId}`
+    );
+
+    res.status(200).json({
+      status: "success",
+      message: "Exam analytics fetched successfully",
+      data: analytics,
+    });
+  } catch (error) {
+    logger.error(
+      `Error in getExamAnalytics for admin ${req.user.id}: ${error.message}`,
+      { stack: error.stack }
+    );
+    res.status(500).json({
+      status: "error",
+      message: "Internal Server Error",
     });
   }
 };

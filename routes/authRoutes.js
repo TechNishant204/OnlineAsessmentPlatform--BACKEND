@@ -7,7 +7,9 @@ const {
   resetPassword,
   registerUser,
   loginUser,
+  getCurrentUser,
 } = require("../controllers/authController");
+
 const { auth, isAdmin, isStudent } = require("../middlewares/auth");
 const {
   registerValidator,
@@ -23,6 +25,13 @@ router.post("/register", registerValidator, registerUser);
 // @desc    Authenticate user & get token
 // @access  Public
 router.post("/login", loginValidator, loginUser);
+
+/**
+ * @route   GET api/auth/me
+ * @desc    Get current user profile
+ * @access  Private
+ */
+router.get("/me", auth, getCurrentUser);
 
 /**
  * @route   POST api/auth/forgot-password
@@ -45,10 +54,5 @@ router.get("/reset-password/:token", verifyResetToken);
  * @access  Public
  */
 router.post("/reset-password", resetPassword);
-
-// @route   GET api/auth/me
-// @desc    Get user profile
-// @access  Private
-// router.get("/me", auth, authController.getUserProfile);
 
 module.exports = router;

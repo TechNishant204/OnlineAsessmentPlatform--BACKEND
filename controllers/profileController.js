@@ -166,7 +166,6 @@ exports.updateProfileByUserId = async (req, res) => {
     // Only admins can update adminInfo
     if (req.user.role === "admin" && adminInfo) {
       profileFields.adminInfo = {};
-      // New fields
       if (adminInfo.companyName)
         profileFields.adminInfo.companyName = adminInfo.companyName;
       if (adminInfo.companySize)
@@ -188,27 +187,71 @@ exports.updateProfileByUserId = async (req, res) => {
         { user: userId },
         { $set: profileFields },
         { new: true }
-      ).populate({
-        path: "user",
-        select: "-password -resetToken -resetTokenExpiration",
-      });
+      );
     } else {
       // Create new profile
       profileFields.user = userId;
       profile = new Profile(profileFields);
       await profile.save();
-      profile = await Profile.findOne({ user: userId }).populate({
-        path: "user",
-        select: "-password -resetToken -resetTokenExpiration",
-      });
     }
 
+    // Fetch the user with populated enrolledExams and completedExams
+    const user = await User.findById(userId)
+      .select("-password -resetToken -resetTokenExpiration")
+      .populate("enrolledExams completedExams");
+
+    // Fetch the profile again to ensure it's populated with user data
+    profile = await Profile.findOne({ user: userId }).populate({
+      path: "user",
+      select: "-password -resetToken -resetTokenExpiration",
+      populate: [{ path: "enrolledExams" }, { path: "completedExams" }],
+    });
+
     logger.info(`Profile successfully updated for user ${userId}`);
+
+    // Construct the response data
+    const responseData = {
+      education: profile.education || {
+        institution: "",
+        degree: "",
+        fieldOfStudy: "",
+        graduationYear: "",
+      },
+      socialLinks: profile.socialLinks || {
+        website: "",
+        linkedin: "",
+        github: "",
+      },
+      adminInfo: profile.adminInfo || {
+        companySize: "",
+        companyType: "",
+        companyName: "",
+        jobTitle: "",
+        country: "",
+      },
+      _id: profile._id,
+      user: {
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+        phone: user.phone,
+        enrolledExams: user.enrolledExams || [],
+        completedExams: user.completedExams || [],
+        createdAt: user.createdAt,
+        updatedAt: user.updatedAt,
+        __v: user.__v,
+      },
+      bio: profile.bio || "",
+      createdAt: profile.createdAt,
+      updatedAt: profile.updatedAt,
+      __v: profile.__v,
+    };
 
     return res.status(200).json({
       status: "success",
       message: "Profile updated successfully",
-      data: profile,
+      data: responseData,
     });
   } catch (error) {
     logger.error(`Error updating user profile: ${error.message}`, {
@@ -221,7 +264,6 @@ exports.updateProfileByUserId = async (req, res) => {
     });
   }
 };
-
 /**
  * Update user account information
  * @async
