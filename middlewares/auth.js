@@ -1,5 +1,6 @@
 require("dotenv").config();
 const { verifyToken } = require("../utils/jwtUtils");
+const logger = require("../utils/loggerUtils");
 
 // Authentication middleware
 exports.auth = async (req, res, next) => {

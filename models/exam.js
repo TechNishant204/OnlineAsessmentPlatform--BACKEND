@@ -50,8 +50,17 @@ const examSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-// // Indexes for performance
+// Indexes for performance
+// creates an ascending index on the createdBy field. It will speed up queries that:
+// Search for exams by creator
+// Sort exams by creator
+// Use createdBy in where clauses
 // examSchema.index({ createdBy: 1 });
+
+// This creates an ascending index on the questions field. It optimizes queries that:
+// Search for exams based on questions
+// Sort exams by questions
+// Use questions in where clauses
 // examSchema.index({ questions: 1 });
 
 module.exports = mongoose.model("Exam", examSchema);

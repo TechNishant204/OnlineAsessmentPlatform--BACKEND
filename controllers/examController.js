@@ -11,6 +11,7 @@ const Exam = require("../models/exam");
 const Result = require("../models/result");
 const emailService = require("../utils/emailService");
 const User = require("../models/user");
+const mongoose = require("mongoose");
 const logger = require("../utils/loggerUtils");
 
 /**
@@ -122,7 +123,13 @@ exports.createExam = async (req, res) => {
  */
 exports.getAllExams = async (req, res) => {
   try {
-    const exams = await Exam.find()
+    // Create the filter - if showAll query parameter is not true, filter by current admin
+    const filter = {};
+    if (req.user.role === "admin" && req.query.showAll !== "true") {
+      filter.createdBy = req.user.id;
+      logger.debug(`Filtering exams by creator: ${req.user.id}`);
+    }
+    const exams = await Exam.find(filter)
       .populate("questions", "text type marks")
       .populate("createdBy", "name email");
 
@@ -143,6 +150,52 @@ exports.getAllExams = async (req, res) => {
     });
   } catch (error) {
     logger.error(`All Exam retrieval error: ${error.message}`, {
+      stack: error.stack,
+    });
+    return res.status(500).json({
+      status: "failed",
+      message: "Server Error",
+      data: null,
+    });
+  }
+};
+
+/**
+ * @route GET /api/exam/admin/my-exams
+ * @desc Get all exams created by the current admin
+ * @access Private (Admin Only)
+ * @param {Object} req - Express request object
+ * @param {Object} req.user - Authenticated user information
+ * @param {Object} res - Express response object
+ * @returns {Object} JSON response with exams created by the admin
+ */
+exports.getMyExams = async (req, res) => {
+  try {
+    const adminId = req.user.id;
+    logger.debug(`Fetching exams created by admin: ${adminId}`);
+
+    const exams = await Exam.find({ createdBy: adminId })
+      .populate("questions")
+      .populate("createdBy", "name email")
+      .sort({ createdAt: -1 }); // Sort by newest first
+
+    if (!exams || exams.length === 0) {
+      logger.info(`No exams found created by admin: ${adminId}`);
+      return res.status(200).json({
+        status: "success",
+        message: "No exams found",
+        data: [],
+      });
+    }
+
+    logger.info(`Retrieved ${exams.length} exams created by admin: ${adminId}`);
+    res.status(200).json({
+      status: "success",
+      message: "Your exams fetched successfully",
+      data: exams,
+    });
+  } catch (error) {
+    logger.error(`Error fetching admin's exams: ${error.message}`, {
       stack: error.stack,
     });
     return res.status(500).json({
@@ -415,6 +468,7 @@ exports.deleteExam = async (req, res) => {
   }
 };
 
+// Enroll a user in the exam
 /**
  * Enrolls a user in an exam
  * @async
@@ -427,8 +481,17 @@ exports.deleteExam = async (req, res) => {
  */
 exports.enrollInExam = async (req, res) => {
   try {
-    const examId = req.params.id;
+    const examId = req.params.examId;
     const userId = req.user.id;
+
+    // Validate examId
+    if (examId && !mongoose.Types.ObjectId.isValid(examId)) {
+      logger.warn(`Invalid exam ID format: ${examId}`);
+      return res.status(400).json({
+        status: "failed",
+        message: "Invalid exam ID",
+      });
+    }
 
     logger.debug(`User ${userId} attempting to enroll in exam ${examId}`);
 
@@ -453,7 +516,9 @@ exports.enrollInExam = async (req, res) => {
       });
     }
 
-    if (new Date(exam.startTime) < new Date()) {
+    // Check if exam enrollment period has ended
+    const now = new Date();
+    if (now > exam.endTime) {
       logger.info(
         `Enrollment failed - Enrollment period has ended for exam ${examId}`
       );
@@ -553,7 +618,8 @@ exports.getEnrolledExams = async (req, res) => {
 
     const user = await User.findById(userId).populate({
       path: "enrolledExams",
-      select: "title description duration startTime endTime totalMarks",
+      select:
+        "title description duration startTime endTime totalMarks passingMarks",
     });
 
     if (!user.enrolledExams || user.enrolledExams.length === 0) {
@@ -656,7 +722,7 @@ exports.getCompletedExams = async (req, res) => {
 exports.startExam = async (req, res) => {
   console.log("start exam pe aa gaya");
   try {
-    const examId = req.params.id;
+    const examId = req.params.examId;
     logger.debug(`Starting exam ${examId} for user ${req.user.id}`);
 
     const exam = await Exam.findById(examId).populate(
@@ -682,7 +748,10 @@ exports.startExam = async (req, res) => {
     }
 
     // Check if user is enrolled
-    const user = await User.findById(req.user.id);
+    const user = await User.findById(req.user.id).populate({
+      path: "completedExams.exam",
+      select: "_id",
+    });
     if (!user.enrolledExams.includes(examId)) {
       logger.warn(`User ${req.user.id} is not enrolled in exam ${examId}`);
       return res.status(403).json({
@@ -692,8 +761,16 @@ exports.startExam = async (req, res) => {
       });
     }
 
-    // Return exam details to start the session
-    return res.status(200).json({
+    // Check if the user has already completed the exam
+    const existingResult = await Result.findOne({
+      student: req.user.id,
+      exam: examId,
+    });
+
+    const hasCompletedExam = existingResult !== null;
+
+    // Return exam details along with the "alreadyGiven" field
+    res.status(200).json({
       status: "success",
       message: "Exam started successfully",
       data: {
@@ -703,6 +780,7 @@ exports.startExam = async (req, res) => {
         questions: exam.questions,
         startTime: new Date(),
         totalMarks: exam.totalMarks,
+        alreadyGiven: hasCompletedExam, // Indicates if the user has already given the exam
       },
     });
   } catch (error) {
@@ -716,7 +794,6 @@ exports.startExam = async (req, res) => {
     });
   }
 };
-
 // Generates analytics for exams created by the instructor or ExamId
 /**
  * Generates analytics for exams created by the instructor
@@ -728,7 +805,6 @@ exports.startExam = async (req, res) => {
  * @returns {Object} Response containing analytics data for instructor's exams
  */
 exports.getExamAnalytics = async (req, res) => {
-  // Check if the user is an admin (optional, can be handled by middleware)
   if (req.user.role !== "admin") {
     logger.warn(
       `Unauthorized attempt to access admin exam analytics by non-admin user ${req.user.id}`
@@ -741,7 +817,17 @@ exports.getExamAnalytics = async (req, res) => {
 
   try {
     const userId = req.user.id;
-    const examId = req.params.examId; // Get examId from request parameters
+    const examId = req.params.examId;
+
+    // Validate examId
+    if (examId && !mongoose.Types.ObjectId.isValid(examId)) {
+      logger.warn(`Invalid exam ID format: ${examId}`);
+      return res.status(400).json({
+        status: "failed",
+        message: "Invalid exam ID",
+      });
+    }
+
     logger.debug(
       `Fetching analytics for exams created by admin ${userId}${
         examId ? ` for exam ${examId}` : ""
@@ -802,14 +888,15 @@ exports.getExamAnalytics = async (req, res) => {
       }
 
       const totalStudents = results.length;
-      const passedStudents = results.filter((result) => result.isPassed).length;
-      const passRate = (passedStudents / totalStudents) * 100 || 0;
-
+      const passedStudents = results.filter((result) => result.isPassed).length; // Count of students who passed
+      const passRate = (passedStudents / totalStudents) * 100 || 0; // Pass rate in percentage
+      
+      
       const totalScore = results.reduce(
         (acc, result) => acc + result.totalScore,
         0
       );
-      const averageScore = totalScore / totalStudents || 0;
+      const averageScore = totalScore / totalStudents || 0; // Average score
 
       const scores = results.map((result) => result.totalScore);
       const lowScore = Math.min(...scores) || 0;

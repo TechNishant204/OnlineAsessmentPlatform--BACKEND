@@ -287,3 +287,448 @@ ReferenceError: exam is not defined
 2025-04-16 13:30:33 [ERROR]: Token verification failed
 2025-04-16 14:51:33 [ERROR]: Token verification failed
 2025-04-16 15:12:44 [ERROR]: Token verification failed
+2025-04-19 09:12:22 [ERROR]: Token verification failed
+2025-04-19 11:04:49 [ERROR]: Token verification failed
+2025-04-19 11:04:49 [ERROR]: Token verification failed
+2025-04-19 11:04:49 [ERROR]: Token verification failed
+2025-04-19 12:47:53 [ERROR]: Token verification failed
+2025-04-19 12:47:53 [ERROR]: Token verification failed
+2025-04-19 12:47:53 [ERROR]: Token verification failed
+2025-04-19 14:10:41 [ERROR]: Token verification failed
+2025-04-19 16:47:55 [ERROR]: Token verification failed
+2025-04-19 17:48:43 [ERROR]: Token verification failed
+2025-04-19 20:56:55 [ERROR]: Token verification failed
+2025-04-19 20:56:55 [ERROR]: Token verification failed
+2025-04-19 20:56:55 [ERROR]: Token verification failed
+2025-04-19 21:20:49 [ERROR]: Error adding questions to exam: Cannot read properties of undefined (reading 'toString')
+TypeError: Cannot read properties of undefined (reading 'toString')
+    at exports.addQuestionsToExam (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\questionController.js:210:22)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-04-19 21:20:49 [ERROR]: POST /api/question/exam/67fb721480c2fee5754e8cf5 500 130ms
+2025-04-19 21:20:52 [ERROR]: Error adding questions to exam: Cannot read properties of undefined (reading 'toString')
+TypeError: Cannot read properties of undefined (reading 'toString')
+    at exports.addQuestionsToExam (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\questionController.js:210:22)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-04-19 21:20:52 [ERROR]: POST /api/question/exam/67fb721480c2fee5754e8cf5 500 47ms
+2025-04-19 21:21:22 [ERROR]: Error adding questions to exam: Cannot read properties of undefined (reading 'toString')
+TypeError: Cannot read properties of undefined (reading 'toString')
+    at exports.addQuestionsToExam (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\questionController.js:210:22)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-04-19 21:21:22 [ERROR]: POST /api/question/exam/67fb721480c2fee5754e8cf5 500 49ms
+2025-04-19 21:23:04 [ERROR]: Error adding questions to exam: Cannot destructure property 'examId' of 'req.params.id' as it is undefined.
+TypeError: Cannot destructure property 'examId' of 'req.params.id' as it is undefined.
+    at exports.addQuestionsToExam (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\questionController.js:188:13)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at exports.isAdmin (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\middlewares\auth.js:74:5)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at exports.auth (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\middlewares\auth.js:52:5)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:117:3)
+2025-04-19 21:23:04 [ERROR]: POST /api/question/exam/67fb721480c2fee5754e8cf5 500 12ms
+2025-04-19 22:44:29 [ERROR]: Token verification failed
+2025-04-19 23:49:13 [ERROR]: Token verification failed
+2025-04-20 01:05:00 [ERROR]: Token verification failed
+2025-04-20 10:22:39 [ERROR]: Token verification failed
+2025-04-20 10:25:43 [ERROR]: Error adding questions to exam: Cannot destructure property 'examId' of 'req.params.id' as it is undefined.
+TypeError: Cannot destructure property 'examId' of 'req.params.id' as it is undefined.
+    at exports.addQuestionsToExam (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\questionController.js:188:13)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at exports.isAdmin (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\middlewares\auth.js:74:5)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at exports.auth (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\middlewares\auth.js:52:5)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:117:3)
+2025-04-20 10:25:43 [ERROR]: POST /api/question/exam/6803f66980c2fee5754e8d26 500 74ms
+2025-04-20 10:25:46 [ERROR]: Error adding questions to exam: Cannot destructure property 'examId' of 'req.params.id' as it is undefined.
+TypeError: Cannot destructure property 'examId' of 'req.params.id' as it is undefined.
+    at exports.addQuestionsToExam (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\questionController.js:188:13)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at exports.isAdmin (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\middlewares\auth.js:74:5)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at exports.auth (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\middlewares\auth.js:52:5)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:117:3)
+2025-04-20 10:25:46 [ERROR]: POST /api/question/exam/6803f66980c2fee5754e8d26 500 5ms
+2025-04-20 10:25:46 [ERROR]: Error adding questions to exam: Cannot destructure property 'examId' of 'req.params.id' as it is undefined.
+TypeError: Cannot destructure property 'examId' of 'req.params.id' as it is undefined.
+    at exports.addQuestionsToExam (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\questionController.js:188:13)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at exports.isAdmin (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\middlewares\auth.js:74:5)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at exports.auth (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\middlewares\auth.js:52:5)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:117:3)
+2025-04-20 10:25:46 [ERROR]: POST /api/question/exam/6803f66980c2fee5754e8d26 500 3ms
+2025-04-20 10:25:47 [ERROR]: Error adding questions to exam: Cannot destructure property 'examId' of 'req.params.id' as it is undefined.
+TypeError: Cannot destructure property 'examId' of 'req.params.id' as it is undefined.
+    at exports.addQuestionsToExam (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\questionController.js:188:13)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at exports.isAdmin (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\middlewares\auth.js:74:5)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at exports.auth (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\middlewares\auth.js:52:5)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:117:3)
+2025-04-20 10:25:47 [ERROR]: POST /api/question/exam/6803f66980c2fee5754e8d26 500 4ms
+2025-04-20 10:25:47 [ERROR]: Error adding questions to exam: Cannot destructure property 'examId' of 'req.params.id' as it is undefined.
+TypeError: Cannot destructure property 'examId' of 'req.params.id' as it is undefined.
+    at exports.addQuestionsToExam (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\questionController.js:188:13)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at exports.isAdmin (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\middlewares\auth.js:74:5)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at exports.auth (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\middlewares\auth.js:52:5)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:117:3)
+2025-04-20 10:25:47 [ERROR]: POST /api/question/exam/6803f66980c2fee5754e8d26 500 4ms
+2025-04-20 10:26:16 [ERROR]: Error adding questions to exam: Cannot destructure property 'examId' of 'req.params.id' as it is undefined.
+TypeError: Cannot destructure property 'examId' of 'req.params.id' as it is undefined.
+    at exports.addQuestionsToExam (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\questionController.js:188:13)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at exports.isAdmin (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\middlewares\auth.js:74:5)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at exports.auth (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\middlewares\auth.js:52:5)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:117:3)
+2025-04-20 10:26:16 [ERROR]: POST /api/question/exam/6803f66980c2fee5754e8d26 500 3ms
+2025-04-20 11:42:17 [ERROR]: Token verification failed
+2025-04-20 12:52:06 [ERROR]: Token verification failed
+2025-04-20 13:27:59 [ERROR]: Error in getExamAnalytics for admin 67fe7980adb46966fcd94f57: Cannot convert object to primitive value
+TypeError: Cannot convert object to primitive value
+    at exports.getExamAnalytics (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\examController.js:749:31)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at exports.isAdmin (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\middlewares\auth.js:74:5)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at exports.auth (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\middlewares\auth.js:52:5)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:117:3)
+2025-04-20 13:27:59 [ERROR]: GET /api/exam/analytics/67fe8aa980316bcd278074a1 500 6ms
+2025-04-20 13:28:04 [ERROR]: Error in getExamAnalytics for admin 67fe7980adb46966fcd94f57: Cannot convert object to primitive value
+TypeError: Cannot convert object to primitive value
+    at exports.getExamAnalytics (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\examController.js:749:31)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at exports.isAdmin (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\middlewares\auth.js:74:5)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at exports.auth (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\middlewares\auth.js:52:5)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:117:3)
+2025-04-20 13:28:04 [ERROR]: GET /api/exam/analytics/6803f66980c2fee5754e8d26 500 3ms
+2025-04-20 13:28:08 [ERROR]: Error in getExamAnalytics for admin 67fe7980adb46966fcd94f57: Cannot convert object to primitive value
+TypeError: Cannot convert object to primitive value
+    at exports.getExamAnalytics (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\examController.js:749:31)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at exports.isAdmin (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\middlewares\auth.js:74:5)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at exports.auth (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\middlewares\auth.js:52:5)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:117:3)
+2025-04-20 13:28:08 [ERROR]: GET /api/exam/analytics/67ff4ce4a6697856e21455a2 500 3ms
+2025-04-20 17:12:07 [ERROR]: Token verification failed
+2025-04-20 17:23:27 [ERROR]: Error in getExamAnalytics for admin 67fe7980adb46966fcd94f57: Cannot convert object to primitive value
+TypeError: Cannot convert object to primitive value
+    at exports.getExamAnalytics (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\examController.js:749:31)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at exports.isAdmin (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\middlewares\auth.js:74:5)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at exports.auth (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\middlewares\auth.js:52:5)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:117:3)
+2025-04-20 17:23:27 [ERROR]: GET /api/exam/analytics/67fe8aa980316bcd278074a1 500 5ms
+2025-04-20 17:24:58 [ERROR]: Error in getExamAnalytics for admin 67fe7980adb46966fcd94f57: Cannot convert object to primitive value
+TypeError: Cannot convert object to primitive value
+    at exports.getExamAnalytics (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\examController.js:749:31)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at exports.isAdmin (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\middlewares\auth.js:74:5)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at exports.auth (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\middlewares\auth.js:52:5)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:117:3)
+2025-04-20 17:24:58 [ERROR]: GET /api/exam/analytics/6803f66980c2fee5754e8d26 500 14ms
+2025-04-20 19:52:26 [ERROR]: Token verification failed
+2025-04-21 09:39:20 [ERROR]: Token verification failed
+2025-04-21 10:13:51 [ERROR]: Error in getExamAnalytics for admin 67fb92fbd0310adfe84ca4b6: Cannot convert object to primitive value
+TypeError: Cannot convert object to primitive value
+    at exports.getExamAnalytics (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\examController.js:801:31)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at exports.isAdmin (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\middlewares\auth.js:74:5)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at exports.auth (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\middlewares\auth.js:52:5)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:117:3)
+2025-04-21 10:13:51 [ERROR]: GET /api/exam/admin/analytics 500 8ms
+2025-04-21 10:15:20 [ERROR]: Failed to enroll in exam: Cannot convert object to primitive value
+TypeError: Cannot convert object to primitive value
+    at exports.enrollInExam (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\examController.js:485:65)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at exports.auth (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\middlewares\auth.js:52:5)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\index.js:295:15
+2025-04-21 10:15:20 [ERROR]: POST /api/exam/enroll/67fe8c1f80316bcd278074a3 500 5ms
+2025-04-21 10:15:49 [ERROR]: Failed to enroll in exam: Cannot convert object to primitive value
+TypeError: Cannot convert object to primitive value
+    at exports.enrollInExam (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\examController.js:485:65)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at exports.auth (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\middlewares\auth.js:52:5)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\index.js:295:15
+2025-04-21 10:15:49 [ERROR]: POST /api/exam/enroll/67fe8c1f80316bcd278074a3 500 5ms
+2025-04-21 10:18:48 [ERROR]: Failed to enroll in exam: Cannot convert object to primitive value
+TypeError: Cannot convert object to primitive value
+    at exports.enrollInExam (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\examController.js:485:65)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at exports.auth (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\middlewares\auth.js:52:5)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\index.js:295:15
+2025-04-21 10:18:48 [ERROR]: POST /api/exam/enroll/6802990f55b3ea0e6101da23 500 41ms
+2025-04-21 11:14:49 [ERROR]: Token verification failed
+2025-04-21 11:36:08 [ERROR]: Error in createResult: String(...).trim(...).toLowerCase(...).equals is not a function
+TypeError: String(...).trim(...).toLowerCase(...).equals is not a function
+    at exports.submitExam (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\resultController.js:62:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-04-21 11:36:08 [ERROR]: POST /api/result 500 79ms
+2025-04-21 11:36:37 [ERROR]: Error in createResult: String(...).trim(...).toLowerCase(...).equals is not a function
+TypeError: String(...).trim(...).toLowerCase(...).equals is not a function
+    at exports.submitExam (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\resultController.js:62:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-04-21 11:36:37 [ERROR]: POST /api/result 500 79ms
+2025-04-21 11:36:59 [ERROR]: Error in createResult: String(...).trim(...).toLowerCase(...).equals is not a function
+TypeError: String(...).trim(...).toLowerCase(...).equals is not a function
+    at exports.submitExam (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\resultController.js:62:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-04-21 11:36:59 [ERROR]: POST /api/result 500 77ms
+2025-04-21 11:37:04 [ERROR]: Error in createResult: String(...).trim(...).toLowerCase(...).equals is not a function
+TypeError: String(...).trim(...).toLowerCase(...).equals is not a function
+    at exports.submitExam (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\resultController.js:62:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-04-21 11:37:04 [ERROR]: POST /api/result 500 82ms
+2025-04-21 11:51:57 [ERROR]: Error in getExamAnalytics for admin 67fb92fbd0310adfe84ca4b6: Cannot convert object to primitive value
+TypeError: Cannot convert object to primitive value
+    at exports.getExamAnalytics (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\examController.js:807:31)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at exports.isAdmin (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\middlewares\auth.js:74:5)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at exports.auth (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\middlewares\auth.js:52:5)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:117:3)
+2025-04-21 11:51:57 [ERROR]: GET /api/exam/admin/analytics 500 8ms
+2025-04-21 12:43:22 [ERROR]: Token verification failed
+2025-04-21 12:47:51 [ERROR]: Error in getExamAnalytics for admin 67fb92fbd0310adfe84ca4b6: Cannot convert object to primitive value
+TypeError: Cannot convert object to primitive value
+    at exports.getExamAnalytics (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\examController.js:807:31)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at exports.isAdmin (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\middlewares\auth.js:74:5)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at exports.auth (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\middlewares\auth.js:52:5)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:117:3)
+2025-04-21 12:47:51 [ERROR]: GET /api/exam/admin/analytics 500 6ms
+2025-04-21 12:48:07 [ERROR]: Error in getExamAnalytics for admin 67fb92fbd0310adfe84ca4b6: Cannot convert object to primitive value
+TypeError: Cannot convert object to primitive value
+    at exports.getExamAnalytics (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\examController.js:807:31)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at exports.isAdmin (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\middlewares\auth.js:74:5)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at exports.auth (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\middlewares\auth.js:52:5)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:117:3)
+2025-04-21 12:48:07 [ERROR]: GET /api/exam/admin/analytics 500 3ms
+2025-04-21 13:07:41 [ERROR]: GET /api/exam/admin/analytics/6805c9ca5dde1fc0345eaa49 500 5ms
+2025-04-21 13:10:23 [ERROR]: Error in getExamAnalytics for admin 67fb92fbd0310adfe84ca4b6: mongoose is not defined
+ReferenceError: mongoose is not defined
+    at exports.getExamAnalytics (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\examController.js:806:20)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at exports.isAdmin (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\middlewares\auth.js:74:5)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at exports.auth (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\middlewares\auth.js:52:5)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:117:3)
+2025-04-21 13:10:23 [ERROR]: GET /api/exam/admin/analytics/6805c9ca5dde1fc0345eaa49 500 5ms
+2025-04-21 13:15:57 [ERROR]: Error in getExamAnalytics for admin 67fb92fbd0310adfe84ca4b6: mongoose is not defined
+ReferenceError: mongoose is not defined
+    at exports.getExamAnalytics (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\examController.js:806:20)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at exports.isAdmin (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\middlewares\auth.js:74:5)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at exports.auth (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\middlewares\auth.js:52:5)
+    at Layer.handleRequest (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\router\lib\route.js:117:3)
+2025-04-21 13:15:57 [ERROR]: GET /api/exam/admin/analytics/6805c9ca5dde1fc0345eaa49 500 12ms
+2025-04-21 13:48:06 [ERROR]: GET /api/result/exam/67ff4ce4a6697856e21455a2 500 68ms
+2025-04-21 13:48:06 [ERROR]: GET /api/exam/admin/analytics/67ff4ce4a6697856e21455a2 500 5ms
+2025-04-21 13:48:15 [ERROR]: GET /api/result/exam/67fe8aa980316bcd278074a1 500 6ms
+2025-04-21 13:48:15 [ERROR]: GET /api/exam/admin/analytics/67fe8aa980316bcd278074a1 500 6ms
+2025-04-21 13:48:17 [ERROR]: GET /api/result/exam/67fe8c1f80316bcd278074a3 500 5ms
+2025-04-21 13:48:17 [ERROR]: GET /api/exam/admin/analytics/67fe8c1f80316bcd278074a3 500 4ms
+2025-04-21 13:48:56 [ERROR]: POST /api/exam/admin/exams 500 13ms
+2025-04-21 20:02:01 [ERROR]: Token verification failed
+2025-04-21 21:42:10 [ERROR]: Token verification failed
+2025-04-21 23:07:58 [ERROR]: Token verification failed
+2025-04-21 23:07:58 [ERROR]: Token verification failed
+2025-04-21 23:07:58 [ERROR]: Token verification failed
+2025-04-21 23:21:49 [ERROR]: Failed to start exam: Cannot read properties of undefined (reading 'toString')
+TypeError: Cannot read properties of undefined (reading 'toString')
+    at C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\examController.js:754:45
+    at Proxy.some (<anonymous>)
+    at exports.startExam (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\examController.js:753:50)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-04-21 23:21:49 [ERROR]: GET /api/exam/start/6805c9ca5dde1fc0345eaa49 500 222ms
+2025-04-21 23:21:56 [ERROR]: Failed to start exam: Cannot read properties of undefined (reading 'toString')
+TypeError: Cannot read properties of undefined (reading 'toString')
+    at C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\examController.js:754:45
+    at Proxy.some (<anonymous>)
+    at exports.startExam (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\examController.js:753:50)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-04-21 23:21:56 [ERROR]: GET /api/exam/start/6805c9ca5dde1fc0345eaa49 500 120ms
+2025-04-21 23:22:08 [ERROR]: Failed to start exam: Cannot read properties of undefined (reading 'toString')
+TypeError: Cannot read properties of undefined (reading 'toString')
+    at C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\examController.js:754:45
+    at Proxy.some (<anonymous>)
+    at exports.startExam (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\examController.js:753:50)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-04-21 23:22:08 [ERROR]: GET /api/exam/start/6805c9ca5dde1fc0345eaa49 500 121ms
+2025-04-21 23:24:26 [ERROR]: Failed to start exam: Cannot read properties of undefined (reading 'toString')
+TypeError: Cannot read properties of undefined (reading 'toString')
+    at C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\examController.js:754:45
+    at Proxy.some (<anonymous>)
+    at exports.startExam (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\examController.js:753:50)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-04-21 23:24:26 [ERROR]: GET /api/exam/start/6805c9ca5dde1fc0345eaa49 500 139ms
+2025-04-21 23:26:51 [ERROR]: Failed to start exam: Cannot read properties of undefined (reading 'toString')
+TypeError: Cannot read properties of undefined (reading 'toString')
+    at C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\examController.js:754:45
+    at Proxy.some (<anonymous>)
+    at exports.startExam (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\examController.js:753:50)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-04-21 23:26:51 [ERROR]: GET /api/exam/start/6805c9ca5dde1fc0345eaa49 500 216ms
+2025-04-21 23:32:09 [ERROR]: Failed to start exam: Cannot read properties of undefined (reading 'toString')
+TypeError: Cannot read properties of undefined (reading 'toString')
+    at C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\examController.js:754:45
+    at Proxy.some (<anonymous>)
+    at exports.startExam (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\examController.js:753:50)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-04-21 23:32:09 [ERROR]: GET /api/exam/start/6805c9ca5dde1fc0345eaa49 500 127ms
+2025-04-21 23:35:56 [ERROR]: Failed to start exam: Cannot read properties of undefined (reading 'toString')
+TypeError: Cannot read properties of undefined (reading 'toString')
+    at C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\examController.js:754:45
+    at Proxy.some (<anonymous>)
+    at exports.startExam (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\examController.js:753:50)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-04-21 23:35:56 [ERROR]: GET /api/exam/start/6805c9ca5dde1fc0345eaa49 500 156ms
+2025-04-21 23:46:55 [ERROR]: Failed to start exam: Cannot read properties of undefined (reading 'toString')
+TypeError: Cannot read properties of undefined (reading 'toString')
+    at C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\examController.js:754:45
+    at Proxy.some (<anonymous>)
+    at exports.startExam (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\examController.js:753:50)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-04-21 23:46:55 [ERROR]: GET /api/exam/start/67fe8aa980316bcd278074a1 500 131ms
+2025-04-22 00:08:40 [ERROR]: Token verification failed
+2025-04-22 00:27:57 [ERROR]: Failed to start exam: Cannot read properties of undefined (reading 'toString')
+TypeError: Cannot read properties of undefined (reading 'toString')
+    at C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\examController.js:763:45
+    at Proxy.some (<anonymous>)
+    at exports.startExam (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\examController.js:762:50)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-04-22 00:27:57 [ERROR]: GET /api/exam/start/6802990f55b3ea0e6101da23 500 144ms
+2025-04-22 00:28:36 [ERROR]: Failed to start exam: Cannot read properties of undefined (reading 'toString')
+TypeError: Cannot read properties of undefined (reading 'toString')
+    at C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\examController.js:763:45
+    at Proxy.some (<anonymous>)
+    at exports.startExam (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\examController.js:762:50)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-04-22 00:28:36 [ERROR]: GET /api/exam/start/67fe8aa980316bcd278074a1 500 129ms
+2025-04-22 00:31:07 [ERROR]: Failed to start exam: Cannot read properties of undefined (reading 'toString')
+TypeError: Cannot read properties of undefined (reading 'toString')
+    at C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\examController.js:763:45
+    at Proxy.some (<anonymous>)
+    at exports.startExam (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\examController.js:762:50)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-04-22 00:31:07 [ERROR]: GET /api/exam/start/67fe8aa980316bcd278074a1 500 151ms
+2025-04-22 09:02:20 [ERROR]: Token verification failed
+2025-04-22 09:32:52 [ERROR]: Token verification failed
+2025-04-22 10:07:35 [ERROR]: Unhandled error: Expected double-quoted property name in JSON at position 918 (line 31 column 1)
+SyntaxError: Expected double-quoted property name in JSON at position 918 (line 31 column 1)
+    at JSON.parse (<anonymous>)
+    at parse (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\body-parser\lib\types\json.js:77:19)
+    at C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\body-parser\lib\read.js:123:18
+    at AsyncResource.runInAsyncScope (node:async_hooks:211:14)
+    at invokeCallback (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\raw-body\index.js:238:16)
+    at done (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\raw-body\index.js:227:7)
+    at IncomingMessage.onEnd (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\node_modules\raw-body\index.js:287:7)
+    at IncomingMessage.emit (node:events:524:28)
+    at endReadableNT (node:internal/streams/readable:1698:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+2025-04-22 10:35:34 [ERROR]: Token verification failed
+2025-04-22 10:35:34 [ERROR]: Token verification failed
+2025-04-22 10:35:34 [ERROR]: Token verification failed
+2025-04-22 10:36:58 [ERROR]: Error in createResult: proctorFlags.map is not a function
+TypeError: proctorFlags.map is not a function
+    at exports.submitExam (C:\Users\nisha\Videos\OnlineAsessmentPlatform- BACKEND\controllers\resultController.js:97:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-04-22 10:36:58 [ERROR]: POST /api/result 500 118ms

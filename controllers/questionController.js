@@ -3,21 +3,6 @@ const { validationResult } = require("express-validator");
 const logger = require("../utils/loggerUtils");
 const Exam = require("../models/exam");
 
-/**
- * Creates a new question in the database
- * @param {Object} req - Express request object
- * @param {Object} req.body - Request body containing question details
- * @param {string} req.body.text - The text content of the question
- * @param {string} req.body.type - The type of question (e.g., multiple choice, essay)
- * @param {Array} req.body.options - Array of possible answers for the question
- * @param {string} req.body.correctAnswer - The correct answer from options
- * @param {number} req.body.marks - The marks/points assigned to the question
- * @param {string} req.body.difficulty - The difficulty level of the question
- * @param {Object} req.user - Logged in user details
- * @param {string} req.user.id - The ID of the user creating the question
- * @param {Object} res - Express response object
- * @returns {Object} JSON response with question data or error message
- */
 exports.createQuestion = async (req, res) => {
   // Validate the request body
   const errors = validationResult(req);
@@ -39,14 +24,68 @@ exports.createQuestion = async (req, res) => {
       `Attempting to create new ${type} question by user ${req.user.id}`
     );
 
-    // Verify the correctAnswer is within the options array
-    if (!options.includes(correctAnswer)) {
-      logger.warn(
-        `Question creation failed: correct answer "${correctAnswer}" not in options`
-      );
+    // Validate based on question type
+    if (type === "multiple-choice") {
+      // Multiple choice questions must have options
+      if (!Array.isArray(options) || options.length < 2) {
+        logger.warn(
+          `Question creation failed: multiple-choice questions require at least 2 options`
+        );
+        return res.status(400).json({
+          status: "failed",
+          error: "Multiple-choice questions require at least 2 options",
+        });
+      }
+
+      // Check for empty options
+      if (options.some((opt) => !opt || !opt.trim())) {
+        logger.warn(`Question creation failed: all options must have content`);
+        return res.status(400).json({
+          status: "failed",
+          error: "All options must have content",
+        });
+      }
+
+      // Verify the correctAnswer is within the options array
+      if (!options.includes(correctAnswer)) {
+        logger.warn(
+          `Question creation failed: correct answer "${correctAnswer}" not in options`
+        );
+        return res.status(400).json({
+          status: "failed",
+          error: "Correct answer must be one of the provided options",
+        });
+      }
+    } else if (type === "true-false") {
+      // True/False questions must have correctAnswer as either "true" or "false"
+      if (correctAnswer !== "true" && correctAnswer !== "false") {
+        logger.warn(
+          `Question creation failed: true-false questions require correctAnswer to be "true" or "false"`
+        );
+        return res.status(400).json({
+          status: "failed",
+          error:
+            'True/False questions require correct answer to be "true" or "false"',
+        });
+      }
+    } else if (type === "short-answer") {
+      // Short answer questions must have a non-empty correctAnswer
+      if (!correctAnswer || !correctAnswer.trim()) {
+        logger.warn(
+          `Question creation failed: short-answer questions require a non-empty correctAnswer`
+        );
+        return res.status(400).json({
+          status: "failed",
+          error: "Short answer questions require a non-empty correct answer",
+        });
+      }
+    } else {
+      // Invalid question type
+      logger.warn(`Question creation failed: invalid question type "${type}"`);
       return res.status(400).json({
         status: "failed",
-        error: "Correct answer must be one of the provided options",
+        error:
+          "Invalid question type. Supported types are: multiple-choice, true-false, short-answer",
       });
     }
 
@@ -62,13 +101,16 @@ exports.createQuestion = async (req, res) => {
       examId = exam;
     }
 
+    // Prepare options based on question type
+    const questionOptions = type === "multiple-choice" ? options : [];
+
     // Create a new question
     const question = await Question.create({
       text,
       type,
-      options,
+      options: questionOptions,
       correctAnswer,
-      marks,
+      marks: parseInt(marks, 10) || 1, // Ensure marks is a number, default to 1
       difficulty,
       createdBy: req.user.id,
       exam: examId,
@@ -93,24 +135,18 @@ exports.createQuestion = async (req, res) => {
       logger.info(
         `Exam ${examId} updated with question ${question._id} by user ${req.user.id}`
       );
+
+      // Calculate and update total marks for the exam
+      const newTotalMarks = updatedExam.questions.reduce(
+        (sum, q) => sum + (parseInt(q.marks, 10) || 0),
+        0
+      );
+      await Exam.findByIdAndUpdate(examId, { totalMarks: newTotalMarks });
     }
 
     logger.info(
       `Question created successfully: ${question._id} by user ${req.user.id}`
     );
-
-    if (examId) {
-      const updatedExam = await Exam.findByIdAndUpdate(
-        examId,
-        { $addToSet: { questions: question._id } },
-        { new: true, runValidators: true }
-      ).populate("questions", "marks");
-      const newTotalMarks = updatedExam.questions.reduce(
-        (sum, q) => sum + q.marks,
-        0
-      );
-      await Exam.findByIdAndUpdate(examId, { totalMarks: newTotalMarks });
-    }
 
     // Return the created question as a response
     res.status(201).json({
@@ -129,6 +165,155 @@ exports.createQuestion = async (req, res) => {
   }
 };
 
+// Add this method to add multiple questions from the QuestionFormModal
+exports.addQuestionsToExam = async (req, res) => {
+  try {
+    // fetch the examId from the request parameters
+    // and the questions from the request body
+    const { examId } = req.params;
+    const questions = req.body;
+
+    if (!Array.isArray(questions) || questions.length === 0) {
+      return res.status(400).json({
+        status: "failed",
+        message:
+          "Questions must be provided as an array with at least one question",
+      });
+    }
+
+    // Verify exam exists
+    const exam = await Exam.findById(examId);
+    if (!exam) {
+      return res.status(404).json({
+        status: "failed",
+        message: "Exam not found",
+      });
+    }
+
+    // Verify user has permission to modify this exam
+    if (
+      exam.createdBy.toString() !== req.user.id &&
+      !req.user.roles.includes("admin")
+    ) {
+      return res.status(403).json({
+        status: "failed",
+        message: "You don't have permission to modify this exam",
+      });
+    }
+
+    const createdQuestions = [];
+    let totalNewMarks = 0;
+
+    // Process each question
+    for (const questionData of questions) {
+      const { text, type, options, correctAnswer, marks, difficulty } =
+        questionData;
+
+      // Skip validation here as we'll do type-specific validation below
+      let questionOptions = [];
+      let validatedCorrectAnswer = correctAnswer;
+
+      // Validate based on question type
+      if (type === "multiple-choice") {
+        // Ensure options is an array with content
+        if (!Array.isArray(options) || options.length < 2) {
+          continue; // Skip this question
+        }
+
+        // Filter out empty options
+        questionOptions = options.filter((opt) => opt && opt.trim());
+
+        // Skip if we don't have enough options after filtering
+        if (questionOptions.length < 2) {
+          continue;
+        }
+
+        // Check if correctAnswer is in the options
+        if (!questionOptions.includes(correctAnswer)) {
+          continue; // Skip this question
+        }
+      } else if (type === "true-false") {
+        // For true-false, ensure correctAnswer is valid
+        if (correctAnswer !== "true" && correctAnswer !== "false") {
+          continue; // Skip this question
+        }
+      } else if (type === "short-answer") {
+        // For short answer, ensure correctAnswer is not empty
+        if (!correctAnswer || !correctAnswer.trim()) {
+          continue; // Skip this question
+        }
+      } else {
+        // Invalid question type
+        continue; // Skip this question
+      }
+
+      // All validation passed, create the question
+      const parsedMarks = parseInt(marks, 10) || 1; // Default to 1 if marks is invalid
+
+      const question = await Question.create({
+        text,
+        type,
+        options: type === "multiple-choice" ? questionOptions : [],
+        correctAnswer: validatedCorrectAnswer,
+        marks: parsedMarks,
+        difficulty: ["easy", "medium", "hard"].includes(difficulty)
+          ? difficulty
+          : "medium",
+        createdBy: req.user.id,
+        exam: examId,
+      });
+
+      createdQuestions.push(question);
+      totalNewMarks += parsedMarks;
+
+      // Update exam with the new question ID
+      await Exam.findByIdAndUpdate(examId, {
+        $addToSet: { questions: question._id },
+      });
+    }
+
+    if (createdQuestions.length === 0) {
+      return res.status(400).json({
+        status: "failed",
+        message: "No valid questions were provided",
+      });
+    }
+
+    // Update exam's total marks
+    const updatedExam = await Exam.findById(examId).populate(
+      "questions",
+      "marks"
+    );
+    const newTotalMarks = updatedExam.questions.reduce(
+      (sum, q) => sum + (parseInt(q.marks, 10) || 0),
+      0
+    );
+    await Exam.findByIdAndUpdate(examId, { totalMarks: newTotalMarks });
+
+    logger.info(
+      `${createdQuestions.length} questions added to exam ${examId} by user ${req.user.id}`
+    );
+
+    res.status(201).json({
+      status: "success",
+      message: `${createdQuestions.length} questions added successfully`,
+      data: {
+        questions: createdQuestions,
+        examId,
+        totalQuestions: updatedExam.questions.length,
+        totalMarks: newTotalMarks,
+      },
+    });
+  } catch (error) {
+    logger.error(`Error adding questions to exam: ${error.message}`, {
+      stack: error.stack,
+    });
+    res.status(500).json({
+      status: "failed",
+      message: "Failed to add questions to exam",
+    });
+  }
+};
 // Fetch questions for the specific examId, sorted by created date in descending order
 /**
  * Fetches questions associated with a specific exam ID.
@@ -183,15 +368,7 @@ exports.getAllQuestionsByExamId = async (req, res) => {
   }
 };
 
-/**
- * Gets a question by ID
- * @async
- * @function getQuestionById
- * @param {Object} req - Express request object
- * @param {string} req.params.id - The ID of the question to retrieve
- * @param {Object} res - Express response object
- * @returns {Object} JSON response with question data or error message
- */
+// Gets a question by ID
 exports.getQuestionById = async (req, res) => {
   try {
     const questionId = req.params.id;
@@ -240,16 +417,7 @@ exports.getQuestionById = async (req, res) => {
 };
 
 // Find the question to update
-/**
- * Updates a question by ID
- * @async
- * @function updateQuestion
- * @param {Object} req - Express request object
- * @param {string} req.params.id - The ID of the question to update
- * @param {Object} req.body - The updated question data
- * @param {Object} res - Express response object
- * @returns {Object} JSON response with updated question or error message
- */
+// Updates a question by ID
 exports.updateQuestion = async (req, res) => {
   // validation
   const errors = validationResult(req);
@@ -345,12 +513,6 @@ exports.updateQuestion = async (req, res) => {
 
 /**
  * Deletes a question by ID
- * @async
- * @function deleteQuestion
- * @param {Object} req - Express request object
- * @param {string} req.params.id - The ID of the question to delete
- * @param {Object} res - Express response object
- * @returns {Object} JSON response with success message or error message
  */
 exports.deleteQuestion = async (req, res) => {
   try {
@@ -410,35 +572,3 @@ exports.deleteQuestion = async (req, res) => {
     });
   }
 };
-
-/*
-// @desc    Get questions by difficulty level
-// @access  Private
-exports.getQuestionsByDifficulty = async (req, res) => {
-    try {
-      const questions = await Question.find({ difficulty: req.params.level })
-        .sort({ createdAt: -1 })
-        .populate('createdBy', 'name email');
-      
-      res.json(questions);
-    } catch (err) {
-      console.error(err.message);
-      res.status(500).send('Server Error');
-    }
-  };
-  
-  // @desc    Get questions by type
-  // @access  Private
-  exports.getQuestionsByType = async (req, res) => {
-    try {
-      const questions = await Question.find({ type: req.params.type })
-        .sort({ createdAt: -1 })
-        .populate('createdBy', 'name email');
-      
-      res.json(questions);
-    } catch (err) {
-      console.error(err.message);
-      res.status(500).send('Server Error');
-    }
-  };
-  */

@@ -31,7 +31,7 @@ router.get(
   validateObjectId,
   getAllResultsByExamId
 );
-// @route   POST api/result
+// @route   POST api/result/
 // @desc    Create a new result
 // @access  Private
 router.post("/", auth, isStudent, submitExam);

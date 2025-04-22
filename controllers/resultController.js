@@ -2,7 +2,7 @@
 const Result = require("../models/result");
 const Exam = require("../models/exam");
 const User = require("../models/user");
-const Question = require("../models/question");
+
 const { validationResult } = require("express-validator");
 const logger = require("../utils/loggerUtils");
 
@@ -16,28 +16,25 @@ const logger = require("../utils/loggerUtils");
  * @param {string} req.body.examId - The ID of the exam taken
  * @param {Array} req.body.answers - Array of student answers
  * @param {string} req.body.startTime - The time when the exam started
- * @param {Array} req.body.proctorFlags - Array of proctor events (e.g., { eventType, timestamp, message })
  * @param {Object} res - Express response object
  * @returns {Object} Response containing result details
  */
 exports.submitExam = async (req, res) => {
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return res.status(400).json({ status: "error", errors: errors.array() });
-  }
-
   try {
-    const { examId, answers, startTime, proctorFlags = [] } = req.body;
+    // Extract request data
+    const { examId, answers, startTime } = req.body;
+    const studentId = req.user.id;
 
-    // if (!Array.isArray(answers) || answers.length === 0) {
-    //   return res.status(400).json({
-    //     status: "error",
-    //     message: "Answers must be a non-empty array",
-    //   });
-    // }
+    if (!Array.isArray(answers) || answers.length === 0) {
+      return res.status(400).json({
+        status: "error",
+        message: "Answers must be a non-empty array",
+      });
+    }
 
-    // Get the exam to calculate score
+    // Find the exam with its questions
     const examData = await Exam.findById(examId).populate("questions");
+
     if (!examData) {
       logger.error(`Exam not found for ID: ${examId}`);
       return res.status(404).json({
@@ -46,62 +43,70 @@ exports.submitExam = async (req, res) => {
       });
     }
 
-    // Calculate Score
+    // Process answers and calculate score
     let totalScore = 0;
-    let totalMarks = 0;
-    const answerWithCorrectness = [];
+    const totalMarks = examData.totalMarks;
+    const processedAnswers = [];
 
+    // Map through answers and check correctness
     for (const answer of answers) {
       const question = examData.questions.find(
         (q) => q._id.toString() === answer.question.toString()
       );
+
       if (question) {
-        const isCorrect = question.correctAnswer === answer.selectedOption;
-        answerWithCorrectness.push({
+        // Convert values for more reliable comparison
+        const correctAnswer = String(question.correctAnswer).trim();
+        const selectedOption = String(answer.selectedOption).trim();
+
+        // Enhanced debugging
+        console.log("Correct Answer:", correctAnswer);
+        console.log("Selected Option:", selectedOption);
+        console.log(
+          "Correct Answer (code points):",
+          [...correctAnswer].map((c) => c.charCodeAt(0))
+        );
+        console.log(
+          "Selected Option (code points):",
+          [...selectedOption].map((c) => c.charCodeAt(0))
+        );
+
+        // More robust comparison - normalize to handle potential encoding issues
+        const isCorrect =
+          correctAnswer.normalize() === selectedOption.normalize();
+
+        processedAnswers.push({
           question: answer.question,
           selectedOption: answer.selectedOption,
           isCorrect,
         });
+
         if (isCorrect) {
           totalScore += question.marks;
         }
-        totalMarks += question.marks;
       }
     }
 
-    if (totalMarks === 0) {
-      return res
-        .status(400)
-        .json({ status: "error", message: "No valid questions answered" });
-    }
-
-    const percentage = (totalScore / totalMarks) * 100 || 0;
+    // Calculate percentage and passing status
+    const percentage = totalMarks > 0 ? (totalScore / totalMarks) * 100 : 0;
     const isPassed =
       percentage >= (examData.passingMarks / examData.totalMarks) * 100;
-
-    // Map proctorFlags to schema format
-    const formattedProctorFlags = proctorFlags.map((flag) => ({
-      type: mapEventType(flag.eventType) || "other",
-      description: flag.message || "No description",
-      timestamp: new Date(flag.timestamp),
-    }));
 
     // Create a new result
     const newResult = await Result.create({
       exam: examId,
-      student: req.user.id,
-      answers: answerWithCorrectness,
+      student: studentId,
+      answers: processedAnswers,
       totalScore,
       percentage,
       isPassed,
-      startTime: new Date(startTime),
+      startTime: new Date(startTime || Date.now()),
       submittedAt: new Date(),
-      proctorFlags: formattedProctorFlags,
     });
 
     // Update user's completedExams field with both exam and result IDs
     await User.findByIdAndUpdate(
-      req.user.id,
+      studentId,
       {
         $push: {
           completedExams: {
@@ -120,7 +125,13 @@ exports.submitExam = async (req, res) => {
     res.status(201).json({
       status: "success",
       message: "Exam submitted successfully",
-      result: newResult,
+      result: {
+        id: newResult._id,
+        score: totalScore,
+        totalMarks,
+        percentage,
+        isPassed,
+      },
     });
   } catch (error) {
     logger.error(`Error in createResult: ${error.message}`, {
@@ -128,61 +139,7 @@ exports.submitExam = async (req, res) => {
     });
     res.status(500).json({
       status: "error",
-      message: "Internal Server Error",
-    });
-  }
-};
-
-// Helper function to map frontend event types to schema enum
-// Added mapEventType in the controller to convert frontend event types (e.g., "tab_switch") to schema enum values (e.g., "tab-switch").
-const mapEventType = (eventType) => {
-  const typeMap = {
-    tab_switch: "tab-switch",
-    fullscreen_exit: "full-screen-exit",
-    tab_focus: "tab-switch", // Simplified mapping
-    window_blur: "other",
-    fullscreen_enter: "other", // Not an issue, just logged
-    fullscreen_request_failed: "other",
-  };
-  return typeMap[eventType] || "other";
-};
-
-// Retrieves all exam results
-/**
- * Retrieves all exam results
- * @route GET /api/results
- * @access Private (Admin only)
- * @param {Object} req - Express request object
- * @param {Object} res - Express response object
- * @returns {Object} Response containing all results with exam and student details
- */
-exports.getAllResults = async (req, res) => {
-  console.log("Controller started....");
-  try {
-    const results = await Result.find()
-      .populate("exam", ["title", "description", "duration"])
-      .populate("student", ["name", "email"])
-      .exec();
-
-    console.log("Retrieving result", results);
-
-    logger.info(`Retrieved all results: ${results.length} records found`);
-
-    res.status(200).json({
-      status: "success",
-      message:
-        results.length > 0
-          ? "All Results retrieved successfully"
-          : "No results found",
-      data: results,
-    });
-  } catch (err) {
-    logger.error(`Error in getAllResults: ${err.message}`, {
-      stack: err.stack,
-    });
-    res.status(500).json({
-      status: "error",
-      message: "Internal Server Error",
+      message: "Failed to submit exam",
     });
   }
 };
@@ -266,10 +223,13 @@ exports.getResultByResultId = async (req, res) => {
  */
 exports.getAllResultsByExamId = async (req, res) => {
   try {
-    const examId = req.params.examId;
+    const examId = req.params.id;
+    console.log("Exam ID:", examId);
     const results = await Result.find({ exam: examId })
       .populate("student", "name email")
-      .select("totalScore percentage isPassed submittedAt proctorFlags");
+      .select("totalScore percentage isPassed submittedAt ");
+
+    console.log("Results from getAllResultsByExamId:", results);
 
     logger.info(`Retrieved ${results.length} results for exam ${examId}`);
     res.status(200).json({
@@ -371,39 +331,3 @@ exports.deleteResult = async (req, res) => {
     });
   }
 };
-
-// Retrieves all results for the currently authenticated student
-/**
- * Retrieves all results for the currently authenticated student
- * @route GET /api/results/student
- * @access Private (Students only)
- * @param {Object} req - Express request object
- * @param {Object} req.user - Authenticated user information
- * @param {Object} res - Express response object
- * @returns {Object} Response containing student's exam results
- */
-// exports.getStudentResults = async (req, res) => {
-//   try {
-//     const studentId = req.user.id;
-//     const results = await Result.find({ student: studentId })
-//       .populate("exam", "title totalMarks")
-//       .select("totalScore percentage isPassed submittedAt");
-
-//     logger.info(`Retrieved ${results.length} results for student ${studentId}`);
-
-//     res.status(200).json({
-//       status: "success",
-//       message: "Student results fetched successfully",
-//       data: results,
-//     });
-//   } catch (err) {
-//     logger.error(
-//       `Error while fetching student results for ${req.user.id}: ${err.message}`,
-//       { stack: err.stack }
-//     );
-//     res.status(500).json({
-//       status: "error",
-//       message: "Server error",
-//     });
-//   }
-// };

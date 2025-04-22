@@ -2,7 +2,7 @@
  * Authentication Controller
  * Handles user registration, login, and password management
  */
-
+// Imports
 const { validationResult } = require("express-validator");
 const User = require("../models/user");
 require("dotenv").config();
@@ -394,56 +394,3 @@ exports.getCurrentUser = async (req, res) => {
   }
 };
 
-// /**
-//  * Refresh access token
-//  * @route POST /api/auth/refresh-token
-//  * @access Public
-//  */
-// exports.refreshToken = async (req, res) => {
-//   try {
-//     const { refreshToken } = req.body;
-
-//     // Verify refresh token
-//     if (!refreshToken) {
-//       return res.status(400).json({
-//         status: "failure",
-//         message: "Refresh token is required",
-//       });
-//     }
-
-//     // Verify the refresh token
-//     let userId;
-//     try {
-//       const decoded = jwt.verify(refreshToken, process.env.JWT_SECRET);
-//       userId = decoded.sub;
-//     } catch (err) {
-//       return res.status(401).json({
-//         status: "failure",
-//         message: "Invalid refresh token",
-//       });
-//     }
-
-//     // Find the user
-//     const user = await User.findById(userId);
-//     if (!user) {
-//       return res.status(401).json({
-//         status: "failure",
-//         message: "User not found",
-//       });
-//     }
-
-//     // Generate new access token
-//     const accessToken = createAccessToken(user);
-
-//     return res.status(200).json({
-//       status: "success",
-//       accessToken,
-//     });
-//   } catch (error) {
-//     logger.error(`Token refresh error: ${error.message}`);
-//     return res.status(500).json({
-//       status: "failure",
-//       message: "Failed to refresh access token",
-//     });
-//   }
-// };

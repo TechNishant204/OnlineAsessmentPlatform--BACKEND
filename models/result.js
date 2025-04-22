@@ -48,21 +48,12 @@ const ResultSchema = new Schema(
       required: true,
       default: Date.now,
     },
-    proctorFlags: [
-      {
-        type: {
-          type: String,
-          enum: ["tab-switch", "full-screen-exit", "copy-paste", "other"],
-        },
-        description: String,
-        timestamp: Date,
-      },
-    ],
   },
   { timestamps: true }
 );
 
 // Index for frequent queries
-// ResultSchema.index({ exam: 1, student: 1 }); // explain
+// ResultSchema.index({ exam: 1, student: 1 }); // Composite index for exam and student
+// This index will speed up queries that filter by both exam and student, which is common in result retrieval scenarios.
 
 module.exports = mongoose.model("Result", ResultSchema);
