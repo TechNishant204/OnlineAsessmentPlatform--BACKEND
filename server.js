@@ -1,10 +1,9 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const cors = require("cors");
-const dotenv = require("dotenv");
-const db = require("./config/database.js");
-const logger = require("./utils/loggerUtils");
-const helmet = require("helmet");
+import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
+import db from "./config/database.js";
+import logger from "./utils/loggerUtils.js";
+import helmet from "helmet";
 // const cookieParser = require("cookie-parser");
 
 //Import Routes
@@ -25,10 +24,10 @@ app.use(
   cors({
     origin: process.env.CLIENT_URL || "http://localhost:5173",
     credentials: true,
-  })
-);
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+  }));
 
-// app.use(cookieParser());
 app.use(express.json());
 app.use(logger.middleware); // use the logger middleware
 app.use(helmet()); // use helmet for security
@@ -44,19 +43,19 @@ app.use("/api/profile", profileRoutes);
 // connect to mongoDB
 db.connectDB();
 
-// Test route
-app.get("/", (req, res) => {
+app.get("/", (_, res) => {
   logger.info("Root endpoint accessed"); // Added logging for the root endpoint
   res.send("EduAssess is Running");
 });
 
-// Error handling middleware
-app.use((err, req, res, next) => {
+
+app.use((err, _, res, _next) => {
   logger.error(`Unhandled error: ${err.message}`, { stack: err.stack });
   res.status(500).json({
     status: "error",
     message: "Something went wrong!",
   });
+});
 });
 
 // Handle 404 routes
